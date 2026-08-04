@@ -1,13 +1,13 @@
-"""Streamlit UI for the road traffic legal assistant.
-
-The UI is kept intact; only the backend adapter targets this lab's
-``generate_with_citation`` contract.
 """
-from __future__ import annotations
+RAG Chatbot — Tra cứu pháp luật giao thông đường bộ Việt Nam
+Streamlit app kết nối RAG Retrieval (Task 9) và Generation (Task 10).
+
+Chạy:
+    streamlit run app.py
+"""
 
 import os
 import sys
-from datetime import datetime
 from pathlib import Path
 
 import streamlit as st
@@ -15,226 +15,154 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-PROJECT_ROOT = Path(__file__).resolve().parent
+# Thêm project root vào sys.path để import các task từ src/
+PROJECT_ROOT = Path(__file__).parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from ui import (  # noqa: E402
-    CSS,
-    create_chat_pdf,
-    render_assistant_bubble,
-    render_header,
-    render_sources,
-    render_status,
-    render_user_bubble,
-    render_welcome,
-)
+# =============================================================================
+# PAGE CONFIG
+# =============================================================================
 
 st.set_page_config(
-    page_title="Trợ Lý Luật Giao Thông Đường Bộ",
-    page_icon="🌿",
+    page_title="RAG Pháp luật Giao thông Việt Nam",
+    page_icon="🚦",
     layout="wide",
     initial_sidebar_state="expanded",
 )
-st.markdown(CSS, unsafe_allow_html=True)
 
-SUGGESTIONS = (
-    "Xe máy vượt đèn đỏ bị phạt bao nhiêu tiền?",
-    "Người lái xe có bao nhiêu điểm giấy phép lái xe?",
-    "Khi xảy ra tai nạn giao thông cần làm gì?",
-    "Hồ sơ cấp mới chứng nhận đăng ký xe gồm những gì?",
-    "Tốc độ tối đa trong khu đông dân cư là bao nhiêu?",
-)
+# =============================================================================
+# SIDEBAR — INFO & SETTINGS
+# =============================================================================
 
-# ============================================================
-# Session state
-# ============================================================
+with st.sidebar:
+    st.title("🚦 RAG Pháp luật Giao thông")
+    st.caption("Trợ lý tra cứu Luật Trật tự, an toàn giao thông đường bộ 36/2024/QH15, Nghị định 168/2024/NĐ-CP và Thông tư 72, 73, 79/2024/TT-BCA")
+
+    st.divider()
+
+    st.subheader("💡 Câu hỏi gợi ý")
+    suggestions = [
+        "Xe máy vượt đèn đỏ bị phạt bao nhiêu tiền?",
+        "Người lái xe có bao nhiêu điểm giấy phép lái xe?",
+        "Khi xảy ra tai nạn giao thông cần làm gì?",
+        "Hồ sơ cấp mới chứng nhận đăng ký xe gồm những gì?",
+        "Tốc độ tối đa trong khu đông dân cư là bao nhiêu?",
+    ]
+    for s in suggestions:
+        if st.button(s, use_container_width=True, key=f"sug_{s[:20]}"):
+            st.session_state["pending_query"] = s
+
+    st.divider()
+    st.subheader("⚙️ Thiết lập")
+    top_k = st.slider("Số chunks retrieval (top_k)", 3, 10, 5)
+    use_memory = st.toggle(
+        "Ghi nhớ hội thoại",
+        value=True,
+        help="Bật để hỏi tiếp kiểu 'còn ô tô thì sao?' — câu hỏi sẽ được viết "
+        "lại thành câu độc lập trước khi tra cứu.",
+    )
+    if st.button("🗑️ Xóa hội thoại", use_container_width=True):
+        st.session_state.messages = []
+        st.session_state.pending_query = None
+        st.rerun()
+
+    st.divider()
+    st.caption("**Kiến trúc hệ thống:**")
+    st.caption("Condense follow-up → Hybrid Retrieval (Semantic + BM25) → RRF → LLM Rerank → PageIndex Fallback → Generation có Citation")
+
+# =============================================================================
+# SESSION STATE
+# =============================================================================
+
 if "messages" not in st.session_state:
     st.session_state.messages = []
 if "pending_query" not in st.session_state:
     st.session_state.pending_query = None
 
+# =============================================================================
+# MAIN CHAT AREA
+# =============================================================================
 
-# ============================================================
-# Sidebar
-# ============================================================
-with st.sidebar:
-    st.markdown(
-        """
-        <div class="sidebar-brand">
-            <div class="sidebar-eyebrow">LEGAL KNOWLEDGE SYSTEM</div>
-            <div class="sidebar-title">Trợ lý Luật Giao thông</div>
-            <div class="sidebar-description">
-                Hệ thống tra cứu quy định pháp luật giao thông đường bộ Việt Nam.
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+st.title("🚦 RAG Chatbot Pháp luật Giao thông Đường bộ")
+st.caption("Hỏi đáp có trích dẫn trên corpus văn bản pháp luật giao thông đường bộ hiệu lực từ 01/01/2025")
 
-    st.markdown('<div class="sidebar-section-label">CẤU HÌNH TRA CỨU</div>', unsafe_allow_html=True)
-    top_k = st.slider(
-        "Số nguồn tham khảo",
-        min_value=3,
-        max_value=10,
-        value=5,
-        help="Số đoạn tài liệu được đưa vào bước tổng hợp câu trả lời.",
-    )
-    use_memory = st.toggle(
-        "Ghi nhớ hội thoại",
-        value=True,
-        help="Cho phép hệ thống hiểu câu hỏi tiếp nối như 'còn ô tô thì sao?'.",
-    )
+# Hiển thị lịch sử chat
+for msg in st.session_state.messages:
+    with st.chat_message(msg["role"]):
+        st.markdown(msg["content"])
+        if msg["role"] == "assistant" and "sources" in msg and msg["sources"]:
+            with st.expander(f"📚 Nguồn tham khảo ({len(msg['sources'])} chunks)"):
+                for i, src in enumerate(msg["sources"], 1):
+                    meta = src.get("metadata", {})
+                    source_name = meta.get("source", "Unknown")
+                    doc_type = meta.get("type", "unknown")
+                    score = src.get("score", 0)
+                    st.markdown(f"**[{i}] {source_name}** `{doc_type}` | score: `{score:.4f}`")
+                    st.text(src.get("content", "")[:300] + "...")
+                    st.divider()
 
-    st.markdown('<div class="sidebar-section-label suggestion-label">CÂU HỎI GỢI Ý</div>', unsafe_allow_html=True)
-    for index, suggestion in enumerate(SUGGESTIONS):
-        if st.button(
-            suggestion,
-            key=f"suggestion_{index}",
-            use_container_width=True,
-        ):
-            st.session_state.pending_query = suggestion
+# =============================================================================
+# QUERY HANDLING
+# =============================================================================
 
-    st.markdown('<div class="sidebar-section-label">PHIÊN LÀM VIỆC</div>', unsafe_allow_html=True)
-    turn_count = sum(1 for message in st.session_state.messages if message["role"] == "user")
-    st.markdown(
-        f"""
-        <div class="session-summary">
-            <span>Cuộc hội thoại hiện tại</span>
-            <strong>{turn_count} lượt hỏi</strong>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+user_input = st.chat_input("Nhập câu hỏi về luật giao thông đường bộ...")
+query = user_input or st.session_state.pending_query
 
-    if st.button("Xóa lịch sử trò chuyện", use_container_width=True):
-        st.session_state.messages = []
-        st.session_state.pending_query = None
-        st.rerun()
-
-    if st.session_state.messages:
-        try:
-            st.download_button(
-                label="Xuất bản ghi PDF",
-                data=create_chat_pdf(st.session_state.messages),
-                file_name=f"LuatGiaoThong_TroChuyen_{datetime.now():%Y%m%d_%H%M}.pdf",
-                mime="application/pdf",
-                use_container_width=True,
-            )
-        except ImportError:
-            st.caption("Cài `fpdf2` để sử dụng chức năng xuất PDF.")
-
-    api_ready = bool(os.getenv("OPENAI_API_KEY"))
-    index_ready = (PROJECT_ROOT / "chroma_db").exists()
-    backend_label = "Sẵn sàng" if api_ready else "Cần API key"
-    index_label = "Đã khởi tạo" if index_ready else "Chưa khởi tạo"
-    backend_class = "ready" if api_ready else "warning"
-    st.markdown(
-        f"""
-        <div class="sidebar-section-label system-label">HỆ THỐNG</div>
-        <div class="system-card">
-            <div class="system-row">
-                <span>Backend</span>
-                <strong class="{backend_class}"><i></i>{backend_label}</strong>
-            </div>
-            <div class="system-row">
-                <span>Chỉ mục</span>
-                <strong>{index_label}</strong>
-            </div>
-            <div class="system-row">
-                <span>Phạm vi</span>
-                <strong>Luật giao thông</strong>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-
-# ============================================================
-# Main interface
-# ============================================================
-render_header()
-if not st.session_state.messages:
-    render_welcome()
-
-for message in st.session_state.messages:
-    if message["role"] == "user":
-        render_user_bubble(message["content"])
-    else:
-        render_assistant_bubble(message["content"])
-        render_sources(message.get("sources", []))
-
-
-# ============================================================
-# Text input
-# ============================================================
-user_input = st.chat_input("Nhập câu hỏi pháp lý của bạn tại đây...")
-query_input = user_input or st.session_state.pending_query
-
-if query_input:
+if query:
     st.session_state.pending_query = None
-    st.session_state.messages.append({"role": "user", "content": query_input})
-    st.rerun()
 
-# ============================================================
-# Process latest user turn
-# ============================================================
-if st.session_state.messages and st.session_state.messages[-1]["role"] == "user":
-    query = st.session_state.messages[-1]["content"]
+    # Lịch sử PHẢI lấy trước khi append câu hỏi hiện tại — generate_with_citation
+    # nhận history không bao gồm query của lượt này.
     history = (
         [
-            {"role": message["role"], "content": message["content"]}
-            for message in st.session_state.messages[:-1]
+            {"role": msg["role"], "content": msg["content"]}
+            for msg in st.session_state.messages
         ]
         if use_memory
         else []
     )
-    response_placeholder = st.empty()
-    status_placeholder = st.empty()
 
-    with status_placeholder.container():
-        render_status("Đang tìm kiếm tài liệu và tổng hợp câu trả lời...")
+    # Hiển thị câu hỏi của user
+    st.session_state.messages.append({"role": "user", "content": query})
+    with st.chat_message("user"):
+        st.markdown(query)
 
-    try:
-        from src.task10_generation import generate_with_citation
+    # Sinh câu trả lời từ RAG Pipeline
+    with st.chat_message("assistant"):
+        with st.spinner("Đang tìm kiếm tài liệu và tổng hợp câu trả lời..."):
+            search_query = query
+            try:
+                from src.task10_generation import generate_with_citation
+                response = generate_with_citation(query, top_k=top_k, history=history)
+                answer = response.get("answer", "Chưa thể trả lời.")
+                sources = response.get("sources", [])
+                search_query = response.get("search_query", query)
 
-        response = generate_with_citation(query, top_k=top_k, history=history)
-        answer = response.get("answer", "Chưa thể tạo câu trả lời.")
-        sources = [
-            {
-                **source,
-                "page_content": source.get("page_content", source.get("content", "")),
-            }
-            for source in response.get("sources", [])
-        ]
-        retrieval_source = response.get("retrieval_source", "none")
-        search_query = response.get("search_query", query)
-    except NotImplementedError:
-        answer = (
-            "⚠️ Giao diện Luật Giao thông đã sẵn sàng, nhưng pipeline RAG chưa được triển khai. "
-            "Hãy hoàn thiện Task 10 để kết nối hệ thống tri thức pháp lý."
-        )
-        sources = []
-        retrieval_source = "none"
-        search_query = query
-    except Exception as exc:
-        answer = f"❌ Core System Error: {exc}"
-        sources = []
-        retrieval_source = "error"
-        search_query = query
+            except NotImplementedError:
+                answer = "⚠️ **Task 10 chưa được implement.** Hãy hoàn thành `src/task10_generation.py` để kết nối pipeline vào UI!"
+                sources = []
+            except Exception as e:
+                answer = f"❌ **Lỗi khi chạy RAG Pipeline:** {e}"
+                sources = []
 
-    status_placeholder.empty()
-    with response_placeholder.container():
-        render_assistant_bubble(answer)
-        render_sources(sources)
+            st.markdown(answer)
 
-    st.session_state.messages.append(
-        {
-            "role": "assistant",
-            "content": answer,
-            "sources": sources,
-            "retrieval_source": retrieval_source,
-            "search_query": search_query,
-        }
-    )
-    st.rerun()
+            if search_query != query:
+                st.caption(f"🔎 Câu hỏi tra cứu sau khi hiểu ngữ cảnh: *{search_query}*")
+
+            if sources:
+                with st.expander(f"📚 Nguồn tham khảo ({len(sources)} chunks)"):
+                    for i, src in enumerate(sources, 1):
+                        meta = src.get("metadata", {})
+                        source_name = meta.get("source", "Unknown")
+                        doc_type = meta.get("type", "unknown")
+                        score = src.get("score", 0)
+                        st.markdown(f"**[{i}] {source_name}** `{doc_type}` | score: `{score:.4f}`")
+                        st.text(src.get("content", "")[:300] + "...")
+                        st.divider()
+
+    st.session_state.messages.append({
+        "role": "assistant",
+        "content": answer,
+        "sources": sources,
+    })
