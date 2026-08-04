@@ -115,15 +115,19 @@ def render_sources(documents: list[dict[str, Any]]) -> None:
                     "resolution": "Nghị quyết",
                 }
                 document_number = meta.get("document_number")
-                document_type = document_type_labels.get(meta.get("document_type"), "")
+                document_type = document_type_labels.get(meta.get("document_type") or "", "")
                 if document_number:
                     label = f"{document_type} {document_number}".strip()
                 else:
                     label = meta.get("title") or meta.get("source", "Nguồn tài liệu")
                 title_parts.append(f"📄 {_safe(label)}")
 
-            if meta.get("section"):
-                title_parts.append(f"Mục: {_safe(meta['section'])}")
+            # Chunk từ nhánh hybrid mang heading Điều ở key "heading"; chỉ kết
+            # quả PageIndex mới có "section". Nhận cả hai để hàng "Điều/Mục"
+            # không bị trống với đa số kết quả.
+            section = meta.get("section") or meta.get("heading")
+            if section:
+                title_parts.append(f"Điều/Mục: {_safe(section)}")
 
             title_html = "<br>".join(title_parts)
             preview = _safe(doc.get("page_content", doc.get("content", ""))[:300])
