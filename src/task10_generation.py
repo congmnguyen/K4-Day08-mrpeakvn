@@ -1,11 +1,17 @@
 """
 Task 10 — Generation Có Citation.
 
-Pipeline: retrieve (Task 9) → reorder chống "lost in the middle" → format context
-có nhãn nguồn → gọi LLM → trả answer + sources.
+Pipeline: condense follow-up → retrieve (Task 9) → reorder chống "lost in the
+middle" → format context có nhãn nguồn → gọi LLM → trả answer + sources.
 
 LLM: gọi thẳng OpenAI (cùng provider với embedding ở Task 4/5, một API key duy
 nhất cho cả repo). Model cấu hình qua ``OPENAI_CHAT_MODEL``.
+
+Conversation memory (multi-turn):
+    Câu hỏi tiếp nối kiểu "còn ô tô thì sao?" không thể đem đi retrieve nguyên
+    văn — nó không chứa từ khoá nào để dense/BM25 bám vào. Vì vậy khi có lịch sử
+    hội thoại, ``condense_query()`` viết lại thành câu hỏi độc lập TRƯỚC khi
+    retrieve, còn lịch sử vẫn được đưa vào messages để câu trả lời mạch lạc.
 """
 
 import os
@@ -35,6 +41,10 @@ TEMPERATURE = 0.2
 
 # Model generation — đọc từ env để đổi được mà không sửa code.
 LLM_MODEL = os.getenv("OPENAI_CHAT_MODEL", "gpt-4o-mini")
+
+# Số message lịch sử tối đa đưa vào prompt (6 = 3 lượt hỏi-đáp). Giới hạn để
+# prompt không phình theo độ dài hội thoại và chi phí mỗi lượt ổn định.
+HISTORY_WINDOW = 6
 
 NO_EVIDENCE_ANSWER = (
     "Tôi không thể xác minh thông tin này từ nguồn hiện có. "
@@ -133,35 +143,119 @@ def format_context(chunks: list[dict]) -> str:
         )
         if metadata.get("effective_date"):
             label += f" | Hiệu lực từ: {metadata['effective_date']}"
-        if metadata.get("section"):
-            label += f" | Mục: {metadata['section']}"
+        # Heading của Điều là thứ phân biệt "Điều 6 ... xe ô tô" với "Điều 7 ...
+        # xe mô tô, xe gắn máy". Thiếu nó, một chunk chỉ là danh sách hành vi
+        # kèm mức tiền, model rất dễ gán mức phạt của ô tô cho xe máy.
+        section = metadata.get("section") or metadata.get("heading")
+        if section:
+            label += f" | Điều/Mục: {section}"
         label += "]"
         context_parts.append(f"{label}\n{chunk['content']}\n")
     return "\n---\n".join(context_parts)
 
 
 # =============================================================================
+# CONVERSATION MEMORY
+# =============================================================================
+
+CONDENSE_PROMPT = """Viết lại câu hỏi cuối của người dùng thành MỘT câu hỏi độc lập,
+đầy đủ ngữ cảnh, để đem đi tra cứu văn bản pháp luật giao thông đường bộ Việt Nam.
+
+Quy tắc:
+- Thay đại từ và cách nói tỉnh lược bằng danh từ cụ thể lấy từ lịch sử hội thoại
+  ("còn ô tô thì sao?" sau câu hỏi về xe máy vượt đèn đỏ → "Ô tô vượt đèn đỏ bị
+  phạt bao nhiêu tiền?").
+- Nếu câu hỏi cuối ĐÃ độc lập, trả lại đúng nguyên văn.
+- Không trả lời câu hỏi, không thêm giải thích. Chỉ xuất đúng một câu hỏi."""
+
+
+def trim_history(history: list[dict] | None) -> list[dict]:
+    """Giữ HISTORY_WINDOW message cuối, chỉ nhận role user/assistant hợp lệ."""
+    if not history:
+        return []
+    cleaned = [
+        {"role": message["role"], "content": message["content"]}
+        for message in history
+        if message.get("role") in {"user", "assistant"} and message.get("content")
+    ]
+    return cleaned[-HISTORY_WINDOW:]
+
+
+def condense_query(query: str, history: list[dict] | None) -> str:
+    """Viết lại câu hỏi tiếp nối thành câu hỏi độc lập để retrieve.
+
+    Không có lịch sử → trả nguyên query, không tốn API call. Lỗi API/response
+    rỗng → cũng trả nguyên query thay vì làm chết cả lượt chat.
+    """
+    recent = trim_history(history)
+    if not recent:
+        return query
+
+    from openai import OpenAI
+
+    transcript = "\n".join(
+        f"{'Người dùng' if message['role'] == 'user' else 'Trợ lý'}: {message['content']}"
+        for message in recent
+    )
+    try:
+        client = OpenAI()
+        response = client.chat.completions.create(
+            model=LLM_MODEL,
+            messages=[
+                {"role": "system", "content": CONDENSE_PROMPT},
+                {
+                    "role": "user",
+                    "content": f"Lịch sử hội thoại:\n{transcript}\n\nCâu hỏi cuối: {query}",
+                },
+            ],
+            temperature=0,
+        )
+        condensed = (response.choices[0].message.content or "").strip()
+    except Exception as error:  # noqa: BLE001 — memory hỏng không được chặn câu trả lời
+        print(f"  ⚠ Condense query lỗi ({error}); dùng câu hỏi gốc")
+        return query
+    return condensed or query
+
+
+# =============================================================================
 # GENERATION
 # =============================================================================
 
-def generate_with_citation(query: str, top_k: int = TOP_K) -> dict:
+def generate_with_citation(
+    query: str, top_k: int = TOP_K, history: list[dict] | None = None
+) -> dict:
     """
-    End-to-end RAG generation có citation.
+    End-to-end RAG generation có citation, hỗ trợ multi-turn.
+
+    Args:
+        query: Câu hỏi của user (có thể là câu tiếp nối)
+        top_k: Số chunks đưa vào context
+        history: Lịch sử hội thoại ``[{'role': 'user'|'assistant', 'content': str}]``
+            KHÔNG bao gồm ``query`` hiện tại. Bỏ trống = hỏi đáp một lượt.
 
     Returns:
         {
-            'answer': str,           # Câu trả lời có citation
-            'sources': list[dict],   # Các chunks đã dùng
-            'retrieval_source': str  # 'hybrid' | 'pageindex' | 'none'
+            'answer': str,            # Câu trả lời có citation
+            'sources': list[dict],    # Các chunks đã dùng
+            'retrieval_source': str,  # 'hybrid' | 'pageindex' | 'none'
+            'search_query': str       # Câu đã condense, dùng để retrieve
         }
     """
     if not isinstance(query, str) or not query.strip():
         raise ValueError("query must be a non-empty string")
 
-    chunks = retrieve(query, top_k=top_k)
+    recent_history = trim_history(history)
+    search_query = condense_query(query, recent_history)
+
+    chunks = retrieve(search_query, top_k=top_k)
     if not chunks:
         # Không có evidence → KHÔNG gọi model, tránh việc LLM tự bịa từ tri thức nền.
-        return {"answer": NO_EVIDENCE_ANSWER, "sources": [], "retrieval_source": "none"}
+        return {
+            "answer": NO_EVIDENCE_ANSWER,
+            "sources": [],
+            "retrieval_source": "none",
+            "search_query": search_query,
+        }
 
     context = format_context(reorder_for_llm(chunks))
     user_message = f"Context:\n{context}\n\n---\n\nQuestion: {query}"
@@ -171,8 +265,11 @@ def generate_with_citation(query: str, top_k: int = TOP_K) -> dict:
     client = OpenAI()
     response = client.chat.completions.create(
         model=LLM_MODEL,
+        # Lịch sử nằm GIỮA system prompt và context: model thấy được mạch hội
+        # thoại nhưng evidence của lượt hiện tại vẫn là thứ gần câu hỏi nhất.
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
+            *recent_history,
             {"role": "user", "content": user_message},
         ],
         temperature=TEMPERATURE,
@@ -184,6 +281,7 @@ def generate_with_citation(query: str, top_k: int = TOP_K) -> dict:
         "answer": answer,
         "sources": chunks,
         "retrieval_source": chunks[0].get("source", "hybrid"),
+        "search_query": search_query,
     }
 
 
@@ -205,3 +303,16 @@ if __name__ == "__main__":
             f"\n[Sources: {len(result['sources'])} chunks | "
             f"via {result['retrieval_source']}]"
         )
+
+    # Multi-turn: câu thứ hai tỉnh lược, chỉ hiểu được nhờ conversation memory.
+    print(f"\n{'='*70}")
+    print("DEMO conversation memory")
+    print("=" * 70)
+    conversation: list[dict] = []
+    for question in ("Xe máy vượt đèn đỏ bị phạt bao nhiêu?", "còn ô tô thì sao?"):
+        result = generate_with_citation(question, history=conversation)
+        print(f"\nQ: {question}")
+        print(f"   → retrieve bằng: {result['search_query']!r}")
+        print(f"A: {result['answer'][:300]}")
+        conversation.append({"role": "user", "content": question})
+        conversation.append({"role": "assistant", "content": result["answer"]})

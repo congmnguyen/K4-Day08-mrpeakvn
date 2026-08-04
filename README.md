@@ -60,6 +60,7 @@ Bốn PDF tải từ `datafiles.chinhphu.vn` đều là **bản scan** — MarkI
 - **Hybrid**: dense + BM25 chạy song song → fuse RRF → rerank bằng LLM (đóng vai cross-encoder trên pool 20 candidate).
 - **Query glossary**: map từ đời thường sang thuật ngữ pháp lý ("vượt đèn đỏ" → "không chấp hành hiệu lệnh của đèn tín hiệu giao thông"). Tất định, không tốn API call.
 - **Fallback threshold** `SCORE_THRESHOLD = 0.40`: calibrate bằng cosine gốc của `semantic_search` (KHÔNG dùng điểm RRF). Số liệu đo thật nằm trong docstring `src/task9_retrieval_pipeline.py`.
+- **Conversation memory (multi-turn)**: câu hỏi tiếp nối kiểu *"còn ô tô thì sao?"* không có từ khoá nào để dense/BM25 bám vào, nên `condense_query()` viết lại thành câu độc lập **trước khi** retrieve; lịch sử (6 message gần nhất) vẫn được đưa vào messages để câu trả lời mạch lạc. UI có toggle bật/tắt và nút xóa hội thoại, và hiển thị câu đã condense khi nó khác câu gốc.
 - **Task 8**: không có `PAGEINDEX_API_KEY` nên chạy backend `local_structure` — dựng cây heading từ markdown và trả nguyên một Điều luật. Nhánh PageIndex cloud viết theo signature thật của SDK đã cài nhưng **chưa chạy live**.
 
 ### Về 4 test bị skip

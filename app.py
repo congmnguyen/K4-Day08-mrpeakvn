@@ -55,10 +55,20 @@ with st.sidebar:
     st.divider()
     st.subheader("⚙️ Thiết lập")
     top_k = st.slider("Số chunks retrieval (top_k)", 3, 10, 5)
+    use_memory = st.toggle(
+        "Ghi nhớ hội thoại",
+        value=True,
+        help="Bật để hỏi tiếp kiểu 'còn ô tô thì sao?' — câu hỏi sẽ được viết "
+        "lại thành câu độc lập trước khi tra cứu.",
+    )
+    if st.button("🗑️ Xóa hội thoại", use_container_width=True):
+        st.session_state.messages = []
+        st.session_state.pending_query = None
+        st.rerun()
 
     st.divider()
     st.caption("**Kiến trúc hệ thống:**")
-    st.caption("Hybrid Retrieval (Semantic + BM25) → RRF Rerank → PageIndex Fallback → LLM Generation có Citation")
+    st.caption("Condense follow-up → Hybrid Retrieval (Semantic + BM25) → RRF → LLM Rerank → PageIndex Fallback → Generation có Citation")
 
 # =============================================================================
 # SESSION STATE
@@ -101,6 +111,17 @@ query = user_input or st.session_state.pending_query
 if query:
     st.session_state.pending_query = None
 
+    # Lịch sử PHẢI lấy trước khi append câu hỏi hiện tại — generate_with_citation
+    # nhận history không bao gồm query của lượt này.
+    history = (
+        [
+            {"role": msg["role"], "content": msg["content"]}
+            for msg in st.session_state.messages
+        ]
+        if use_memory
+        else []
+    )
+
     # Hiển thị câu hỏi của user
     st.session_state.messages.append({"role": "user", "content": query})
     with st.chat_message("user"):
@@ -109,11 +130,13 @@ if query:
     # Sinh câu trả lời từ RAG Pipeline
     with st.chat_message("assistant"):
         with st.spinner("Đang tìm kiếm tài liệu và tổng hợp câu trả lời..."):
+            search_query = query
             try:
                 from src.task10_generation import generate_with_citation
-                response = generate_with_citation(query, top_k=top_k)
+                response = generate_with_citation(query, top_k=top_k, history=history)
                 answer = response.get("answer", "Chưa thể trả lời.")
                 sources = response.get("sources", [])
+                search_query = response.get("search_query", query)
 
             except NotImplementedError:
                 answer = "⚠️ **Task 10 chưa được implement.** Hãy hoàn thành `src/task10_generation.py` để kết nối pipeline vào UI!"
@@ -123,6 +146,9 @@ if query:
                 sources = []
 
             st.markdown(answer)
+
+            if search_query != query:
+                st.caption(f"🔎 Câu hỏi tra cứu sau khi hiểu ngữ cảnh: *{search_query}*")
 
             if sources:
                 with st.expander(f"📚 Nguồn tham khảo ({len(sources)} chunks)"):
