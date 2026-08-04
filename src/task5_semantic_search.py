@@ -17,6 +17,21 @@ from __future__ import annotations
 from .task4_chunking_indexing import embed_texts, get_collection
 
 _QUERY_EMBEDDING_CACHE: dict[str, list[float]] = {}
+_COLLECTION = None
+
+
+def collection():
+    """Giữ một handle collection cho cả process.
+
+    Mỗi lần ``get_collection()`` sẽ tạo lại ``PersistentClient``; trong app
+    Streamlit điều đó lặp lại ở mọi lượt chat. Cache lại để chi phí chỉ trả một
+    lần — và quan trọng hơn, lần build index đầu tiên trên deploy mới không bị
+    kích hoạt lặp.
+    """
+    global _COLLECTION
+    if _COLLECTION is None:
+        _COLLECTION = get_collection()
+    return _COLLECTION
 
 
 def embed_query(query: str) -> list[float]:
@@ -49,8 +64,7 @@ def semantic_search(query: str, top_k: int = 10) -> list[dict]:
     if top_k <= 0:
         raise ValueError("top_k must be > 0")
 
-    collection = get_collection()
-    response = collection.query(
+    response = collection().query(
         query_embeddings=[embed_query(query)],
         n_results=top_k,
         include=["documents", "metadatas", "distances"],

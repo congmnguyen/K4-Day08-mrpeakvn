@@ -1,0 +1,924 @@
+{
+  "A_hybrid_llm_rerank": [
+    {
+      "question": "Người điều khiển xe mô tô, xe gắn máy không chấp hành hiệu lệnh của đèn tín hiệu giao thông (vượt đèn đỏ) bị phạt bao nhiêu tiền?",
+      "answer": "Người điều khiển xe mô tô, xe gắn máy không chấp hành hiệu lệnh của đèn tín hiệu giao thông (vượt đèn đỏ) sẽ bị phạt tiền từ 4.000.000 đồng đến 6.000.000 đồng. Cụ thể, mức phạt này được quy định tại Điều 7 của Nghị định 168/2024/NĐ-CP, có hiệu lực từ ngày 01 tháng 01 năm 2025 [Nghị định 168/2024/NĐ-CP].",
+      "contexts": [
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy vi phạm quy tắc giao thông đường bộ]\n7. Phạt tiền từ 4.000.000 đồng đến 6.000.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Đi ngược chiều của đường một chiều, đi ngược chiều trên đường có biển \"Cấm đi ngược chiều\", trừ hành vi vi phạm quy định tại điểm b khoản này và các trường hợp xe ưu tiên đang đi làm nhiệm vụ khẩn cấp theo quy định; điều khiển xe đi trên vỉa hè, trừ trường hợp điều khiển xe đi qua vỉa hè để vào nhà, cơ quan;\n\nb) Điều khiển xe đi vào đường cao tốc, trừ xe phục vụ việc quản lý, bảo trì đường cao tốc;\n\nc) Không chấp hành hiệu lệnh của đèn tín hiệu giao thông;\n\nd) Không chấp hành hiệu lệnh, hướng dẫn của người điều khiển giao thông hoặc người kiểm soát giao thông ;\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy tắc giao thông đường bộ]\n9. Phạt tiền từ 18.000.000 đồng đến 20.000.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn vượt quá 50 miligam đến 80 miligam/100 mililít máu hoặc vượt quá 0,25 miligam đến 0,4 miligam/1 lít khí thở;\n\nb) Không chấp hành hiệu lệnh của đèn tín hiệu giao thông;\n\nc) Không chấp hành hiệu lệnh, hướng dẫn của người điều khiển giao thông hoặc người kiểm soát giao thông;\n\nd) Đi ngược chiều của đường một chiều, đi ngược chiều trên đường có biển \"Cấm đi ngược chiều\", trừ các hành vi vi phạm quy định tại điểm đ khoản 11 Điều này và các trường hợp xe ưu tiên đang đi làm nhiệm vụ khẩn cấp theo quy định.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy vi phạm quy tắc giao thông đường bộ]\n1. Phạt tiền từ 200.000 đồng đến 400.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường, trừ các hành vi vi phạm quy định tại điểm b , điểm d , điểm e khoản 2; điểm a, điểm c, điểm d, điểm h khoản 3; điểm a, điểm b, điểm c, điểm d khoản 4; điểm b , điểm d khoản 6; điểm a, điểm b, điểm c khoản 7; điểm a khoản 8; điểm b khoản 9 ; điểm a khoản 10 Điều này;\n\nb) Không có tín hiệu trước khi vượt hoặc có tín hiệu vượt xe nhưng không sử dụng trong suốt quá trình vượt xe;\n\nc) Lùi xe mô tô ba bánh không quan sát hai bên, phía sau xe hoặc không có tín hiệu lùi xe;\n\nd) Chở người ngồi trên xe sử dụng ô (dù);\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 9. Xử phạt người điều khiển xe đạp, xe đạp máy, người điều khiển xe thô sơ khác vi phạm quy tắc giao thông đường bộ]\n2. Phạt tiền từ 150.000 đồng đến 250.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe đạp, xe đạp máy buông cả hai tay; chuyển hướng đột ngột trước đầu xe cơ giới đang chạy; dùng chân điều khiển xe đạp, xe đạp máy;\n\nb) Không chấp hành hiệu lệnh, chỉ dẫn của người điều khiển giao thông hoặc người kiểm soát giao thông;\n\nc) Người đang điều khiển xe hoặc chở người ngồi trên xe bám, kéo, đẩy xe khác, vật khác, mang vác vật cồng kềnh; điều khiển xe kéo theo xe khác, vật khác;\n\nd) Không nhường đường cho xe xin vượt khi có đủ điều kiện an toàn hoặc gây cản trở đối với xe cơ giới xin vượt, gây cản trở xe ưu tiên;\n\nđ) Không chấp hành hiệu lệnh của đèn tín hiệu giao thông.\n"
+      ],
+      "ground_truth": "Phạt tiền từ 4.000.000 đồng đến 6.000.000 đồng.",
+      "expected_source": "nghi-dinh-168-2024-nd-cp.md",
+      "retrieved_sources": [
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.48454142309609444,
+        "context_recall": 1.0,
+        "context_precision": 0.8055555555287036
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Người điều khiển xe ô tô vượt đèn đỏ bị phạt bao nhiêu tiền?",
+      "answer": "Người điều khiển xe ô tô vượt đèn đỏ sẽ bị phạt tiền từ 18.000.000 đồng đến 20.000.000 đồng. Cụ thể, hành vi không chấp hành hiệu lệnh của đèn tín hiệu giao thông sẽ bị xử phạt theo quy định tại Nghị định 168/2024/NĐ-CP, có hiệu lực từ ngày 01 tháng 01 năm 2025 [Nghị định 168/2024/NĐ-CP].",
+      "contexts": [
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy tắc giao thông đường bộ]\n9. Phạt tiền từ 18.000.000 đồng đến 20.000.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn vượt quá 50 miligam đến 80 miligam/100 mililít máu hoặc vượt quá 0,25 miligam đến 0,4 miligam/1 lít khí thở;\n\nb) Không chấp hành hiệu lệnh của đèn tín hiệu giao thông;\n\nc) Không chấp hành hiệu lệnh, hướng dẫn của người điều khiển giao thông hoặc người kiểm soát giao thông;\n\nd) Đi ngược chiều của đường một chiều, đi ngược chiều trên đường có biển \"Cấm đi ngược chiều\", trừ các hành vi vi phạm quy định tại điểm đ khoản 11 Điều này và các trường hợp xe ưu tiên đang đi làm nhiệm vụ khẩn cấp theo quy định.\n",
+        "[Document 1 | Source: nghi-dinh-168-giam-tai-nan-giao-thong.md | Type: news | Trích dẫn: Nghị định 168 tạo hiệu ứng tích cực góp phần giảm tai nạn giao thông — csgt.bocongan.gov.vn | Điều/Mục: Nghị định 168 tạo hiệu ứng tích cực góp phần giảm tai nạn giao thông]\nÔng Trần Thanh Nghị ở thành phố Gia Nghĩa cho rằng, việc tăng mức xử phạt cũng sẽ khiến mọi người ý thức hơn khi tham gia giao thông. “Trước đây, lái xe trên đường, tôi cảm thấy rất khó chịu với những người cố tình vượt đèn đỏ, đi sai làn, thậm chí không xi-nhan mà rẽ tạt đầu phương tiện khác. Nhưng những ngày qua, tại những ngã tư, ngã ba có đèn tín hiệu, tôi thấy người tham gia giao thông đã chấp hành tín hiệu đèn hơn trước, có lẽ vì mức phạt nặng nên ai cũng tuân thủ”, ông Nghị nói.\n"
+      ],
+      "ground_truth": "Phạt tiền từ 18.000.000 đồng đến 20.000.000 đồng.",
+      "expected_source": "nghi-dinh-168-2024-nd-cp.md",
+      "retrieved_sources": [
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-giam-tai-nan-giao-thong.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.4769231108961485,
+        "context_recall": 1.0,
+        "context_precision": 0.99999999995
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Người điều khiển xe đạp, xe đạp máy không chấp hành hiệu lệnh của đèn tín hiệu giao thông bị phạt bao nhiêu?",
+      "answer": "Người điều khiển xe đạp, xe đạp máy không chấp hành hiệu lệnh của đèn tín hiệu giao thông sẽ bị phạt tiền từ 150.000 đồng đến 250.000 đồng. Điều này được quy định tại Điều 9 của Nghị định 168/2024/NĐ-CP, có hiệu lực từ ngày 01 tháng 01 năm 2025. [Nghị định 168/2024/NĐ-CP].",
+      "contexts": [
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 9. Xử phạt người điều khiển xe đạp, xe đạp máy, người điều khiển xe thô sơ khác vi phạm quy tắc giao thông đường bộ]\n2. Phạt tiền từ 150.000 đồng đến 250.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe đạp, xe đạp máy buông cả hai tay; chuyển hướng đột ngột trước đầu xe cơ giới đang chạy; dùng chân điều khiển xe đạp, xe đạp máy;\n\nb) Không chấp hành hiệu lệnh, chỉ dẫn của người điều khiển giao thông hoặc người kiểm soát giao thông;\n\nc) Người đang điều khiển xe hoặc chở người ngồi trên xe bám, kéo, đẩy xe khác, vật khác, mang vác vật cồng kềnh; điều khiển xe kéo theo xe khác, vật khác;\n\nd) Không nhường đường cho xe xin vượt khi có đủ điều kiện an toàn hoặc gây cản trở đối với xe cơ giới xin vượt, gây cản trở xe ưu tiên;\n\nđ) Không chấp hành hiệu lệnh của đèn tín hiệu giao thông.\n"
+      ],
+      "ground_truth": "Phạt tiền từ 150.000 đồng đến 250.000 đồng.",
+      "expected_source": "nghi-dinh-168-2024-nd-cp.md",
+      "retrieved_sources": [
+        "nghi-dinh-168-2024-nd-cp.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.4016551581624624,
+        "context_recall": 1.0,
+        "context_precision": 0.9999999999
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Người điều khiển xe mô tô, xe gắn máy không đội mũ bảo hiểm bị phạt bao nhiêu tiền?",
+      "answer": "Người điều khiển xe mô tô, xe gắn máy không đội mũ bảo hiểm hoặc đội mũ bảo hiểm không cài quai đúng quy cách sẽ bị phạt tiền từ 400.000 đồng đến 600.000 đồng. Đây là quy định được nêu trong Nghị định 168/2024/NĐ-CP, có hiệu lực từ ngày 01 tháng 01 năm 2025, cụ thể tại Điều 12 [Nghị định 168/2024/NĐ-CP].",
+      "contexts": [
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy vi phạm quy tắc giao thông đường bộ]\nh ) Không đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" hoặc đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" không cài quai đúng quy cách khi điều khiển xe tham gia giao thông trên đường bộ;\n\ni ) Chở người ngồi trên xe không đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" hoặc đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" không cài quai đúng quy cách, trừ trường hợp chở người bệnh đi cấp cứu, trẻ em dưới 06 tuổi, áp giải người có hành vi vi phạm pháp luật;\n\nk ) Quay đầu xe tại nơi không được quay đầu xe, trừ hành vi vi phạm quy định tại điểm d khoản 4 Điều này.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 12. Xử phạt, trừ điểm giấy phép lái xe các hành vi vi phạm khác về quy tắc giao thông đường bộ ; sử dụng lòng đường, vỉa hè vào mục đích khác]\n5. Phạt tiền từ 400.000 đồng đến 600.000 đồng đối với người được chở trên xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô, các loại xe tương tự xe gắn máy thực hiện một trong các hành vi vi phạm sau đây:\n\na) Bám, kéo, đẩy xe khác, vật khác, dẫn dắt vật nuôi, mang vác vật cồng kềnh, đứng trên yên, giá đèo hàng hoặc ngồi trên tay lái của xe;\n\nb) Không đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" hoặc đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" không cài quai đúng quy cách khi tham gia giao thông trên đường bộ.\n"
+      ],
+      "ground_truth": "Phạt tiền từ 400.000 đồng đến 600.000 đồng, áp dụng cả với hành vi đội mũ bảo hiểm nhưng không cài quai đúng quy cách.",
+      "expected_source": "nghi-dinh-168-2024-nd-cp.md",
+      "retrieved_sources": [
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.325472814058679,
+        "context_recall": 1.0,
+        "context_precision": 0.99999999995
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Người điều khiển xe ô tô có nồng độ cồn chưa vượt quá 50 miligam/100 mililít máu bị phạt bao nhiêu?",
+      "answer": "Người điều khiển xe ô tô có nồng độ cồn chưa vượt quá 50 miligam/100 mililít máu sẽ bị phạt tiền từ 6.000.000 đồng đến 8.000.000 đồng. Điều này được quy định tại Điều 6 của Nghị định 168/2024/NĐ-CP, có hiệu lực từ ngày 01 tháng 01 năm 2025. [Nghị định 168/2024/NĐ-CP].",
+      "contexts": [
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 9. Xử phạt người điều khiển xe đạp, xe đạp máy, người điều khiển xe thô sơ khác vi phạm quy tắc giao thông đường bộ]\nm) Dùng xe đẩy làm quầy hàng lưu động trên đường gây cản trở giao thông;\n\no) Xe đạp, xe đạp máy, xe xích lô chở quá số người quy định, trừ trường hợp chở người bệnh đi cấp cứu;\n\np) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn nhưng chưa vượt quá 50 miligam/100 mililít máu hoặc chưa vượt quá 0,25 miligam/1 lít khí thở.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy tắc giao thông đường bộ]\n6. Phạt tiền từ 6.000.000 đồng đến 8.000.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe chạy quá tốc độ quy định trên 20 km/h đến 35 km/h;\n\nb) Không nhường đường hoặc gây cản trở xe được quyền ưu tiên đang phát tín hiệu ưu tiên đi làm nhiệm vụ;\n\nc) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn nhưng chưa vượt quá 50 miligam/100 mililít máu hoặc chưa vượt quá 0,25 miligam/1 lít khí thở;\n\nd) Điều khiển xe đi trên vỉa hè, trừ trường hợp điều khiển xe đi qua vỉa hè để vào nhà, cơ quan .\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy vi phạm quy tắc giao thông đường bộ]\n6. Phạt tiền từ 2.000.000 đồng đến 3.000.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na ) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn nhưng chưa vượt quá 50 miligam/100 mililít máu hoặc chưa vượt quá 0,25 miligam/1 lít khí thở;\n\nb ) Đi vào khu vực cấm, đường có biển báo hiệu có nội dung cấm đi vào đối với loại phương tiện đang điều khiển, trừ các hành vi vi phạm quy định tại điểm a, điểm b khoản 7 Điều này và các trường hợp xe ưu tiên đang đi làm nhiệm vụ khẩn cấp theo quy định;\n\nc) Không giảm tốc độ (hoặc dừng lại) và nhường đường khi điều khiển xe đi từ đường không ưu tiên ra đường ưu tiên , từ đường nhánh ra đường chính ;\n"
+      ],
+      "ground_truth": "Phạt tiền từ 6.000.000 đồng đến 8.000.000 đồng.",
+      "expected_source": "nghi-dinh-168-2024-nd-cp.md",
+      "retrieved_sources": [
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.5273149406210981,
+        "context_recall": 1.0,
+        "context_precision": 0.9999999999666667
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Người điều khiển xe mô tô có nồng độ cồn chưa vượt quá 50 miligam/100 mililít máu bị phạt bao nhiêu?",
+      "answer": "Người điều khiển xe mô tô có nồng độ cồn chưa vượt quá 50 miligam/100 mililít máu sẽ bị phạt tiền từ 2.000.000 đồng đến 3.000.000 đồng. Điều này được quy định tại Nghị định 168/2024/NĐ-CP, có hiệu lực từ ngày 01 tháng 01 năm 2025, cụ thể tại Điều 7. [Nghị định 168/2024/NĐ-CP].",
+      "contexts": [
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy vi phạm quy tắc giao thông đường bộ]\n6. Phạt tiền từ 2.000.000 đồng đến 3.000.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na ) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn nhưng chưa vượt quá 50 miligam/100 mililít máu hoặc chưa vượt quá 0,25 miligam/1 lít khí thở;\n\nb ) Đi vào khu vực cấm, đường có biển báo hiệu có nội dung cấm đi vào đối với loại phương tiện đang điều khiển, trừ các hành vi vi phạm quy định tại điểm a, điểm b khoản 7 Điều này và các trường hợp xe ưu tiên đang đi làm nhiệm vụ khẩn cấp theo quy định;\n\nc) Không giảm tốc độ (hoặc dừng lại) và nhường đường khi điều khiển xe đi từ đường không ưu tiên ra đường ưu tiên , từ đường nhánh ra đường chính ;\n"
+      ],
+      "ground_truth": "Phạt tiền từ 2.000.000 đồng đến 3.000.000 đồng.",
+      "expected_source": "nghi-dinh-168-2024-nd-cp.md",
+      "retrieved_sources": [
+        "nghi-dinh-168-2024-nd-cp.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 0.8,
+        "answer_relevancy": 0.5255186651029966,
+        "context_recall": 0.0,
+        "context_precision": 0.9999999999
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Người được chở trên xe ô tô không thắt dây đai an toàn bị phạt bao nhiêu tiền?",
+      "answer": "Người được chở trên xe ô tô không thắt dây đai an toàn khi xe đang chạy sẽ bị phạt tiền từ 800.000 đồng đến 1.000.000 đồng. Đây là quy định tại Nghị định 168/2024/NĐ-CP, có hiệu lực từ ngày 01 tháng 01 năm 2025, cụ thể tại Điều 6 [Nghị định 168/2024/NĐ-CP].",
+      "contexts": [
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 21. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô tải, máy kéo (bao gồm cả rơ moóc hoặc sơ mi rơ moóc được kéo theo) và các loại xe tương tự xe ô tô vận chuyển hàng hóa vi phạm quy định về bảo đảm trật tự, an toàn giao thông đường bộ với xe ô tô vận chuyển hàng hóa]\n2. Phạt tiền từ 800.000 đồng đến 1.000.000 đồng đối với một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe (kể cả rơ moóc và sơ mi rơ moóc) chở hàng vượt trọng tải (khối lượng hàng chuyên chở) cho phép tham gia giao thông được ghi trong giấy chứng nhận kiểm định an toàn kỹ thuật và bảo vệ môi trường của xe trên 10% đến 30% (trừ xe xi téc chở chất lỏng), trên 20% đến 30% đối với xe xi téc chở chất lỏng;\n\nb) Chở hàng trên nóc thùng xe; chở hàng vượt quá bề rộng thùng xe (kể cả bề rộng rơ moóc và sơ mi rơ moóc); chở hàng vượt phía trước, phía sau thùng xe (kể cả rơ moóc và sơ mi rơ moóc) trên 1,1 lần chiều dài toàn bộ của xe theo thiết kế được ghi trong giấy chứng nhận kiểm định an toàn kỹ thuật và bảo vệ môi trường của xe;\n\nc) Chở người trên mui xe ;\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy tắc giao thông đường bộ]\nh) Điều khiển xe ô tô kéo theo xe khác, vật khác (trừ trường hợp kéo theo một rơ moóc, sơ mi rơ moóc hoặc một xe ô tô, xe máy chuyên dùng khác khi xe này không tự chạy được); điều khiển xe ô tô đẩy xe khác, vật khác; điều khiển xe kéo rơ moóc, sơ mi rơ moóc kéo thêm rơ moóc hoặc xe khác, vật khác; không nối chắc chắn, an toàn giữa xe kéo và xe được kéo khi kéo nhau;\n\ni) Chở người trên xe được kéo, trừ người điều khiển;\n\nk ) Không thắt dây đai an toàn khi điều khiển xe chạy trên đường;\n\nl ) Chở người trên xe ô tô không thắt dây đai an toàn (tại vị trí có trang bị dây đai an toàn) khi xe đang chạy;\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy tắc giao thông đường bộ]\nl ) Chở người trên xe ô tô không thắt dây đai an toàn (tại vị trí có trang bị dây đai an toàn) khi xe đang chạy;\n\nm ) Chở trẻ em dưới 10 tuổi và chiều cao dưới 1,35 mét trên xe ô tô ngồi cùng hàng ghế với người lái xe (trừ loại xe ô tô chỉ có một hàng ghế) hoặc không sử dụng thiết bị an toàn phù hợp cho trẻ em theo quy định;\n\nn ) Chạy trong hầm đường bộ không sử dụng đèn chiếu sáng gần;\n\no ) Điều khiển xe chạy dưới tốc độ tối thiểu trên đoạn đường bộ có quy định tốc độ tối thiểu cho phép;\n\np ) Điều khiển xe chạy tốc độ thấp hơn các xe khác đi cùng chiều mà không đi về làn đường bên phải chiều đi của mình, trừ trường hợp các xe khác đi cùng chiều chạy quá tốc độ quy định.\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 10. Quy tắc chung]\n## Điều 10. Quy tắc chung\n\n1. Người tham gia giao thông đường bộ phải đi bên phải theo chiều đi của mình, đi đúng làn đường, phần đường quy định, chấp hành báo hiệu đường bộ và các quy tắc giao thông đường bộ khác.\n\n2. Người lái xe và người được chở trên xe ô tô phải thắt dây đai an toàn tại những chỗ có trang bị dây đai an toàn khi tham gia giao thông đường bộ.\n\n3. Khi chở trẻ em dưới 10 tuổi và chiều cao dưới 1,35 mét trên xe ô tô không được cho trẻ em ngồi cùng hàng ghế với người lái xe, trừ loại xe ô tô chỉ có một hàng ghế; người lái xe phải sử dụng, hướng dẫn sử dụng thiết bị an toàn phù hợp cho trẻ em.\n"
+      ],
+      "ground_truth": "Phạt tiền từ 350.000 đồng đến 400.000 đồng.",
+      "expected_source": "nghi-dinh-168-2024-nd-cp.md",
+      "retrieved_sources": [
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 0.8,
+        "answer_relevancy": 0.0,
+        "context_recall": 0.0,
+        "context_precision": 0.6388888888675925
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Giấy phép lái xe có bao nhiêu điểm?",
+      "answer": "Giấy phép lái xe được quy định có tổng cộng 12 điểm. Trích dẫn: [Luật 36/2024/QH15].",
+      "contexts": [
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 58. Điểm của giấy phép lái xe]\n## Điều 58. Điểm của giấy phép lái xe\n\n1. Điểm của giấy phép lái xe được dùng để quản lý việc chấp hành pháp luật về trật tự, an toàn giao thông đường bộ của người lái xe trên hệ thống cơ sở dữ liệu về trật tự, an toàn giao thông đường bộ, bao gồm 12 điểm. Số điểm trừ mỗi lần vi phạm tùy thuộc tính chất, mức độ của hành vi vi phạm pháp luật về trật tự, an toàn giao thông đường bộ. Dữ liệu về điểm trừ giấy phép lái xe của người vi phạm sẽ được cập nhật vào hệ thống cơ sở dữ liệu ngay sau khi quyết định xử phạt có hiệu lực thi hành và thông báo cho người bị trừ điểm giấy phép lái xe biết.\n\n2. Giấy phép lái xe chưa bị trừ hết điểm và không bị trừ điểm trong thời hạn 12 tháng từ ngày bị trừ điểm gần nhất thì được phục hồi đủ 12 điểm.\n"
+      ],
+      "ground_truth": "Giấy phép lái xe có 12 điểm; số điểm bị trừ mỗi lần vi phạm tùy tính chất, mức độ của hành vi vi phạm.",
+      "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+      "retrieved_sources": [
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.42842853673804276,
+        "context_recall": 1.0,
+        "context_precision": 0.9999999999
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Khi nào điểm giấy phép lái xe được phục hồi?",
+      "answer": "Điểm giấy phép lái xe được phục hồi trong các trường hợp sau:\n\n1. Đối với trường hợp giấy phép lái xe chưa bị trừ hết điểm và không bị trừ điểm trong thời hạn 12 tháng từ ngày bị trừ điểm gần nhất, dữ liệu điểm giấy phép lái xe sẽ được tự động phục hồi đủ 12 điểm sau khi đủ thời hạn 12 tháng kể từ ngày bị trừ điểm gần nhất. Thông tin phục hồi sẽ được cập nhật tự động trong Cơ sở dữ liệu về xử lý vi phạm hành chính về trật tự, an toàn giao thông đường bộ và thông báo cho người được phục hồi điểm biết [Nghị định 168/2024/NĐ-CP].\n\n2. Trong trường hợp giấy phép lái xe bị trừ hết điểm, sau thời hạn ít nhất 06 tháng kể từ ngày bị trừ hết điểm, người có giấy phép lái xe có thể tham gia kiểm tra nội dung kiến thức pháp luật về trật tự, an toàn giao thông đường bộ. Nếu có kết quả kiểm tra đạt yêu cầu, thì sẽ được phục hồi đủ 12 điểm giấy phép lái xe [Luật 36/2024/QH15].\n\nTất cả các quy định này có hiệu lực từ ngày 01 tháng 01 năm 2025.",
+      "contexts": [
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 51. Thẩm quyền, trình tự, thủ tục phục hồi điểm giấy phép lái xe]\n2. Trình tự, thủ tục phục hồi điểm giấy phép lái xe đối với trường hợp giấy phép lái xe chưa bị trừ hết điểm và không bị trừ điểm trong thời hạn 12 tháng từ ngày bị trừ điểm gần nhất\n\na) Khi đủ thời hạn 12 tháng, kể từ ngày bị trừ điểm giấy phép lái xe gần nhất, dữ liệu điểm giấy phép lái xe sẽ được tự động phục hồi đủ 12 điểm (gồm cả giấy phép lái xe đang trong thời hạn bị tước quyền sử dụng) và cập nhật tự động trong Cơ sở dữ liệu về xử lý vi phạm hành chính về trật tự, an toàn giao thông đường bộ;\n\nb) Ngay sau khi dữ liệu điểm giấy phép lái xe được phục hồi, Cơ sở dữ liệu về xử lý vi phạm hành chính về trật tự, an toàn giao thông đường bộ sẽ tự động chuyển thông tin thông báo cho người được phục hồi điểm giấy phép lái xe biết việc phục hồi điểm theo quy định tại điểm c khoản này;\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 58. Điểm của giấy phép lái xe]\n3. Trường hợp giấy phép lái xe bị trừ hết điểm thì người có giấy phép lái xe không được điều khiển phương tiện tham gia giao thông đường bộ theo giấy phép lái xe đó. Sau thời hạn ít nhất là 06 tháng kể từ ngày bị trừ hết điểm, người có giấy phép lái xe được tham gia kiểm tra nội dung kiến thức pháp luật về trật tự, an toàn giao thông đường bộ theo quy định tại khoản 7 Điều 61 của Luật này do lực lượng Cảnh sát giao thông tổ chức, có kết quả đạt yêu cầu thì được phục hồi đủ 12 điểm.\n\n4. Giấy phép lái xe sau khi đổi, cấp lại, nâng hạng được giữ nguyên số điểm của giấy phép lái xe trước khi đổi, cấp lại, nâng hạng.\n\n5. Người có thẩm quyền xử phạt vi phạm hành chính có thẩm quyền trừ điểm giấy phép lái xe.\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 58. Điểm của giấy phép lái xe]\n## Điều 58. Điểm của giấy phép lái xe\n\n1. Điểm của giấy phép lái xe được dùng để quản lý việc chấp hành pháp luật về trật tự, an toàn giao thông đường bộ của người lái xe trên hệ thống cơ sở dữ liệu về trật tự, an toàn giao thông đường bộ, bao gồm 12 điểm. Số điểm trừ mỗi lần vi phạm tùy thuộc tính chất, mức độ của hành vi vi phạm pháp luật về trật tự, an toàn giao thông đường bộ. Dữ liệu về điểm trừ giấy phép lái xe của người vi phạm sẽ được cập nhật vào hệ thống cơ sở dữ liệu ngay sau khi quyết định xử phạt có hiệu lực thi hành và thông báo cho người bị trừ điểm giấy phép lái xe biết.\n\n2. Giấy phép lái xe chưa bị trừ hết điểm và không bị trừ điểm trong thời hạn 12 tháng từ ngày bị trừ điểm gần nhất thì được phục hồi đủ 12 điểm.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 51. Thẩm quyền, trình tự, thủ tục phục hồi điểm giấy phép lái xe]\nb) Ngay sau khi dữ liệu điểm giấy phép lái xe được phục hồi đủ 12 điểm thì người có thẩm quyền quy định tại điểm b khoản 1 Điều này thông báo cho người được phục hồi điểm giấy phép lái xe biết việc phục hồi điểm;\n",
+        "[Document 1 | Source: thong-tu-73-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 73/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 33. Trách nhiệm thi hành]\nNơi cư trú:..………………………………..…….….………………….........…………\n\nSố điểm hiện có của giấy phép lái xe (loại ô tô hoặc mô tô, số……., hạng:.……., ngày cấp:…/…/…., tại:…………………..):………………...…………...................…….\n\nSố điểm bị trừ (ghi rõ số điểm của giấy phép lái xe ô tô hoặc mô tô):…………; ngày ……/….…/..…/ bị trừ điểm giấy phép lái xe.\n\nSố điểm còn lại (ghi rõ điểm của giấy phép lái xe ô tô hoặc mô tô):……..........……..\n\nTrường hợp ông (bà) bị trừ hết điểm giấy phép lái xe, sau thời hạn ít nhất 06 tháng kể từ ngày bị trừ hết điểm được tham gia kiểm tra nội dung kiến thức pháp luật về trật tự, an toàn giao thông đường bộ theo quy định, nếu có kết quả kiểm tra đạt yêu cầu thì được phục hồi đủ 12 điểm giấy phép lái xe.\n"
+      ],
+      "ground_truth": "Giấy phép lái xe chưa bị trừ hết điểm và không bị trừ điểm trong thời hạn 12 tháng kể từ ngày bị trừ điểm gần nhất thì được phục hồi đủ 12 điểm.",
+      "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+      "retrieved_sources": [
+        "nghi-dinh-168-2024-nd-cp.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "thong-tu-73-2024-tt-bca.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.3329903023413045,
+        "context_recall": 1.0,
+        "context_precision": 0.99999999998
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Giấy phép lái xe bị trừ hết điểm thì người lái xe có được tiếp tục điều khiển phương tiện không?",
+      "answer": "Theo quy định tại Điều 58 của Luật 36/2024/QH15, trong trường hợp giấy phép lái xe bị trừ hết điểm, người có giấy phép lái xe không được điều khiển phương tiện tham gia giao thông đường bộ theo giấy phép lái xe đó. Sau thời hạn ít nhất là 06 tháng kể từ ngày bị trừ hết điểm, người có giấy phép lái xe có thể tham gia kiểm tra nội dung kiến thức pháp luật về trật tự, an toàn giao thông đường bộ, và nếu có kết quả đạt yêu cầu thì sẽ được phục hồi đủ 12 điểm [Luật 36/2024/QH15]. \n\nLuật này có hiệu lực từ ngày 01 tháng 01 năm 2025.",
+      "contexts": [
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 58. Điểm của giấy phép lái xe]\n3. Trường hợp giấy phép lái xe bị trừ hết điểm thì người có giấy phép lái xe không được điều khiển phương tiện tham gia giao thông đường bộ theo giấy phép lái xe đó. Sau thời hạn ít nhất là 06 tháng kể từ ngày bị trừ hết điểm, người có giấy phép lái xe được tham gia kiểm tra nội dung kiến thức pháp luật về trật tự, an toàn giao thông đường bộ theo quy định tại khoản 7 Điều 61 của Luật này do lực lượng Cảnh sát giao thông tổ chức, có kết quả đạt yêu cầu thì được phục hồi đủ 12 điểm.\n\n4. Giấy phép lái xe sau khi đổi, cấp lại, nâng hạng được giữ nguyên số điểm của giấy phép lái xe trước khi đổi, cấp lại, nâng hạng.\n\n5. Người có thẩm quyền xử phạt vi phạm hành chính có thẩm quyền trừ điểm giấy phép lái xe.\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 58. Điểm của giấy phép lái xe]\n## Điều 58. Điểm của giấy phép lái xe\n\n1. Điểm của giấy phép lái xe được dùng để quản lý việc chấp hành pháp luật về trật tự, an toàn giao thông đường bộ của người lái xe trên hệ thống cơ sở dữ liệu về trật tự, an toàn giao thông đường bộ, bao gồm 12 điểm. Số điểm trừ mỗi lần vi phạm tùy thuộc tính chất, mức độ của hành vi vi phạm pháp luật về trật tự, an toàn giao thông đường bộ. Dữ liệu về điểm trừ giấy phép lái xe của người vi phạm sẽ được cập nhật vào hệ thống cơ sở dữ liệu ngay sau khi quyết định xử phạt có hiệu lực thi hành và thông báo cho người bị trừ điểm giấy phép lái xe biết.\n\n2. Giấy phép lái xe chưa bị trừ hết điểm và không bị trừ điểm trong thời hạn 12 tháng từ ngày bị trừ điểm gần nhất thì được phục hồi đủ 12 điểm.\n",
+        "[Document 1 | Source: thong-tu-73-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 73/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 33. Trách nhiệm thi hành]\nNơi cư trú:..………………………………..…….….………………….........…………\n\nSố điểm hiện có của giấy phép lái xe (loại ô tô hoặc mô tô, số……., hạng:.……., ngày cấp:…/…/…., tại:…………………..):………………...…………...................…….\n\nSố điểm bị trừ (ghi rõ số điểm của giấy phép lái xe ô tô hoặc mô tô):…………; ngày ……/….…/..…/ bị trừ điểm giấy phép lái xe.\n\nSố điểm còn lại (ghi rõ điểm của giấy phép lái xe ô tô hoặc mô tô):……..........……..\n\nTrường hợp ông (bà) bị trừ hết điểm giấy phép lái xe, sau thời hạn ít nhất 06 tháng kể từ ngày bị trừ hết điểm được tham gia kiểm tra nội dung kiến thức pháp luật về trật tự, an toàn giao thông đường bộ theo quy định, nếu có kết quả kiểm tra đạt yêu cầu thì được phục hồi đủ 12 điểm giấy phép lái xe.\n"
+      ],
+      "ground_truth": "Không. Trường hợp giấy phép lái xe bị trừ hết điểm thì người có giấy phép lái xe không được điều khiển phương tiện tham gia giao thông đường bộ theo giấy phép lái xe đó.",
+      "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+      "retrieved_sources": [
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "thong-tu-73-2024-tt-bca.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.373285368230227,
+        "context_recall": 1.0,
+        "context_precision": 0.9999999999666667
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Bao nhiêu tuổi thì được điều khiển xe gắn máy?",
+      "answer": "Theo quy định tại Điều 59 của Luật 36/2024/QH15, người đủ 16 tuổi trở lên được điều khiển xe gắn máy. Cụ thể, quy định này có hiệu lực từ ngày 01 tháng 01 năm 2025. Trích dẫn: \"Người đủ 16 tuổi trở lên được điều khiển xe gắn máy\" [Luật 36/2024/QH15].",
+      "contexts": [
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 59. Tuổi, sức khỏe của người điều khiển phương tiện tham gia giao thông đường bộ]\n## Điều 59. Tuổi, sức khỏe của người điều khiển phương tiện tham gia giao thông đường bộ\n\n1. Độ tuổi của người lái xe, người điều khiển xe máy chuyên dùng được quy định như sau:\n\na) Người đủ 16 tuổi trở lên được điều khiển xe gắn máy;\n\nb) Người đủ 18 tuổi trở lên được cấp giấy phép lái xe hạng A1, A, B1, B, C1, được cấp chứng chỉ bồi dưỡng kiến thức pháp luật về giao thông đường bộ để điều khiển xe máy chuyên dùng tham gia giao thông đường bộ;\n\nc) Người đủ 21 tuổi trở lên được cấp giấy phép lái xe hạng C, BE;\n\nd) Người đủ 24 tuổi trở lên được cấp giấy phép lái xe hạng D1, D2, C1E, CE;\n\nđ) Người đủ 27 tuổi trở lên được cấp giấy phép lái xe hạng D, D1E, D2E, DE;\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 18. Xử phạt, trừ điểm giấy phép lái xe các hành vi vi phạm quy định về điều kiện của người điều khiển xe cơ giới]\n## Điều 18. Xử phạt, trừ điểm giấy phép lái xe các hành vi vi phạm quy định về điều kiện của người điều khiển xe cơ giới\n\n1. Phạt cảnh cáo người từ đủ 14 tuổi đến dưới 16 tuổi điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy hoặc điều khiển xe ô tô , điều khiển xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô.\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 56. Điều kiện của người điều khiển phương tiện tham gia giao thông đường bộ]\nđ) Chứng nhận bảo hiểm bắt buộc trách nhiệm dân sự theo quy định của pháp luật.\n\n3. Trường hợp giấy tờ quy định tại khoản 1 và khoản 2 Điều này đã được tích hợp vào tài khoản định danh điện tử thì việc xuất trình, kiểm tra có thể thực hiện thông qua tài khoản định danh điện tử.\n\n4. Người lái xe gắn máy tham gia giao thông đường bộ phải hiểu biết quy tắc giao thông đường bộ, có kỹ năng điều khiển phương tiện; đủ điều kiện về độ tuổi, sức khỏe theo quy định tại điểm a khoản 1 và khoản 2 Điều 59 của Luật này.\n"
+      ],
+      "ground_truth": "Người đủ 16 tuổi trở lên được điều khiển xe gắn máy.",
+      "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+      "retrieved_sources": [
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.4498472840358148,
+        "context_recall": 1.0,
+        "context_precision": 0.9999999999666667
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Bao nhiêu tuổi thì được cấp giấy phép lái xe hạng A1, A, B1, B, C1?",
+      "answer": "Theo quy định tại Điều 59 của Luật 36/2024/QH15, người đủ 18 tuổi trở lên được cấp giấy phép lái xe hạng A1, A, B1, B, C1. Cụ thể như sau: \"b) Người đủ 18 tuổi trở lên được cấp giấy phép lái xe hạng A1, A, B1, B, C1, được cấp chứng chỉ bồi dưỡng kiến thức pháp luật về giao thông đường bộ để điều khiển xe máy chuyên dùng tham gia giao thông đường bộ\" [Luật 36/2024/QH15]. \n\nLuật này có hiệu lực từ ngày 01 tháng 01 năm 2025.",
+      "contexts": [
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 59. Tuổi, sức khỏe của người điều khiển phương tiện tham gia giao thông đường bộ]\n## Điều 59. Tuổi, sức khỏe của người điều khiển phương tiện tham gia giao thông đường bộ\n\n1. Độ tuổi của người lái xe, người điều khiển xe máy chuyên dùng được quy định như sau:\n\na) Người đủ 16 tuổi trở lên được điều khiển xe gắn máy;\n\nb) Người đủ 18 tuổi trở lên được cấp giấy phép lái xe hạng A1, A, B1, B, C1, được cấp chứng chỉ bồi dưỡng kiến thức pháp luật về giao thông đường bộ để điều khiển xe máy chuyên dùng tham gia giao thông đường bộ;\n\nc) Người đủ 21 tuổi trở lên được cấp giấy phép lái xe hạng C, BE;\n\nd) Người đủ 24 tuổi trở lên được cấp giấy phép lái xe hạng D1, D2, C1E, CE;\n\nđ) Người đủ 27 tuổi trở lên được cấp giấy phép lái xe hạng D, D1E, D2E, DE;\n"
+      ],
+      "ground_truth": "Người đủ 18 tuổi trở lên được cấp giấy phép lái xe hạng A1, A, B1, B, C1.",
+      "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+      "retrieved_sources": [
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.4382582760351383,
+        "context_recall": 1.0,
+        "context_precision": 0.9999999999
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Khi xảy ra tai nạn giao thông đường bộ, người điều khiển phương tiện gây tai nạn có trách nhiệm gì?",
+      "answer": "Khi xảy ra tai nạn giao thông đường bộ, người điều khiển phương tiện gây tai nạn có trách nhiệm như sau:\n\n1. Dừng ngay phương tiện, cảnh báo nguy hiểm, giữ nguyên hiện trường, trợ giúp người bị nạn và báo tin cho cơ quan Công an, cơ sở khám bệnh, chữa bệnh hoặc Ủy ban nhân dân nơi gần nhất.\n2. Tham gia bảo vệ hiện trường.\n3. Tham gia bảo vệ tài sản của người bị nạn.\n4. Cung cấp thông tin liên quan về vụ tai nạn theo yêu cầu của cơ quan có thẩm quyền.\n5. Ở lại hiện trường vụ tai nạn cho đến khi người của cơ quan Công an đến, trừ trường hợp phải đi cấp cứu hoặc xét thấy bị đe dọa đến tính mạng, sức khỏe nhưng phải đến trình báo ngay cơ quan Công an, Ủy ban nhân dân nơi gần nhất.\n6. Cung cấp thông tin xác định danh tính về bản thân, người liên quan đến vụ tai nạn và thông tin liên quan của vụ tai nạn cho cơ quan có thẩm quyền.\n\nCác quy định này được nêu rõ trong Điều 80 của Luật 36/2024/QH15, có hiệu lực từ ngày 01 tháng 01 năm 2025 [Luật 36/2024/QH15].",
+      "contexts": [
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 80. Trách nhiệm của người điều khiển phương tiện tham gia giao thông đường bộ gây ra tai nạn giao thông đường bộ, người liên quan và người có mặt tại hiện trường vụ tai nạn giao thông đường bộ]\n## Điều 80. Trách nhiệm của người điều khiển phương tiện tham gia giao thông đường bộ gây ra tai nạn giao thông đường bộ, người liên quan và người có mặt tại hiện trường vụ tai nạn giao thông đường bộ\n\n1. Người điều khiển phương tiện tham gia giao thông đường bộ gây ra tai nạn giao thông đường bộ, người liên quan đến vụ tai nạn giao thông đường bộ có trách nhiệm sau đây:\n\na) Dừng ngay phương tiện, cảnh báo nguy hiểm, giữ nguyên hiện trường, trợ giúp người bị nạn và báo tin cho cơ quan Công an, cơ sở khám bệnh, chữa bệnh hoặc Ủy ban nhân dân nơi gần nhất;\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 80. Trách nhiệm của người điều khiển phương tiện tham gia giao thông đường bộ gây ra tai nạn giao thông đường bộ, người liên quan và người có mặt tại hiện trường vụ tai nạn giao thông đường bộ]\nb) Ở lại hiện trường vụ tai nạn giao thông đường bộ cho đến khi người của cơ quan Công an đến, trừ trường hợp phải đi cấp cứu, đưa người bị nạn đi cấp cứu hoặc xét thấy bị đe dọa đến tính mạng, sức khỏe nhưng phải đến trình báo ngay cơ quan Công an, Ủy ban nhân dân nơi gần nhất;\n\nc) Cung cấp thông tin xác định danh tính về bản thân, người liên quan đến vụ tai nạn giao thông đường bộ và thông tin liên quan của vụ tai nạn giao thông đường bộ cho cơ quan có thẩm quyền.\n\n2. Người có mặt tại nơi xảy ra vụ tai nạn giao thông đường bộ có trách nhiệm sau đây:\n\na) Giúp đỡ, cứu chữa kịp thời người bị nạn;\n\nb) Báo tin ngay cho cơ quan Công an, cơ sở khám bệnh, chữa bệnh hoặc Ủy ban nhân dân nơi gần nhất;\n\nc) Tham gia bảo vệ hiện trường;\n\nd) Tham gia bảo vệ tài sản của người bị nạn;\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 80. Trách nhiệm của người điều khiển phương tiện tham gia giao thông đường bộ gây ra tai nạn giao thông đường bộ, người liên quan và người có mặt tại hiện trường vụ tai nạn giao thông đường bộ]\nc) Tham gia bảo vệ hiện trường;\n\nd) Tham gia bảo vệ tài sản của người bị nạn;\n\nđ) Cung cấp thông tin liên quan về vụ tai nạn theo yêu cầu của cơ quan có thẩm quyền.\n\n3. Người được quy định tại khoản 1 và khoản 2 Điều này chỉ được sử dụng phương tiện liên quan đến vụ tai nạn giao thông đường bộ để đưa nạn nhân đi cấp cứu trong trường hợp không có phương tiện nào khác nhưng phải xác định vị trí phương tiện, vị trí nạn nhân tại hiện trường, không được làm thay đổi, mất dấu vết liên quan đến vụ tai nạn giao thông đường bộ. Trường hợp có người chết phải giữ nguyên hiện trường và che đậy thi thể.\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 9. Các hành vi bị nghiêm cấm]\n25. Không khai báo, khai báo gian dối hoặc cung cấp thông tin, tài liệu không đúng sự thật để trốn tránh trách nhiệm khi bị phát hiện vi phạm pháp luật về trật tự, an toàn giao thông đường bộ.\n\n26. Bỏ trốn sau khi gây tai nạn giao thông đường bộ để trốn tránh trách nhiệm; khi có điều kiện mà cố ý không cứu giúp người bị tai nạn giao thông đường bộ; xâm phạm tính mạng, sức khỏe, tài sản của người bị nạn, người gây tai nạn giao thông đường bộ hoặc người giúp đỡ, cứu chữa, đưa người bị nạn đi cấp cứu; lợi dụng việc xảy ra tai nạn giao thông đường bộ để hành hung, đe dọa, xúi giục, gây sức ép, làm mất trật tự, cản trở việc xử lý tai nạn giao thông đường bộ.\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 80. Trách nhiệm của người điều khiển phương tiện tham gia giao thông đường bộ gây ra tai nạn giao thông đường bộ, người liên quan và người có mặt tại hiện trường vụ tai nạn giao thông đường bộ]\n4. Người điều khiển phương tiện tham gia giao thông đường bộ khác khi đi qua nơi xảy ra vụ tai nạn giao thông đường bộ có trách nhiệm chở người bị thương đi cấp cứu. Xe ưu tiên, xe chở người được hưởng quyền ưu đãi, miễn trừ ngoại giao không bắt buộc thực hiện quy định tại khoản này.\n"
+      ],
+      "ground_truth": "Dừng ngay phương tiện, cảnh báo nguy hiểm, giữ nguyên hiện trường, trợ giúp người bị nạn và báo tin cho cơ quan Công an, cơ sở khám bệnh, chữa bệnh hoặc Ủy ban nhân dân nơi gần nhất; ở lại hiện trường cho đến khi người của cơ quan Công an đến, trừ trường hợp phải đi cấp cứu hoặc bị đe dọa tính mạng, sức khỏe.",
+      "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+      "retrieved_sources": [
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.5185412359451369,
+        "context_recall": 1.0,
+        "context_precision": 0.99999999998
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Người lái xe và người được chở trên xe ô tô có bắt buộc thắt dây đai an toàn không?",
+      "answer": "Có, người lái xe và người được chở trên xe ô tô phải thắt dây đai an toàn tại những chỗ có trang bị dây đai an toàn khi tham gia giao thông đường bộ. Điều này được quy định tại Điều 10 của Luật 36/2024/QH15, có hiệu lực từ ngày 01 tháng 01 năm 2025: \"Người lái xe và người được chở trên xe ô tô phải thắt dây đai an toàn tại những chỗ có trang bị dây đai an toàn khi tham gia giao thông đường bộ\" [Luật 36/2024/QH15].",
+      "contexts": [
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy tắc giao thông đường bộ]\nh) Điều khiển xe ô tô kéo theo xe khác, vật khác (trừ trường hợp kéo theo một rơ moóc, sơ mi rơ moóc hoặc một xe ô tô, xe máy chuyên dùng khác khi xe này không tự chạy được); điều khiển xe ô tô đẩy xe khác, vật khác; điều khiển xe kéo rơ moóc, sơ mi rơ moóc kéo thêm rơ moóc hoặc xe khác, vật khác; không nối chắc chắn, an toàn giữa xe kéo và xe được kéo khi kéo nhau;\n\ni) Chở người trên xe được kéo, trừ người điều khiển;\n\nk ) Không thắt dây đai an toàn khi điều khiển xe chạy trên đường;\n\nl ) Chở người trên xe ô tô không thắt dây đai an toàn (tại vị trí có trang bị dây đai an toàn) khi xe đang chạy;\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 10. Quy tắc chung]\n## Điều 10. Quy tắc chung\n\n1. Người tham gia giao thông đường bộ phải đi bên phải theo chiều đi của mình, đi đúng làn đường, phần đường quy định, chấp hành báo hiệu đường bộ và các quy tắc giao thông đường bộ khác.\n\n2. Người lái xe và người được chở trên xe ô tô phải thắt dây đai an toàn tại những chỗ có trang bị dây đai an toàn khi tham gia giao thông đường bộ.\n\n3. Khi chở trẻ em dưới 10 tuổi và chiều cao dưới 1,35 mét trên xe ô tô không được cho trẻ em ngồi cùng hàng ghế với người lái xe, trừ loại xe ô tô chỉ có một hàng ghế; người lái xe phải sử dụng, hướng dẫn sử dụng thiết bị an toàn phù hợp cho trẻ em.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy tắc giao thông đường bộ]\nl ) Chở người trên xe ô tô không thắt dây đai an toàn (tại vị trí có trang bị dây đai an toàn) khi xe đang chạy;\n\nm ) Chở trẻ em dưới 10 tuổi và chiều cao dưới 1,35 mét trên xe ô tô ngồi cùng hàng ghế với người lái xe (trừ loại xe ô tô chỉ có một hàng ghế) hoặc không sử dụng thiết bị an toàn phù hợp cho trẻ em theo quy định;\n\nn ) Chạy trong hầm đường bộ không sử dụng đèn chiếu sáng gần;\n\no ) Điều khiển xe chạy dưới tốc độ tối thiểu trên đoạn đường bộ có quy định tốc độ tối thiểu cho phép;\n\np ) Điều khiển xe chạy tốc độ thấp hơn các xe khác đi cùng chiều mà không đi về làn đường bên phải chiều đi của mình, trừ trường hợp các xe khác đi cùng chiều chạy quá tốc độ quy định.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 12. Xử phạt, trừ điểm giấy phép lái xe các hành vi vi phạm khác về quy tắc giao thông đường bộ ; sử dụng lòng đường, vỉa hè vào mục đích khác]\n3. Phạt tiền từ 250.000 đồng đến 350.000 đồng đối với cá nhân, từ 500.000 đồng đến 700.000 đồng đối với tổ chức để vật che khuất biển báo hiệu đường bộ, đèn tín hiệu giao thông.\n\n4. Phạt tiền từ 350.000 đồng đến 400.000 đồng đối với người được chở trên xe ô tô không thắt dây đai an toàn (tại vị trí có trang bị dây đai an toàn) khi xe đang chạy.\n"
+      ],
+      "ground_truth": "Có. Người lái xe và người được chở trên xe ô tô phải thắt dây đai an toàn tại những chỗ có trang bị dây đai an toàn khi tham gia giao thông đường bộ.",
+      "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+      "retrieved_sources": [
+        "nghi-dinh-168-2024-nd-cp.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.2662706595403664,
+        "context_recall": 1.0,
+        "context_precision": 0.999999999975
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Cán bộ Cảnh sát giao thông làm nhiệm vụ điều tra, xác minh, giải quyết tai nạn giao thông đường bộ phải đạt tiêu chuẩn gì?",
+      "answer": "Cán bộ Cảnh sát giao thông làm nhiệm vụ điều tra, xác minh, giải quyết tai nạn giao thông đường bộ phải đạt các tiêu chuẩn sau:\n\n1. Có trình độ đại học An ninh, đại học Cảnh sát hoặc cử nhân luật trở lên. Trường hợp tốt nghiệp đại học các trường ngoài ngành Công an, phải được đào tạo, bồi dưỡng nghiệp vụ An ninh, Cảnh sát theo quy định.\n2. Có thời gian công tác trong lực lượng Cảnh sát giao thông từ 06 tháng trở lên.\n3. Đã được công nhận hoàn thành tập huấn, bồi dưỡng nghiệp vụ điều tra, giải quyết tai nạn giao thông đường bộ [Thông tư 72/2024/TT-BCA]. \n\nThông tư này có hiệu lực từ ngày 01 tháng 01 năm 2025.",
+      "contexts": [
+        "[Document 1 | Source: thong-tu-72-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 72/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 3. Tiêu chuẩn của cán bộ Cảnh sát giao thông làm nhiệm vụ điều tra, xác minh, giải quyết tai nạn giao thông đường bộ và phân công cán bộ điều tra, xác minh, giải quyết vụ tai nạn giao thông đường bộ]\nc) Đã được công nhận hoàn thành tập huấn, bồi dưỡng nghiệp vụ điều tra, giải quyết tai nạn giao thông đường bộ;\n\nd) Cán bộ Cảnh sát giao thông đáp ứng tiêu chuẩn quy định tại các điểm a, b và c Khoản này là cán bộ thụ lý chính;\n\nđ) Cán bộ Cảnh sát giao thông chưa đáp ứng tiêu chuẩn quy định tại điểm a Khoản này nhưng đáp ứng tiêu chuẩn quy định tại các điểm b, c Khoản này là cán bộ hỗ trợ.\n\n2. Phân công cán bộ điều tra, xác minh, giải quyết vụ tai nạn giao thông đường bộ\n\na) Khi phân công cán bộ thụ lý điều tra, xác minh, giải quyết vụ tai nạn giao thông đường bộ phải có ít nhất 01 cán bộ thụ lý chính. Cán bộ thụ lý chính chịu trách nhiệm chung, cán bộ hỗ trợ (nếu có) chịu trách nhiệm đối với các nhiệm vụ được phân công;\n",
+        "[Document 1 | Source: thong-tu-72-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 72/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 3. Tiêu chuẩn của cán bộ Cảnh sát giao thông làm nhiệm vụ điều tra, xác minh, giải quyết tai nạn giao thông đường bộ và phân công cán bộ điều tra, xác minh, giải quyết vụ tai nạn giao thông đường bộ]\n### Điều 3. Tiêu chuẩn của cán bộ Cảnh sát giao thông làm nhiệm vụ điều tra, xác minh, giải quyết tai nạn giao thông đường bộ và phân công cán bộ điều tra, xác minh, giải quyết vụ tai nạn giao thông đường bộ\n\n1. Tiêu chuẩn của cán bộ Cảnh sát giao thông làm nhiệm vụ điều tra, xác minh, giải quyết tai nạn giao thông đường bộ\n\na) Có trình độ đại học An ninh, đại học Cảnh sát hoặc cử nhân luật trở lên. Trường hợp tốt nghiệp đại học các trường ngoài ngành Công an đã được đào tạo, bồi dưỡng nghiệp vụ An ninh, Cảnh sát theo quy định;\n\nb) Có thời gian công tác trong lực lượng Cảnh sát giao thông từ 06 tháng trở lên;\n\nc) Đã được công nhận hoàn thành tập huấn, bồi dưỡng nghiệp vụ điều tra, giải quyết tai nạn giao thông đường bộ;\n",
+        "[Document 1 | Source: thong-tu-72-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 72/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 3. Tiêu chuẩn của cán bộ Cảnh sát giao thông làm nhiệm vụ điều tra, xác minh, giải quyết tai nạn giao thông đường bộ và phân công cán bộ điều tra, xác minh, giải quyết vụ tai nạn giao thông đường bộ]\nb) Cán bộ được phân công thụ lý điều tra, xác minh, giải quyết vụ tai nạn giao thông đường bộ thực hiện theo quy định tại Điều 83 Luật Trật tự an toàn giao thông đường bộ năm 2024, Thông tư này và các quy định của pháp luật khác có liên quan đến hoạt động điều tra, xác minh, giải quyết tai nạn giao thông đường bộ.\n"
+      ],
+      "ground_truth": "Có trình độ đại học An ninh, đại học Cảnh sát hoặc cử nhân luật trở lên; có thời gian công tác trong lực lượng Cảnh sát giao thông từ 06 tháng trở lên.",
+      "expected_source": "thong-tu-72-2024-tt-bca.md",
+      "retrieved_sources": [
+        "thong-tu-72-2024-tt-bca.md",
+        "thong-tu-72-2024-tt-bca.md",
+        "thong-tu-72-2024-tt-bca.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.5610108709409344,
+        "context_recall": 1.0,
+        "context_precision": 0.9999999999666667
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Hồ sơ cấp mới chứng nhận đăng ký xe, biển số xe gồm những giấy tờ gì?",
+      "answer": "Hồ sơ cấp mới chứng nhận đăng ký xe, biển số xe (đăng ký xe lần đầu) gồm các giấy tờ sau:\n\n1. Giấy khai đăng ký xe.\n2. Giấy tờ của chủ xe.\n3. Chứng nhận nguồn gốc xe.\n4. Chứng nhận quyền sở hữu hợp pháp.\n5. Chứng từ hoàn thành nghĩa vụ tài chính.\n\nThông tin này được quy định tại Điều 8 của Thông tư 79/2024/TT-BCA, có hiệu lực từ ngày 01 tháng 01 năm 2025 [Thông tư 79/2024/TT-BCA].",
+      "contexts": [
+        "[Document 1 | Source: thong-tu-79-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 79/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 8. Hồ sơ cấp mới chứng nhận đăng ký xe, biển số xe]\n### Điều 8. Hồ sơ cấp mới chứng nhận đăng ký xe, biển số xe\n\nCấp mới chứng nhận đăng ký xe, biển số xe (sau đây gọi chung là đăng ký xe lần đầu) gồm các giấy tờ sau:\n\n1. Giấy khai đăng ký xe.\n\n2. Giấy tờ của chủ xe.\n\n3. Chứng nhận nguồn gốc xe.\n\n4. Chứng nhận quyền sở hữu hợp pháp.\n\n5. Chứng từ hoàn thành nghĩa vụ tài chính.\n"
+      ],
+      "ground_truth": "Giấy khai đăng ký xe; giấy tờ của chủ xe; chứng nhận nguồn gốc xe; chứng nhận quyền sở hữu hợp pháp; chứng từ hoàn thành nghĩa vụ tài chính.",
+      "expected_source": "thong-tu-79-2024-tt-bca.md",
+      "retrieved_sources": [
+        "thong-tu-79-2024-tt-bca.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.5747875104185172,
+        "context_recall": 1.0,
+        "context_precision": 0.9999999999
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Thời hạn cấp mới chứng nhận đăng ký xe là bao lâu?",
+      "answer": "Thời hạn cấp mới chứng nhận đăng ký xe là không quá 02 ngày làm việc, kể từ ngày nhận đủ hồ sơ hợp lệ. Trích dẫn: [Thông tư 79/2024/TT-BCA]. Hiệu lực từ: 2025-01-01.",
+      "contexts": [
+        "[Document 1 | Source: thong-tu-79-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 79/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 7. Thời hạn giải quyết đăng ký xe]\n### Điều 7. Thời hạn giải quyết đăng ký xe\n\n1. Cấp chứng nhận đăng ký xe\n\na) Cấp mới chứng nhận đăng ký xe, cấp chứng nhận đăng ký xe trong trường hợp thay đổi chủ xe, đổi chứng nhận đăng ký xe: Không quá 02 ngày làm việc, kể từ ngày nhận đủ hồ sơ hợp lệ;\n\nb) Cấp lại chứng nhận đăng ký xe: Phải tiến hành xác minh trong thời hạn 30 ngày, kể từ ngày nhận đủ hồ sơ hợp lệ; sau khi xác minh, nếu đủ điều kiện thì cấp lại trong thời hạn 02 ngày làm việc.\n\n2. Cấp biển số xe\n\na) Cấp mới biển số xe: Cấp ngay sau khi nhận đủ hồ sơ hợp lệ;\n\nb) Cấp mới biển số xe trúng đấu giá, đổi biển số xe, cấp biển số xe định danh: Không quá 07 ngày làm việc, kể từ ngày nhận đủ hồ sơ hợp lệ;\n"
+      ],
+      "ground_truth": "Không quá 02 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ.",
+      "expected_source": "thong-tu-79-2024-tt-bca.md",
+      "retrieved_sources": [
+        "thong-tu-79-2024-tt-bca.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.4720162763488475,
+        "context_recall": 1.0,
+        "context_precision": 0.9999999999
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Cơ quan nào có thẩm quyền đăng ký xe của các đơn vị thuộc cơ quan Bộ Công an?",
+      "answer": "Cơ quan có thẩm quyền đăng ký xe của các đơn vị thuộc cơ quan Bộ Công an là Cục Cảnh sát giao thông. Cụ thể, Cục này sẽ đăng ký xe ô tô, xe máy chuyên dùng của các cơ quan, tổ chức quy định tại Phụ lục số 01 ban hành kèm theo Thông tư 79/2024/TT-BCA, cũng như xe ô tô của cơ quan đại diện ngoại giao, cơ quan đại diện của tổ chức quốc tế có trụ sở tại thành phố Hà Nội và xe ô tô của người nước ngoài làm việc trong cơ quan đó [Thông tư 79/2024/TT-BCA]. \n\nThông tư này có hiệu lực từ ngày 01 tháng 01 năm 2025.",
+      "contexts": [
+        "[Document 1 | Source: thong-tu-79-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 79/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 4. Cơ quan đăng ký xe]\n### Điều 4. Cơ quan đăng ký xe\n\n1. Cục Cảnh sát giao thông đăng ký xe của các đơn vị thuộc cơ quan Bộ Công an; xe ô tô, xe máy chuyên dùng của các cơ quan, tổ chức quy định tại Phụ lục số 01 ban hành kèm theo Thông tư này; xe ô tô của cơ quan đại diện ngoại giao, cơ quan đại diện của tổ chức quốc tế có trụ sở tại thành phố Hà Nội và xe ô tô của người nước ngoài làm việc trong cơ quan đó.\n\n2. Phòng Cảnh sát giao thông đăng ký các loại xe sau đây (trừ các loại xe quy định tại khoản 1 Điều này):\n"
+      ],
+      "ground_truth": "Cục Cảnh sát giao thông.",
+      "expected_source": "thong-tu-79-2024-tt-bca.md",
+      "retrieved_sources": [
+        "thong-tu-79-2024-tt-bca.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.5701446870714206,
+        "context_recall": 1.0,
+        "context_precision": 0.9999999999
+      },
+      "source_hit": true
+    }
+  ],
+  "B_hybrid_rrf_only": [
+    {
+      "question": "Người điều khiển xe mô tô, xe gắn máy không chấp hành hiệu lệnh của đèn tín hiệu giao thông (vượt đèn đỏ) bị phạt bao nhiêu tiền?",
+      "answer": "Người điều khiển xe mô tô, xe gắn máy không chấp hành hiệu lệnh của đèn tín hiệu giao thông (vượt đèn đỏ) sẽ bị phạt tiền từ 4.000.000 đồng đến 6.000.000 đồng. Đây là mức phạt quy định tại Điều 7 của Nghị định 168/2024/NĐ-CP, có hiệu lực từ ngày 01 tháng 01 năm 2025 [Nghị định 168/2024/NĐ-CP].",
+      "contexts": [
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 14. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy vi phạm quy định về điều kiện của phương tiện khi tham gia giao thông]\n1. Phạt tiền từ 400.000 đồng đến 600.000 đồng đối với một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe không có còi; đèn soi biển số; đèn báo hãm; gương chiếu hậu bên trái người điều khiển hoặc có nhưng không có tác dụng;\n\nb) Điều khiển xe không có đèn tín hiệu hoặc có nhưng không có tác dụng;\n\nc) Điều khiển xe không có đèn chiếu sáng gần, xa hoặc có nhưng không có tác dụng, không đúng tiêu chuẩn thiết kế;\n\nd) Điều khiển xe không có hệ thống hãm hoặc có nhưng không có tác dụng, không bảo đảm tiêu chuẩn kỹ thuật;\n\nđ) Điều khiển xe lắp đèn chiếu sáng về phía sau xe.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy vi phạm quy tắc giao thông đường bộ]\n1. Phạt tiền từ 200.000 đồng đến 400.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường, trừ các hành vi vi phạm quy định tại điểm b , điểm d , điểm e khoản 2; điểm a, điểm c, điểm d, điểm h khoản 3; điểm a, điểm b, điểm c, điểm d khoản 4; điểm b , điểm d khoản 6; điểm a, điểm b, điểm c khoản 7; điểm a khoản 8; điểm b khoản 9 ; điểm a khoản 10 Điều này;\n\nb) Không có tín hiệu trước khi vượt hoặc có tín hiệu vượt xe nhưng không sử dụng trong suốt quá trình vượt xe;\n\nc) Lùi xe mô tô ba bánh không quan sát hai bên, phía sau xe hoặc không có tín hiệu lùi xe;\n\nd) Chở người ngồi trên xe sử dụng ô (dù);\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy vi phạm quy tắc giao thông đường bộ]\n7. Phạt tiền từ 4.000.000 đồng đến 6.000.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Đi ngược chiều của đường một chiều, đi ngược chiều trên đường có biển \"Cấm đi ngược chiều\", trừ hành vi vi phạm quy định tại điểm b khoản này và các trường hợp xe ưu tiên đang đi làm nhiệm vụ khẩn cấp theo quy định; điều khiển xe đi trên vỉa hè, trừ trường hợp điều khiển xe đi qua vỉa hè để vào nhà, cơ quan;\n\nb) Điều khiển xe đi vào đường cao tốc, trừ xe phục vụ việc quản lý, bảo trì đường cao tốc;\n\nc) Không chấp hành hiệu lệnh của đèn tín hiệu giao thông;\n\nd) Không chấp hành hiệu lệnh, hướng dẫn của người điều khiển giao thông hoặc người kiểm soát giao thông ;\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 13. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô (bao gồm cả rơ moóc hoặc sơ mi rơ moóc được kéo theo), xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy định về điều kiện của phương tiện khi tham gia giao thông]\n1. Phạt tiền từ 200.000 đồng đến 400.000 đồng đối với hành vi điều khiển xe không có kính chắn gió hoặc có nhưng vỡ không có tác dụng (đối với xe có thiết kế lắp kính chắn gió).\n\na) Điều khiển xe không có đủ đèn chiếu sáng, đèn soi biển số, đèn báo hãm, đèn tín hiệu, cần gạt nước, gương chiếu hậu, dây đai an toàn, dụng cụ thoát hiểm, thiết bị chữa cháy, đồng hồ báo áp lực hơi, đồng hồ báo tốc độ của xe hoặc có những thiết bị đó nhưng không có tác dụng, không đúng tiêu chuẩn thiết kế (đối với loại xe được quy định phải có những thiết bị đó), trừ các hành vi vi phạm quy định tại điểm h khoản 3 Điều 20, điểm đ khoản 4 Điều 26 của Nghị định này;\n\nb) Điều khiển xe không có còi hoặc có nhưng còi không có tác dụng;\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy tắc giao thông đường bộ]\n9. Phạt tiền từ 18.000.000 đồng đến 20.000.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn vượt quá 50 miligam đến 80 miligam/100 mililít máu hoặc vượt quá 0,25 miligam đến 0,4 miligam/1 lít khí thở;\n\nb) Không chấp hành hiệu lệnh của đèn tín hiệu giao thông;\n\nc) Không chấp hành hiệu lệnh, hướng dẫn của người điều khiển giao thông hoặc người kiểm soát giao thông;\n\nd) Đi ngược chiều của đường một chiều, đi ngược chiều trên đường có biển \"Cấm đi ngược chiều\", trừ các hành vi vi phạm quy định tại điểm đ khoản 11 Điều này và các trường hợp xe ưu tiên đang đi làm nhiệm vụ khẩn cấp theo quy định.\n"
+      ],
+      "ground_truth": "Phạt tiền từ 4.000.000 đồng đến 6.000.000 đồng.",
+      "expected_source": "nghi-dinh-168-2024-nd-cp.md",
+      "retrieved_sources": [
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.47779480104329713,
+        "context_recall": 1.0,
+        "context_precision": 0.7555555555303703
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Người điều khiển xe ô tô vượt đèn đỏ bị phạt bao nhiêu tiền?",
+      "answer": "Người điều khiển xe ô tô vượt đèn đỏ sẽ bị phạt tiền từ 18.000.000 đồng đến 20.000.000 đồng. Đây là mức phạt đối với hành vi không chấp hành hiệu lệnh của đèn tín hiệu giao thông theo quy định tại Nghị định 168/2024/NĐ-CP, có hiệu lực từ ngày 01 tháng 01 năm 2025 [Nghị định 168/2024/NĐ-CP].",
+      "contexts": [
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy vi phạm quy tắc giao thông đường bộ]\n1. Phạt tiền từ 200.000 đồng đến 400.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường, trừ các hành vi vi phạm quy định tại điểm b , điểm d , điểm e khoản 2; điểm a, điểm c, điểm d, điểm h khoản 3; điểm a, điểm b, điểm c, điểm d khoản 4; điểm b , điểm d khoản 6; điểm a, điểm b, điểm c khoản 7; điểm a khoản 8; điểm b khoản 9 ; điểm a khoản 10 Điều này;\n\nb) Không có tín hiệu trước khi vượt hoặc có tín hiệu vượt xe nhưng không sử dụng trong suốt quá trình vượt xe;\n\nc) Lùi xe mô tô ba bánh không quan sát hai bên, phía sau xe hoặc không có tín hiệu lùi xe;\n\nd) Chở người ngồi trên xe sử dụng ô (dù);\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 13. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô (bao gồm cả rơ moóc hoặc sơ mi rơ moóc được kéo theo), xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy định về điều kiện của phương tiện khi tham gia giao thông]\n1. Phạt tiền từ 200.000 đồng đến 400.000 đồng đối với hành vi điều khiển xe không có kính chắn gió hoặc có nhưng vỡ không có tác dụng (đối với xe có thiết kế lắp kính chắn gió).\n\na) Điều khiển xe không có đủ đèn chiếu sáng, đèn soi biển số, đèn báo hãm, đèn tín hiệu, cần gạt nước, gương chiếu hậu, dây đai an toàn, dụng cụ thoát hiểm, thiết bị chữa cháy, đồng hồ báo áp lực hơi, đồng hồ báo tốc độ của xe hoặc có những thiết bị đó nhưng không có tác dụng, không đúng tiêu chuẩn thiết kế (đối với loại xe được quy định phải có những thiết bị đó), trừ các hành vi vi phạm quy định tại điểm h khoản 3 Điều 20, điểm đ khoản 4 Điều 26 của Nghị định này;\n\nb) Điều khiển xe không có còi hoặc có nhưng còi không có tác dụng;\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy tắc giao thông đường bộ]\n9. Phạt tiền từ 18.000.000 đồng đến 20.000.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn vượt quá 50 miligam đến 80 miligam/100 mililít máu hoặc vượt quá 0,25 miligam đến 0,4 miligam/1 lít khí thở;\n\nb) Không chấp hành hiệu lệnh của đèn tín hiệu giao thông;\n\nc) Không chấp hành hiệu lệnh, hướng dẫn của người điều khiển giao thông hoặc người kiểm soát giao thông;\n\nd) Đi ngược chiều của đường một chiều, đi ngược chiều trên đường có biển \"Cấm đi ngược chiều\", trừ các hành vi vi phạm quy định tại điểm đ khoản 11 Điều này và các trường hợp xe ưu tiên đang đi làm nhiệm vụ khẩn cấp theo quy định.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 14. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy vi phạm quy định về điều kiện của phương tiện khi tham gia giao thông]\n1. Phạt tiền từ 400.000 đồng đến 600.000 đồng đối với một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe không có còi; đèn soi biển số; đèn báo hãm; gương chiếu hậu bên trái người điều khiển hoặc có nhưng không có tác dụng;\n\nb) Điều khiển xe không có đèn tín hiệu hoặc có nhưng không có tác dụng;\n\nc) Điều khiển xe không có đèn chiếu sáng gần, xa hoặc có nhưng không có tác dụng, không đúng tiêu chuẩn thiết kế;\n\nd) Điều khiển xe không có hệ thống hãm hoặc có nhưng không có tác dụng, không bảo đảm tiêu chuẩn kỹ thuật;\n\nđ) Điều khiển xe lắp đèn chiếu sáng về phía sau xe.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 9. Xử phạt người điều khiển xe đạp, xe đạp máy, người điều khiển xe thô sơ khác vi phạm quy tắc giao thông đường bộ]\n2. Phạt tiền từ 150.000 đồng đến 250.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe đạp, xe đạp máy buông cả hai tay; chuyển hướng đột ngột trước đầu xe cơ giới đang chạy; dùng chân điều khiển xe đạp, xe đạp máy;\n\nb) Không chấp hành hiệu lệnh, chỉ dẫn của người điều khiển giao thông hoặc người kiểm soát giao thông;\n\nc) Người đang điều khiển xe hoặc chở người ngồi trên xe bám, kéo, đẩy xe khác, vật khác, mang vác vật cồng kềnh; điều khiển xe kéo theo xe khác, vật khác;\n\nd) Không nhường đường cho xe xin vượt khi có đủ điều kiện an toàn hoặc gây cản trở đối với xe cơ giới xin vượt, gây cản trở xe ưu tiên;\n\nđ) Không chấp hành hiệu lệnh của đèn tín hiệu giao thông.\n"
+      ],
+      "ground_truth": "Phạt tiền từ 18.000.000 đồng đến 20.000.000 đồng.",
+      "expected_source": "nghi-dinh-168-2024-nd-cp.md",
+      "retrieved_sources": [
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.4769231108961485,
+        "context_recall": 1.0,
+        "context_precision": 0.3333333333
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Người điều khiển xe đạp, xe đạp máy không chấp hành hiệu lệnh của đèn tín hiệu giao thông bị phạt bao nhiêu?",
+      "answer": "Người điều khiển xe đạp, xe đạp máy không chấp hành hiệu lệnh của đèn tín hiệu giao thông sẽ bị phạt tiền từ 150.000 đồng đến 250.000 đồng. Cụ thể, hành vi này được quy định trong Nghị định 168/2024/NĐ-CP, có hiệu lực từ ngày 01 tháng 01 năm 2025, tại Điều 9 [Nghị định 168/2024/NĐ-CP].",
+      "contexts": [
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 9. Xử phạt người điều khiển xe đạp, xe đạp máy, người điều khiển xe thô sơ khác vi phạm quy tắc giao thông đường bộ]\n2. Phạt tiền từ 150.000 đồng đến 250.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe đạp, xe đạp máy buông cả hai tay; chuyển hướng đột ngột trước đầu xe cơ giới đang chạy; dùng chân điều khiển xe đạp, xe đạp máy;\n\nb) Không chấp hành hiệu lệnh, chỉ dẫn của người điều khiển giao thông hoặc người kiểm soát giao thông;\n\nc) Người đang điều khiển xe hoặc chở người ngồi trên xe bám, kéo, đẩy xe khác, vật khác, mang vác vật cồng kềnh; điều khiển xe kéo theo xe khác, vật khác;\n\nd) Không nhường đường cho xe xin vượt khi có đủ điều kiện an toàn hoặc gây cản trở đối với xe cơ giới xin vượt, gây cản trở xe ưu tiên;\n\nđ) Không chấp hành hiệu lệnh của đèn tín hiệu giao thông.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Mức phạt người điều khiển xe đạp, xe đạp máy vi phạm quy tắc giao thông đường bộ từ 1/1/2025]\n## Mức phạt người điều khiển xe đạp, xe đạp máy vi phạm quy tắc giao thông đường bộ từ 1/1/2025\n\n- Tham khảo thêm Nâng mức phạt ô tô, xe máy vượt đèn đỏ từ 1/1/2025\n\n## Nâng mức phạt ô tô, xe máy vượt đèn đỏ từ 1/1/2025\n\n- Tham khảo thêm Từ 1/1/2025, đi xe máy trên vỉa hè sẽ bị phạt đến 6 triệu đồng\n\n## Từ 1/1/2025, đi xe máy trên vỉa hè sẽ bị phạt đến 6 triệu đồng\n\n- Tham khảo thêm Mức phạt mới với người điều khiển xe ô tô, xe máy đi ngược chiều từ 1/1/2025\n\n## Mức phạt mới với người điều khiển xe ô tô, xe máy đi ngược chiều từ 1/1/2025\n\n- Tham khảo thêm Mức phạt với người chưa đủ tuổi điều khiển phương tiện giao thông từ 1/1/2025\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 9. Xử phạt người điều khiển xe đạp, xe đạp máy, người điều khiển xe thô sơ khác vi phạm quy tắc giao thông đường bộ]\n3. Phạt tiền từ 300.000 đồng đến 400.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe lạng lách, đánh võng; đuổi nhau trên đường;\n\nb) Đi xe bằng một bánh đối với xe đạp, xe đạp máy; đi xe bằng hai bánh đối với xe xích lô;\n\nc) Đi vào khu vực cấm, đường có biển báo hiệu nội dung cấm đi vào đối với loại phương tiện đang điều khiển; đi ngược chiều đường của đường một chiều, đường có biển \"Cấm đi ngược chiều\";\n\nd) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn vượt quá 50 miligam đến 80 miligam/100 mililít máu hoặc vượt quá 0,25 miligam đến 0,4 miligam/1 lít khí thở.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 9. Xử phạt người điều khiển xe đạp, xe đạp máy, người điều khiển xe thô sơ khác vi phạm quy tắc giao thông đường bộ]\n4. Phạt tiền từ 400.000 đồng đến 600.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Gây tai nạn giao thông không dừng ngay phương tiện, không giữ nguyên hiện trường, không trợ giúp người bị nạn, không ở lại hiện trường hoặc không đến trình báo ngay với cơ quan công an, Ủy ban nhân dân nơi gần nhất;\n\nb) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn vượt quá 80 miligam/100 mililít máu hoặc vượt quá 0,4 miligam/1 lít khí thở;\n\nc) Không chấp hành yêu cầu kiểm tra về nồng độ cồn của người thi hành công vụ;\n\nd) Người điều khiển xe đạp máy không đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" hoặc đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" không cài quai đúng quy cách khi tham gia giao thông trên đường bộ;\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy vi phạm quy tắc giao thông đường bộ]\n1. Phạt tiền từ 200.000 đồng đến 400.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Không chấp hành hiệu lệnh, chỉ dẫn của biển báo hiệu, vạch kẻ đường, trừ các hành vi vi phạm quy định tại điểm b , điểm d , điểm e khoản 2; điểm a, điểm c, điểm d, điểm h khoản 3; điểm a, điểm b, điểm c, điểm d khoản 4; điểm b , điểm d khoản 6; điểm a, điểm b, điểm c khoản 7; điểm a khoản 8; điểm b khoản 9 ; điểm a khoản 10 Điều này;\n\nb) Không có tín hiệu trước khi vượt hoặc có tín hiệu vượt xe nhưng không sử dụng trong suốt quá trình vượt xe;\n\nc) Lùi xe mô tô ba bánh không quan sát hai bên, phía sau xe hoặc không có tín hiệu lùi xe;\n\nd) Chở người ngồi trên xe sử dụng ô (dù);\n"
+      ],
+      "ground_truth": "Phạt tiền từ 150.000 đồng đến 250.000 đồng.",
+      "expected_source": "nghi-dinh-168-2024-nd-cp.md",
+      "retrieved_sources": [
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.36679950066339023,
+        "context_recall": 1.0,
+        "context_precision": 0.99999999995
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Người điều khiển xe mô tô, xe gắn máy không đội mũ bảo hiểm bị phạt bao nhiêu tiền?",
+      "answer": "Người điều khiển xe mô tô, xe gắn máy không đội mũ bảo hiểm sẽ bị phạt tiền từ 1.000.000 đồng đến 2.000.000 đồng. Cụ thể, hành vi vi phạm này được quy định tại Điều 7 của Nghị định 168/2024/NĐ-CP, có hiệu lực từ ngày 01 tháng 01 năm 2025. Trích dẫn: [Nghị định 168/2024/NĐ-CP].",
+      "contexts": [
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy vi phạm quy tắc giao thông đường bộ]\nh ) Không đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" hoặc đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" không cài quai đúng quy cách khi điều khiển xe tham gia giao thông trên đường bộ;\n\ni ) Chở người ngồi trên xe không đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" hoặc đội \"mũ bảo hiểm cho người đi mô tô, xe máy\" không cài quai đúng quy cách, trừ trường hợp chở người bệnh đi cấp cứu, trẻ em dưới 06 tuổi, áp giải người có hành vi vi phạm pháp luật;\n\nk ) Quay đầu xe tại nơi không được quay đầu xe, trừ hành vi vi phạm quy định tại điểm d khoản 4 Điều này.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 18. Xử phạt, trừ điểm giấy phép lái xe các hành vi vi phạm quy định về điều kiện của người điều khiển xe cơ giới]\n2. Phạt tiền từ 200.000 đồng đến 300.000 đồng đối với một trong các hành vi vi phạm sau đây:\n\na) Người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy kinh doanh vận tải không mang theo chứng nhận bảo hiểm bắt buộc trách nhiệm dân sự của chủ xe cơ giới còn hiệu lực;\n\nb) Người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy không có chứng nhận bảo hiểm bắt buộc trách nhiệm dân sự của chủ xe cơ giới còn hiệu lực;\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy vi phạm quy tắc giao thông đường bộ]\n5. Phạt tiền từ 1.000.000 đồng đến 2.000.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na ) Điều khiển xe có liên quan trực tiếp đến vụ tai nạn giao thông mà không dừng ngay phương tiện, không giữ nguyên hiện trường, không trợ giúp người bị nạn, trừ hành vi vi phạm quy định tại điểm c khoản 9 Điều này;\n\nb ) Chuyển hướng không nhường quyền đi trước cho: người đi bộ, xe lăn của người khuyết tật qua đường tại nơi có vạch kẻ đường dành cho người đi bộ; xe thô sơ đang đi trên phần đường dành cho xe thô sơ;\n\nc ) Chuyển hướng không nhường đường cho: các xe đi ngược chiều; người đi bộ, xe thô sơ đang qua đường tại nơi không có vạch kẻ đường cho người đi bộ.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy vi phạm quy tắc giao thông đường bộ]\n10. Phạt tiền từ 10.000.000 đồng đến 14.000.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na ) Điều khiển xe không quan sát, giảm tốc độ hoặc dừng lại để bảo đảm an toàn theo quy định mà gây tai nạn giao thông; điều khiển xe chạy quá tốc độ quy định gây tai nạn giao thông; đi vào đường cao tốc, dừng xe, đỗ xe, quay đầu xe, lùi xe, vượt xe, chuyển hướng, chuyển làn đường không đúng quy định gây tai nạn giao thông; không đi đúng phần đường, làn đường, không giữ khoảng cách an toàn giữa hai xe theo quy định gây tai nạn giao thông hoặc đi vào đường có biển báo hiệu có nội dung cấm đi vào đối với loại phương tiện đang điều khiển, đi ngược chiều của đường một chiều, đi ngược chiều trên đường có biển \"Cấm đi ngược chiều\" gây tai nạn giao thông;\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 13. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô (bao gồm cả rơ moóc hoặc sơ mi rơ moóc được kéo theo), xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy định về điều kiện của phương tiện khi tham gia giao thông]\n1. Phạt tiền từ 200.000 đồng đến 400.000 đồng đối với hành vi điều khiển xe không có kính chắn gió hoặc có nhưng vỡ không có tác dụng (đối với xe có thiết kế lắp kính chắn gió).\n\na) Điều khiển xe không có đủ đèn chiếu sáng, đèn soi biển số, đèn báo hãm, đèn tín hiệu, cần gạt nước, gương chiếu hậu, dây đai an toàn, dụng cụ thoát hiểm, thiết bị chữa cháy, đồng hồ báo áp lực hơi, đồng hồ báo tốc độ của xe hoặc có những thiết bị đó nhưng không có tác dụng, không đúng tiêu chuẩn thiết kế (đối với loại xe được quy định phải có những thiết bị đó), trừ các hành vi vi phạm quy định tại điểm h khoản 3 Điều 20, điểm đ khoản 4 Điều 26 của Nghị định này;\n\nb) Điều khiển xe không có còi hoặc có nhưng còi không có tác dụng;\n"
+      ],
+      "ground_truth": "Phạt tiền từ 400.000 đồng đến 600.000 đồng, áp dụng cả với hành vi đội mũ bảo hiểm nhưng không cài quai đúng quy cách.",
+      "expected_source": "nghi-dinh-168-2024-nd-cp.md",
+      "retrieved_sources": [
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.38449646696965717,
+        "context_recall": 1.0,
+        "context_precision": 0.8666666666377778
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Người điều khiển xe ô tô có nồng độ cồn chưa vượt quá 50 miligam/100 mililít máu bị phạt bao nhiêu?",
+      "answer": "Tôi không thể xác minh thông tin này từ nguồn hiện có.",
+      "contexts": [
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 9. Xử phạt người điều khiển xe đạp, xe đạp máy, người điều khiển xe thô sơ khác vi phạm quy tắc giao thông đường bộ]\nm) Dùng xe đẩy làm quầy hàng lưu động trên đường gây cản trở giao thông;\n\no) Xe đạp, xe đạp máy, xe xích lô chở quá số người quy định, trừ trường hợp chở người bệnh đi cấp cứu;\n\np) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn nhưng chưa vượt quá 50 miligam/100 mililít máu hoặc chưa vượt quá 0,25 miligam/1 lít khí thở.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy vi phạm quy tắc giao thông đường bộ]\n8. Phạt tiền từ 6.000.000 đồng đến 8.000.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe chạy quá tốc độ quy định trên 20 km/h;\n\nb ) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn vượt quá 50 miligam đến 80 miligam/100 mililít máu hoặc vượt quá 0,25 miligam đến 0,4 miligam/1 lít khí thở .\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 9. Xử phạt người điều khiển xe đạp, xe đạp máy, người điều khiển xe thô sơ khác vi phạm quy tắc giao thông đường bộ]\n3. Phạt tiền từ 300.000 đồng đến 400.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe lạng lách, đánh võng; đuổi nhau trên đường;\n\nb) Đi xe bằng một bánh đối với xe đạp, xe đạp máy; đi xe bằng hai bánh đối với xe xích lô;\n\nc) Đi vào khu vực cấm, đường có biển báo hiệu nội dung cấm đi vào đối với loại phương tiện đang điều khiển; đi ngược chiều đường của đường một chiều, đường có biển \"Cấm đi ngược chiều\";\n\nd) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn vượt quá 50 miligam đến 80 miligam/100 mililít máu hoặc vượt quá 0,25 miligam đến 0,4 miligam/1 lít khí thở.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy tắc giao thông đường bộ]\n11. Phạt tiền từ 30.000.000 đồng đến 40.000. 000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn vượt quá 80 miligam/100 mililít máu hoặc vượt quá 0,4 miligam/1 lít khí thở;\n\nb) Không chấp hành yêu cầu kiểm tra về nồng độ cồn của người thi hành công vụ;\n\nc) Điều khiển xe trên đường mà trong cơ thể có chất ma túy hoặc chất kích thích khác mà pháp luật cấm sử dụng;\n\nd) Không chấp hành yêu cầu kiểm tra về chất ma túy hoặc chất kích thích khác mà pháp luật cấm sử dụng của người thi hành công vụ;\n\nđ) Điều khiển xe đi ngược chiều trên đường cao tốc, lùi xe trên đường cao tốc, quay đầu xe trên đường cao tốc, trừ các xe ưu tiên đang đi làm nhiệm vụ khẩn cấp theo quy định.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy vi phạm quy tắc giao thông đường bộ]\n9. Phạt tiền từ 8.000.000 đồng đến 10.000.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe lạng lách , đánh võng trên đường bộ; s ử dụng chân chống hoặc vật khác quệt xuống đường khi xe đang chạy ;\n\nb) Điều khiển xe thành nhóm từ 02 xe trở lên chạy quá tốc độ quy định;\n\nc) Gây tai nạn giao thông không dừng ngay phương tiện, không giữ nguyên hiện trường, không trợ giúp người bị nạn, không ở lại hiện trường hoặc không đến trình báo ngay với cơ quan công an, Ủy ban nhân dân nơi gần nhất;\n\nd) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn vượt quá 80 miligam/100 mililít máu hoặc vượt quá 0,4 miligam/1 lít khí thở;\n\nđ) Không chấp hành yêu cầu kiểm tra về nồng độ cồn của người thi hành công vụ;\n"
+      ],
+      "ground_truth": "Phạt tiền từ 6.000.000 đồng đến 8.000.000 đồng.",
+      "expected_source": "nghi-dinh-168-2024-nd-cp.md",
+      "retrieved_sources": [
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.0,
+        "context_recall": 1.0,
+        "context_precision": 0.94999999997625
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Người điều khiển xe mô tô có nồng độ cồn chưa vượt quá 50 miligam/100 mililít máu bị phạt bao nhiêu?",
+      "answer": "Người điều khiển xe mô tô có nồng độ cồn chưa vượt quá 50 miligam/100 mililít máu sẽ không bị phạt theo quy định hiện hành. Tuy nhiên, nếu nồng độ cồn trong máu hoặc hơi thở vượt quá 50 miligam/100 mililit máu hoặc vượt quá 0,25 miligam/1 lít khí thở thì sẽ bị phạt tiền từ 6.000.000 đồng đến 8.000.000 đồng theo quy định tại Điều 7 của Nghị định 168/2024/NĐ-CP, có hiệu lực từ ngày 01 tháng 01 năm 2025 [Nghị định 168/2024/NĐ-CP].",
+      "contexts": [
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy vi phạm quy tắc giao thông đường bộ]\n8. Phạt tiền từ 6.000.000 đồng đến 8.000.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe chạy quá tốc độ quy định trên 20 km/h;\n\nb ) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn vượt quá 50 miligam đến 80 miligam/100 mililít máu hoặc vượt quá 0,25 miligam đến 0,4 miligam/1 lít khí thở .\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 9. Xử phạt người điều khiển xe đạp, xe đạp máy, người điều khiển xe thô sơ khác vi phạm quy tắc giao thông đường bộ]\nm) Dùng xe đẩy làm quầy hàng lưu động trên đường gây cản trở giao thông;\n\no) Xe đạp, xe đạp máy, xe xích lô chở quá số người quy định, trừ trường hợp chở người bệnh đi cấp cứu;\n\np) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn nhưng chưa vượt quá 50 miligam/100 mililít máu hoặc chưa vượt quá 0,25 miligam/1 lít khí thở.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 9. Xử phạt người điều khiển xe đạp, xe đạp máy, người điều khiển xe thô sơ khác vi phạm quy tắc giao thông đường bộ]\n3. Phạt tiền từ 300.000 đồng đến 400.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe lạng lách, đánh võng; đuổi nhau trên đường;\n\nb) Đi xe bằng một bánh đối với xe đạp, xe đạp máy; đi xe bằng hai bánh đối với xe xích lô;\n\nc) Đi vào khu vực cấm, đường có biển báo hiệu nội dung cấm đi vào đối với loại phương tiện đang điều khiển; đi ngược chiều đường của đường một chiều, đường có biển \"Cấm đi ngược chiều\";\n\nd) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn vượt quá 50 miligam đến 80 miligam/100 mililít máu hoặc vượt quá 0,25 miligam đến 0,4 miligam/1 lít khí thở.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 7. Xử phạt, trừ điểm giấy phép lái của người điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy vi phạm quy tắc giao thông đường bộ]\n9. Phạt tiền từ 8.000.000 đồng đến 10.000.000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe lạng lách , đánh võng trên đường bộ; s ử dụng chân chống hoặc vật khác quệt xuống đường khi xe đang chạy ;\n\nb) Điều khiển xe thành nhóm từ 02 xe trở lên chạy quá tốc độ quy định;\n\nc) Gây tai nạn giao thông không dừng ngay phương tiện, không giữ nguyên hiện trường, không trợ giúp người bị nạn, không ở lại hiện trường hoặc không đến trình báo ngay với cơ quan công an, Ủy ban nhân dân nơi gần nhất;\n\nd) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn vượt quá 80 miligam/100 mililít máu hoặc vượt quá 0,4 miligam/1 lít khí thở;\n\nđ) Không chấp hành yêu cầu kiểm tra về nồng độ cồn của người thi hành công vụ;\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy tắc giao thông đường bộ]\n11. Phạt tiền từ 30.000.000 đồng đến 40.000. 000 đồng đối với người điều khiển xe thực hiện một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe trên đường mà trong máu hoặc hơi thở có nồng độ cồn vượt quá 80 miligam/100 mililít máu hoặc vượt quá 0,4 miligam/1 lít khí thở;\n\nb) Không chấp hành yêu cầu kiểm tra về nồng độ cồn của người thi hành công vụ;\n\nc) Điều khiển xe trên đường mà trong cơ thể có chất ma túy hoặc chất kích thích khác mà pháp luật cấm sử dụng;\n\nd) Không chấp hành yêu cầu kiểm tra về chất ma túy hoặc chất kích thích khác mà pháp luật cấm sử dụng của người thi hành công vụ;\n\nđ) Điều khiển xe đi ngược chiều trên đường cao tốc, lùi xe trên đường cao tốc, quay đầu xe trên đường cao tốc, trừ các xe ưu tiên đang đi làm nhiệm vụ khẩn cấp theo quy định.\n"
+      ],
+      "ground_truth": "Phạt tiền từ 2.000.000 đồng đến 3.000.000 đồng.",
+      "expected_source": "nghi-dinh-168-2024-nd-cp.md",
+      "retrieved_sources": [
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 0.5,
+        "answer_relevancy": 0.4266428023732676,
+        "context_recall": 0.0,
+        "context_precision": 0.49999999995
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Người được chở trên xe ô tô không thắt dây đai an toàn bị phạt bao nhiêu tiền?",
+      "answer": "Người được chở trên xe ô tô không thắt dây đai an toàn (tại vị trí có trang bị dây đai an toàn) khi xe đang chạy sẽ bị phạt tiền từ 350.000 đồng đến 400.000 đồng. \n\nTrích dẫn: [Nghị định 168/2024/NĐ-CP]. Hiệu lực từ: 2025-01-01.",
+      "contexts": [
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 12. Xử phạt, trừ điểm giấy phép lái xe các hành vi vi phạm khác về quy tắc giao thông đường bộ ; sử dụng lòng đường, vỉa hè vào mục đích khác]\n3. Phạt tiền từ 250.000 đồng đến 350.000 đồng đối với cá nhân, từ 500.000 đồng đến 700.000 đồng đối với tổ chức để vật che khuất biển báo hiệu đường bộ, đèn tín hiệu giao thông.\n\n4. Phạt tiền từ 350.000 đồng đến 400.000 đồng đối với người được chở trên xe ô tô không thắt dây đai an toàn (tại vị trí có trang bị dây đai an toàn) khi xe đang chạy.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 20. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô chở hành khách, ô tô chở người và các loại xe tương tự xe ô tô chở hành khách vi phạm quy định về bảo đảm trật tự, an toàn giao thông]\n## Điều 20. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô chở hành khách, ô tô chở người và các loại xe tương tự xe ô tô chở hành khách vi phạm quy định về bảo đảm trật tự, an toàn giao thông\n\n1. Phạt tiền từ 100.000 đồng đến 200.000 đồng đối với hành vi vi phạm: không hướng dẫn hành khách đứng, nằm, ngồi đúng vị trí quy định trong xe.\n\n2. Phạt tiền từ 400.000 đồng đến 600.000 đồng trên mỗi người vượt quá quy định được phép chở của phương tiện nhưng tổng mức phạt tiền tối đa không vượt quá 75.000.000 đồng đối với người điều khiển xe ô tô chở hành khách, ô tô chở người (trừ xe buýt) thực hiện hành vi vi phạm chở quá số người quy định được phép chở của phương tiện, trừ các hành vi vi phạm quy định tại khoản 4 Điều này.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 20. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô chở hành khách, ô tô chở người và các loại xe tương tự xe ô tô chở hành khách vi phạm quy định về bảo đảm trật tự, an toàn giao thông]\n4. Phạt tiền từ 1.000.000 đồng đến 2.000.000 đồng trên mỗi người vượt quá quy định được phép chở của phương tiện nhưng tổng mức phạt tiền tối đa không vượt quá 75.000.000 đồng đối với người điều khiển xe ô tô chở hành khách (kinh doanh vận tải hành khách theo tuyến cố định, hợp đồng) chạy tuyến có cự ly lớn hơn 300 km thực hiện hành vi vi phạm chở quá số người quy định được phép chở của phương tiện .\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 13. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô (bao gồm cả rơ moóc hoặc sơ mi rơ moóc được kéo theo), xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy định về điều kiện của phương tiện khi tham gia giao thông]\n1. Phạt tiền từ 200.000 đồng đến 400.000 đồng đối với hành vi điều khiển xe không có kính chắn gió hoặc có nhưng vỡ không có tác dụng (đối với xe có thiết kế lắp kính chắn gió).\n\na) Điều khiển xe không có đủ đèn chiếu sáng, đèn soi biển số, đèn báo hãm, đèn tín hiệu, cần gạt nước, gương chiếu hậu, dây đai an toàn, dụng cụ thoát hiểm, thiết bị chữa cháy, đồng hồ báo áp lực hơi, đồng hồ báo tốc độ của xe hoặc có những thiết bị đó nhưng không có tác dụng, không đúng tiêu chuẩn thiết kế (đối với loại xe được quy định phải có những thiết bị đó), trừ các hành vi vi phạm quy định tại điểm h khoản 3 Điều 20, điểm đ khoản 4 Điều 26 của Nghị định này;\n\nb) Điều khiển xe không có còi hoặc có nhưng còi không có tác dụng;\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 21. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô tải, máy kéo (bao gồm cả rơ moóc hoặc sơ mi rơ moóc được kéo theo) và các loại xe tương tự xe ô tô vận chuyển hàng hóa vi phạm quy định về bảo đảm trật tự, an toàn giao thông đường bộ với xe ô tô vận chuyển hàng hóa]\n2. Phạt tiền từ 800.000 đồng đến 1.000.000 đồng đối với một trong các hành vi vi phạm sau đây:\n\na) Điều khiển xe (kể cả rơ moóc và sơ mi rơ moóc) chở hàng vượt trọng tải (khối lượng hàng chuyên chở) cho phép tham gia giao thông được ghi trong giấy chứng nhận kiểm định an toàn kỹ thuật và bảo vệ môi trường của xe trên 10% đến 30% (trừ xe xi téc chở chất lỏng), trên 20% đến 30% đối với xe xi téc chở chất lỏng;\n\nb) Chở hàng trên nóc thùng xe; chở hàng vượt quá bề rộng thùng xe (kể cả bề rộng rơ moóc và sơ mi rơ moóc); chở hàng vượt phía trước, phía sau thùng xe (kể cả rơ moóc và sơ mi rơ moóc) trên 1,1 lần chiều dài toàn bộ của xe theo thiết kế được ghi trong giấy chứng nhận kiểm định an toàn kỹ thuật và bảo vệ môi trường của xe;\n\nc) Chở người trên mui xe ;\n"
+      ],
+      "ground_truth": "Phạt tiền từ 350.000 đồng đến 400.000 đồng.",
+      "expected_source": "nghi-dinh-168-2024-nd-cp.md",
+      "retrieved_sources": [
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 0.75,
+        "answer_relevancy": 0.4769749664308008,
+        "context_recall": 1.0,
+        "context_precision": 0.7499999999625
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Giấy phép lái xe có bao nhiêu điểm?",
+      "answer": "Giấy phép lái xe được dùng để quản lý việc chấp hành pháp luật về trật tự, an toàn giao thông đường bộ của người lái xe trên hệ thống cơ sở dữ liệu về trật tự, an toàn giao thông đường bộ, bao gồm 12 điểm. Trích dẫn: [Luật 36/2024/QH15]. Hiệu lực từ: 2025-01-01.",
+      "contexts": [
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 57. Giấy phép lái xe]\n## Điều 57. Giấy phép lái xe\n\n1. Giấy phép lái xe bao gồm các hạng sau đây: tô tải và ô tô chuyên dùng có khối lượng toàn bộ theo thiết kế\n\na) Hạng A1 cấp cho người lái xe mô tô hai bánh có dung tích xi-lanh đến 125 cm 3 hoặc có công suất động cơ điện đến 11 kW;\n\nb) Hạng A cấp cho người lái xe mô tô hai bánh có dung tích xi-lanh trên 125 cm 3 hoặc có công suất động cơ điện trên 11 kW và các loại xe quy định cho giấy phép lái xe hạng A1;\n\nc) Hạng B1 cấp cho người lái xe mô tô ba bánh và các loại xe quy định cho giấy phép lái xe hạng A1;\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 58. Điểm của giấy phép lái xe]\n## Điều 58. Điểm của giấy phép lái xe\n\n1. Điểm của giấy phép lái xe được dùng để quản lý việc chấp hành pháp luật về trật tự, an toàn giao thông đường bộ của người lái xe trên hệ thống cơ sở dữ liệu về trật tự, an toàn giao thông đường bộ, bao gồm 12 điểm. Số điểm trừ mỗi lần vi phạm tùy thuộc tính chất, mức độ của hành vi vi phạm pháp luật về trật tự, an toàn giao thông đường bộ. Dữ liệu về điểm trừ giấy phép lái xe của người vi phạm sẽ được cập nhật vào hệ thống cơ sở dữ liệu ngay sau khi quyết định xử phạt có hiệu lực thi hành và thông báo cho người bị trừ điểm giấy phép lái xe biết.\n\n2. Giấy phép lái xe chưa bị trừ hết điểm và không bị trừ điểm trong thời hạn 12 tháng từ ngày bị trừ điểm gần nhất thì được phục hồi đủ 12 điểm.\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 57. Giấy phép lái xe]\n5. Thời hạn của giấy phép lái xe được quy định như sau:\n\na) Giấy phép lái xe các hạng A1, A, B1 không thời hạn;\n\nb) Giấy phép lái xe hạng B và hạng C1 có thời hạn 10 năm kể từ ngày cấp;\n\nc) Giấy phép lái xe các hạng C, D1, D2, D, BE, C1E, CE, D1E, D2E và DE có thời hạn 05 năm kể từ ngày cấp.\n\n6. Giấy phép lái xe có giá trị sử dụng trong phạm vi lãnh thổ Việt Nam bao gồm:\n\na) Giấy phép lái xe do cơ quan có thẩm quyền của Việt Nam cấp;\n\nb) Giấy phép lái xe quốc tế và giấy phép lái xe quốc gia phù hợp với loại xe được phép điều khiển do quốc gia là thành viên của Công ước của Liên hợp quốc về Giao thông đường bộ năm 1968 (sau đây gọi là Công ước Viên) cấp;\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 13. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô (bao gồm cả rơ moóc hoặc sơ mi rơ moóc được kéo theo), xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy định về điều kiện của phương tiện khi tham gia giao thông]\n## Điều 13. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô (bao gồm cả rơ moóc hoặc sơ mi rơ moóc được kéo theo), xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy định về điều kiện của phương tiện khi tham gia giao thông\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 58. Điểm của giấy phép lái xe]\n3. Trường hợp giấy phép lái xe bị trừ hết điểm thì người có giấy phép lái xe không được điều khiển phương tiện tham gia giao thông đường bộ theo giấy phép lái xe đó. Sau thời hạn ít nhất là 06 tháng kể từ ngày bị trừ hết điểm, người có giấy phép lái xe được tham gia kiểm tra nội dung kiến thức pháp luật về trật tự, an toàn giao thông đường bộ theo quy định tại khoản 7 Điều 61 của Luật này do lực lượng Cảnh sát giao thông tổ chức, có kết quả đạt yêu cầu thì được phục hồi đủ 12 điểm.\n\n4. Giấy phép lái xe sau khi đổi, cấp lại, nâng hạng được giữ nguyên số điểm của giấy phép lái xe trước khi đổi, cấp lại, nâng hạng.\n\n5. Người có thẩm quyền xử phạt vi phạm hành chính có thẩm quyền trừ điểm giấy phép lái xe.\n"
+      ],
+      "ground_truth": "Giấy phép lái xe có 12 điểm; số điểm bị trừ mỗi lần vi phạm tùy tính chất, mức độ của hành vi vi phạm.",
+      "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+      "retrieved_sources": [
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.30527743413823677,
+        "context_recall": 1.0,
+        "context_precision": 0.99999999998
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Khi nào điểm giấy phép lái xe được phục hồi?",
+      "answer": "Điểm giấy phép lái xe được phục hồi trong các trường hợp sau:\n\n1. Đối với trường hợp giấy phép lái xe chưa bị trừ hết điểm và không bị trừ điểm trong thời hạn 12 tháng từ ngày bị trừ điểm gần nhất, dữ liệu điểm giấy phép lái xe sẽ được tự động phục hồi đủ 12 điểm sau khi đủ thời hạn 12 tháng kể từ ngày bị trừ điểm gần nhất. Thông tin này được cập nhật tự động trong Cơ sở dữ liệu về xử lý vi phạm hành chính về trật tự, an toàn giao thông đường bộ [Nghị định 168/2024/NĐ-CP].\n\n2. Đối với trường hợp giấy phép lái xe bị trừ hết điểm, sau thời hạn ít nhất là 06 tháng kể từ ngày bị trừ hết điểm, người có giấy phép lái xe có thể tham gia kiểm tra nội dung kiến thức pháp luật về trật tự, an toàn giao thông đường bộ. Nếu đạt yêu cầu, họ sẽ được phục hồi đủ 12 điểm [Luật 36/2024/QH15].\n\nCả hai quy định này đều có hiệu lực từ ngày 01 tháng 01 năm 2025.",
+      "contexts": [
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 51. Thẩm quyền, trình tự, thủ tục phục hồi điểm giấy phép lái xe]\n2. Trình tự, thủ tục phục hồi điểm giấy phép lái xe đối với trường hợp giấy phép lái xe chưa bị trừ hết điểm và không bị trừ điểm trong thời hạn 12 tháng từ ngày bị trừ điểm gần nhất\n\na) Khi đủ thời hạn 12 tháng, kể từ ngày bị trừ điểm giấy phép lái xe gần nhất, dữ liệu điểm giấy phép lái xe sẽ được tự động phục hồi đủ 12 điểm (gồm cả giấy phép lái xe đang trong thời hạn bị tước quyền sử dụng) và cập nhật tự động trong Cơ sở dữ liệu về xử lý vi phạm hành chính về trật tự, an toàn giao thông đường bộ;\n\nb) Ngay sau khi dữ liệu điểm giấy phép lái xe được phục hồi, Cơ sở dữ liệu về xử lý vi phạm hành chính về trật tự, an toàn giao thông đường bộ sẽ tự động chuyển thông tin thông báo cho người được phục hồi điểm giấy phép lái xe biết việc phục hồi điểm theo quy định tại điểm c khoản này;\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 58. Điểm của giấy phép lái xe]\n3. Trường hợp giấy phép lái xe bị trừ hết điểm thì người có giấy phép lái xe không được điều khiển phương tiện tham gia giao thông đường bộ theo giấy phép lái xe đó. Sau thời hạn ít nhất là 06 tháng kể từ ngày bị trừ hết điểm, người có giấy phép lái xe được tham gia kiểm tra nội dung kiến thức pháp luật về trật tự, an toàn giao thông đường bộ theo quy định tại khoản 7 Điều 61 của Luật này do lực lượng Cảnh sát giao thông tổ chức, có kết quả đạt yêu cầu thì được phục hồi đủ 12 điểm.\n\n4. Giấy phép lái xe sau khi đổi, cấp lại, nâng hạng được giữ nguyên số điểm của giấy phép lái xe trước khi đổi, cấp lại, nâng hạng.\n\n5. Người có thẩm quyền xử phạt vi phạm hành chính có thẩm quyền trừ điểm giấy phép lái xe.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 51. Thẩm quyền, trình tự, thủ tục phục hồi điểm giấy phép lái xe]\nc) Việc thông báo phục hồi điểm giấy phép lái xe thực hiện bằng phương thức điện tử thông qua tài khoản của công dân đăng ký trên Cổng dịch vụ công, Ứng dụng giao thông trên thiết bị di động; đồng thời cập nhật thông tin về giấy phép lái xe được phục hồi điểm trên Trang thông tin điện tử của Cục Cảnh sát giao thông. T rường hợp giấy phép lái xe được thể hiện dưới hình thức thông điệp dữ liệu thì thực hiện cập nhật trạng thái phục hồi điểm giấy phép lái xe trong căn cước điện tử, tài khoản định danh điện tử trên ứng dụng định danh quốc gia.\n\n3. Trình tự, thủ tục phục hồi điểm giấy phép lái xe đối với trường hợp giấy phép lái xe bị trừ hết điểm\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 51. Thẩm quyền, trình tự, thủ tục phục hồi điểm giấy phép lái xe]\nc) Việc thông báo phục hồi điểm giấy phép lái xe thực hiện bằng văn bản theo mẫu quy định của Bộ trưởng Bộ Công an và được giao trực tiếp hoặc gửi qua dịch vụ bưu chính hoặc thực hiện thông báo bằng phương thức điện tử thông qua tài khoản của công dân đăng ký trên Cổng dịch vụ công, Ứng dụng giao thông trên thiết bị di động; đồng thời cập nhật thông tin về giấy phép lái xe được phục hồi điểm trên Trang thông tin điện tử của Cục Cảnh sát giao thông. T rường hợp giấy phép lái xe được thể hiện dưới hình thức thông điệp dữ liệu thì cơ quan, người có thẩm quyền thực hiện cập nhật trạng thái phục hồi điểm giấy phép lái xe trong căn cước điện tử, tài khoản định danh điện tử trên ứng dụng định danh quốc gia.\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 58. Điểm của giấy phép lái xe]\n## Điều 58. Điểm của giấy phép lái xe\n\n1. Điểm của giấy phép lái xe được dùng để quản lý việc chấp hành pháp luật về trật tự, an toàn giao thông đường bộ của người lái xe trên hệ thống cơ sở dữ liệu về trật tự, an toàn giao thông đường bộ, bao gồm 12 điểm. Số điểm trừ mỗi lần vi phạm tùy thuộc tính chất, mức độ của hành vi vi phạm pháp luật về trật tự, an toàn giao thông đường bộ. Dữ liệu về điểm trừ giấy phép lái xe của người vi phạm sẽ được cập nhật vào hệ thống cơ sở dữ liệu ngay sau khi quyết định xử phạt có hiệu lực thi hành và thông báo cho người bị trừ điểm giấy phép lái xe biết.\n\n2. Giấy phép lái xe chưa bị trừ hết điểm và không bị trừ điểm trong thời hạn 12 tháng từ ngày bị trừ điểm gần nhất thì được phục hồi đủ 12 điểm.\n"
+      ],
+      "ground_truth": "Giấy phép lái xe chưa bị trừ hết điểm và không bị trừ điểm trong thời hạn 12 tháng kể từ ngày bị trừ điểm gần nhất thì được phục hồi đủ 12 điểm.",
+      "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+      "retrieved_sources": [
+        "nghi-dinh-168-2024-nd-cp.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.38384250817443616,
+        "context_recall": 1.0,
+        "context_precision": 0.99999999998
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Giấy phép lái xe bị trừ hết điểm thì người lái xe có được tiếp tục điều khiển phương tiện không?",
+      "answer": "Theo quy định tại Điều 58 của Luật 36/2024/QH15, trường hợp giấy phép lái xe bị trừ hết điểm thì người có giấy phép lái xe không được điều khiển phương tiện tham gia giao thông đường bộ theo giấy phép lái xe đó. Sau thời hạn ít nhất là 06 tháng kể từ ngày bị trừ hết điểm, người có giấy phép lái xe mới được tham gia kiểm tra nội dung kiến thức pháp luật về trật tự, an toàn giao thông đường bộ để có thể phục hồi đủ 12 điểm [Luật 36/2024/QH15]. \n\nLuật này có hiệu lực từ ngày 01 tháng 01 năm 2025.",
+      "contexts": [
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 58. Điểm của giấy phép lái xe]\n3. Trường hợp giấy phép lái xe bị trừ hết điểm thì người có giấy phép lái xe không được điều khiển phương tiện tham gia giao thông đường bộ theo giấy phép lái xe đó. Sau thời hạn ít nhất là 06 tháng kể từ ngày bị trừ hết điểm, người có giấy phép lái xe được tham gia kiểm tra nội dung kiến thức pháp luật về trật tự, an toàn giao thông đường bộ theo quy định tại khoản 7 Điều 61 của Luật này do lực lượng Cảnh sát giao thông tổ chức, có kết quả đạt yêu cầu thì được phục hồi đủ 12 điểm.\n\n4. Giấy phép lái xe sau khi đổi, cấp lại, nâng hạng được giữ nguyên số điểm của giấy phép lái xe trước khi đổi, cấp lại, nâng hạng.\n\n5. Người có thẩm quyền xử phạt vi phạm hành chính có thẩm quyền trừ điểm giấy phép lái xe.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 50. Nguyên tắc, thẩm quyền, trình tự, thủ tục trừ điểm giấy phép lái xe]\nd) Trường hợp giấy phép lái xe tích hợp giấy phép lái xe không thời hạn ( xe mô tô, xe tương tự xe mô tô) và giấy phép lái xe có thời hạn (xe ô tô, xe tương tự xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ) thì người có thẩm quyền xử phạt thực hiện trừ điểm đối với giấy phép lái xe không thời hạn khi người điều khiển xe mô tô, xe tương tự xe mô tô hoặc trừ điểm giấy phép lái xe có thời hạn khi người điều khiển xe ô tô, xe tương tự xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ thực hiện hành vi vi phạm hành chính có quy định bị trừ điểm giấy phép lái xe;\n\nđ) Không trừ điểm giấy phép lái xe khi giấy phép lái xe đó đang trong thời hạn bị tước quyền sử dụng giấy phép lái xe.\n\n2. Thẩm quyền trừ điểm giấy phép lái xe\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 18. Xử phạt, trừ điểm giấy phép lái xe các hành vi vi phạm quy định về điều kiện của người điều khiển xe cơ giới]\n9. Phạt tiền từ 18.000.000 đồng đến 20.000.000 đồng đối với người điều khiển xe ô tô và các loại xe tương tự xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ vi phạm một trong các hành vi sau đây:\n\na) Có giấy phép lái xe nhưng không phù hợp với loại xe đang điều khiển hoặc có giấy phép lái xe nhưng đã hết hạn sử dụng từ 01 năm trở lên;\n\nb) Không có giấy phép lái xe hoặc sử dụng giấy phép lái xe đã bị trừ hết điểm hoặc sử dụng giấy phép lái xe không do cơ quan có thẩm quyền cấp, giấy phép lái xe bị tẩy xóa, giấy phép lái xe không còn hiệu lực.\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 89. Quy định chuyển tiếp]\nk) Giấy phép lái xe hạng E được tiếp tục điều khiển xe ô tô chở người trên 29 chỗ (không kể chỗ của người lái xe) và các loại xe quy định cho các giấy phép lái xe hạng B1, B2, C, D quy định tại các điểm đ, e, g, h và i khoản này;\n\nl) Giấy phép lái xe hạng FB2, FD được tiếp tục điều khiển các loại xe quy định cho giấy phép lái xe hạng B2, D quy định tại điểm g và điểm i khoản này khi kéo rơ moóc; giấy phép lái xe hạng FC được tiếp tục điều khiển các loại xe quy định cho giấy phép lái xe hạng C quy định tại điểm h khoản này khi kéo rơ moóc, đầu kéo kéo sơ mi rơ moóc; giấy phép lái xe hạng FE được tiếp tục điều khiển các loại xe quy định cho giấy phép lái xe hạng E quy định tại điểm k khoản này khi kéo rơ moóc hoặc xe ô tô chở khách nối toa.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 18. Xử phạt, trừ điểm giấy phép lái xe các hành vi vi phạm quy định về điều kiện của người điều khiển xe cơ giới]\n7. Phạt tiền từ 6.000.000 đồng đến 8.000.000 đồng đối với người điều khiển xe mô tô hai bánh có dung tích xi-lanh trên 125 cm 3 trở lên hoặc có công suất động cơ điện trên 11 kW, xe mô tô ba bánh thực hiện một trong các hành vi vi phạm sau đây:\n\na) Có giấy phép lái xe nhưng không phù hợp với loại xe đang điều khiển;\n\nb) Không có giấy phép lái xe hoặc sử dụng giấy phép lái xe đã bị trừ hết điểm , giấy phép lái xe không do cơ quan có thẩm quyền cấp, giấy phép lái xe bị tẩy xóa, giấy phép lái xe không còn hiệu lực;\n\nc) Có giấy phép lái xe quốc tế do các nước tham gia Công ước của Liên hợp quốc về Giao thông đường bộ năm 1968 cấp (trừ giấy phép lái xe quốc tế do Việt Nam cấp) nhưng không mang theo giấy phép lái xe quốc gia phù hợp với loại xe được phép điều khiển;\n"
+      ],
+      "ground_truth": "Không. Trường hợp giấy phép lái xe bị trừ hết điểm thì người có giấy phép lái xe không được điều khiển phương tiện tham gia giao thông đường bộ theo giấy phép lái xe đó.",
+      "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+      "retrieved_sources": [
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "nghi-dinh-168-2024-nd-cp.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.3718319984460217,
+        "context_recall": 0.5,
+        "context_precision": 0.99999999998
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Bao nhiêu tuổi thì được điều khiển xe gắn máy?",
+      "answer": "Theo quy định tại Điều 59 của Luật 36/2024/QH15, người đủ 16 tuổi trở lên được phép điều khiển xe gắn máy. Cụ thể, quy định như sau: \"Người đủ 16 tuổi trở lên được điều khiển xe gắn máy\" [Luật 36/2024/QH15]. Luật này có hiệu lực từ ngày 01 tháng 01 năm 2025.",
+      "contexts": [
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 59. Tuổi, sức khỏe của người điều khiển phương tiện tham gia giao thông đường bộ]\n## Điều 59. Tuổi, sức khỏe của người điều khiển phương tiện tham gia giao thông đường bộ\n\n1. Độ tuổi của người lái xe, người điều khiển xe máy chuyên dùng được quy định như sau:\n\na) Người đủ 16 tuổi trở lên được điều khiển xe gắn máy;\n\nb) Người đủ 18 tuổi trở lên được cấp giấy phép lái xe hạng A1, A, B1, B, C1, được cấp chứng chỉ bồi dưỡng kiến thức pháp luật về giao thông đường bộ để điều khiển xe máy chuyên dùng tham gia giao thông đường bộ;\n\nc) Người đủ 21 tuổi trở lên được cấp giấy phép lái xe hạng C, BE;\n\nd) Người đủ 24 tuổi trở lên được cấp giấy phép lái xe hạng D1, D2, C1E, CE;\n\nđ) Người đủ 27 tuổi trở lên được cấp giấy phép lái xe hạng D, D1E, D2E, DE;\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 18. Xử phạt, trừ điểm giấy phép lái xe các hành vi vi phạm quy định về điều kiện của người điều khiển xe cơ giới]\n## Điều 18. Xử phạt, trừ điểm giấy phép lái xe các hành vi vi phạm quy định về điều kiện của người điều khiển xe cơ giới\n\n1. Phạt cảnh cáo người từ đủ 14 tuổi đến dưới 16 tuổi điều khiển xe mô tô, xe gắn máy, các loại xe tương tự xe mô tô và các loại xe tương tự xe gắn máy hoặc điều khiển xe ô tô , điều khiển xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô.\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 59. Tuổi, sức khỏe của người điều khiển phương tiện tham gia giao thông đường bộ]\nđ) Người đủ 27 tuổi trở lên được cấp giấy phép lái xe hạng D, D1E, D2E, DE;\n\ne) Tuổi tối đa của người lái xe ô tô chở người (kể cả xe buýt) trên 29 chỗ (không kể chỗ của người lái xe), xe ô tô chở người giường nằm là đủ 57 tuổi đối với nam, đủ 55 tuổi đối với nữ.\n\n2. Người điều khiển phương tiện tham gia giao thông đường bộ phải bảo đảm điều kiện sức khỏe phù hợp với từng loại phương tiện được phép điều khiển. Bộ trưởng Bộ Y tế quy định về tiêu chuẩn sức khỏe, việc khám sức khỏe đối với người lái xe, người điều khiển xe máy chuyên dùng; việc khám sức khỏe định kỳ đối với người hành nghề lái xe ô tô; xây dựng cơ sở dữ liệu về sức khỏe của người lái xe, người điều khiển xe máy chuyên dùng.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 18. Xử phạt, trừ điểm giấy phép lái xe các hành vi vi phạm quy định về điều kiện của người điều khiển xe cơ giới]\n4. Phạt tiền từ 400.000 đồng đến 600.000 đồng đối với một trong các hành vi vi phạm sau đây:\n\na) Người từ đủ 16 tuổi đến dưới 18 tuổi điều khiển xe mô tô có dung tích xi-lanh từ 50 cm 3 trở lên hoặc có công suất động cơ điện từ 04 kW trở lên;\n\nb) Người điều khiển xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô kinh doanh vận tải không mang theo chứng nhận bảo hiểm bắt buộc trách nhiệm dân sự của chủ xe cơ giới còn hiệu lực;\n\nc) Người điều khiển xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô không có chứng nhận bảo hiểm bắt buộc trách nhiệm dân sự của chủ xe cơ giới còn hiệu lực.\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 31. Người điều khiển, người được chở, hàng hóa xếp trên xe thô sơ]\n## Điều 31. Người điều khiển, người được chở, hàng hóa xếp trên xe thô sơ\n\n1. Người điều khiển xe đạp, xe đạp máy chỉ được chở một người, trừ trường hợp chở thêm một trẻ em dưới 07 tuổi thì được chở tối đa hai người.\n\n2. Người điều khiển xe đạp, xe đạp máy không được thực hiện các hành vi quy định tại khoản 3 Điều 33 của Luật này; người được chở trên xe đạp, xe đạp máy khi tham gia giao thông đường bộ không được thực hiện các hành vi quy định tại khoản 4 Điều 33 của Luật này.\n\n3. Người điều khiển, người được chở trên xe đạp máy phải đội mũ bảo hiểm theo đúng quy chuẩn kỹ thuật quốc gia và cài quai đúng quy cách.\n"
+      ],
+      "ground_truth": "Người đủ 16 tuổi trở lên được điều khiển xe gắn máy.",
+      "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+      "retrieved_sources": [
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 0.3333333333333333,
+        "answer_relevancy": 0.45892721381036744,
+        "context_recall": 1.0,
+        "context_precision": 0.99999999998
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Bao nhiêu tuổi thì được cấp giấy phép lái xe hạng A1, A, B1, B, C1?",
+      "answer": "Theo quy định tại Điều 59 của Luật 36/2024/QH15, độ tuổi để được cấp giấy phép lái xe như sau:\n\n- Người đủ 16 tuổi trở lên được điều khiển xe gắn máy (hạng A1).\n- Người đủ 18 tuổi trở lên được cấp giấy phép lái xe hạng A1, A, B1, B, C1.\n\nThông tin này có hiệu lực từ ngày 01 tháng 01 năm 2025. [Luật 36/2024/QH15]",
+      "contexts": [
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 59. Tuổi, sức khỏe của người điều khiển phương tiện tham gia giao thông đường bộ]\n## Điều 59. Tuổi, sức khỏe của người điều khiển phương tiện tham gia giao thông đường bộ\n\n1. Độ tuổi của người lái xe, người điều khiển xe máy chuyên dùng được quy định như sau:\n\na) Người đủ 16 tuổi trở lên được điều khiển xe gắn máy;\n\nb) Người đủ 18 tuổi trở lên được cấp giấy phép lái xe hạng A1, A, B1, B, C1, được cấp chứng chỉ bồi dưỡng kiến thức pháp luật về giao thông đường bộ để điều khiển xe máy chuyên dùng tham gia giao thông đường bộ;\n\nc) Người đủ 21 tuổi trở lên được cấp giấy phép lái xe hạng C, BE;\n\nd) Người đủ 24 tuổi trở lên được cấp giấy phép lái xe hạng D1, D2, C1E, CE;\n\nđ) Người đủ 27 tuổi trở lên được cấp giấy phép lái xe hạng D, D1E, D2E, DE;\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 57. Giấy phép lái xe]\nc) Hạng B1 cấp cho người lái xe mô tô ba bánh và các loại xe quy định cho giấy phép lái xe hạng A1;\n\nd) Hạng B cấp cho người lái xe ô tô chở người đến 08 chỗ (không kể chỗ của người lái xe); xe ô tô tải và ô tô chuyên dùng có khối lượng toàn bộ theo thiết kế đến 3.500 kg; các loại xe ô tô quy định cho giấy phép lái xe hạng B kéo rơ moóc có khối lượng toàn bộ theo thiết kế đến 750 kg;\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 57. Giấy phép lái xe]\n2. Người khuyết tật điều khiển xe mô tô ba bánh dùng cho người khuyết tật được cấp giấy phép lái xe hạng A1.\n\nNgười khuyết tật điều khiển xe ô tô số tự động có kết cấu phù hợp với tình trạng khuyết tật thì được cấp giấy phép lái xe hạng B.\n\n3. Người điều khiển xe chở hàng bốn bánh có gắn động cơ, xe chở người bốn bánh có gắn động cơ phải sử dụng giấy phép lái xe có hạng phù hợp với xe ô tô tải hoặc xe ô tô chở người tương ứng.\n\n4. Người điều khiển xe ô tô có thiết kế, cải tạo với số chỗ ít hơn xe cùng loại, kích thước giới hạn tương đương phải sử dụng giấy phép lái xe có hạng phù hợp với xe ô tô cùng loại, kích thước giới hạn tương đương và có số chỗ nhiều nhất.\n\n5. Thời hạn của giấy phép lái xe được quy định như sau:\n\na) Giấy phép lái xe các hạng A1, A, B1 không thời hạn;\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 89. Quy định chuyển tiếp]\nc) Giấy phép lái xe hạng A3 được tiếp tục điều khiển xe mô tô ba bánh, các loại xe quy định cho giấy phép lái xe hạng A1 quy định tại điểm a khoản này và các xe tương tự;\n\nd) Giấy phép lái xe hạng A4 được tiếp tục điều khiển máy kéo có trọng tải đến 1.000 kg;\n\nđ) Giấy phép lái xe hạng B1 số tự động cấp cho người không hành nghề lái xe được tiếp tục điều khiển xe ô tô số tự động chở người đến 08 chỗ (không kể chỗ của người lái xe); xe ô tô tải, kể cả ô tô tải chuyên dùng số tự động có trọng tải dưới 3.500 kg;\n\ne) Giấy phép lái xe hạng B1 cấp cho người không hành nghề lái xe được tiếp tục điều khiển xe ô tô chở người đến 08 chỗ (không kể chỗ của người lái xe); xe ô tô tải, máy kéo có trọng tải dưới 3.500 kg;\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 57. Giấy phép lái xe]\n## Điều 57. Giấy phép lái xe\n\n1. Giấy phép lái xe bao gồm các hạng sau đây: tô tải và ô tô chuyên dùng có khối lượng toàn bộ theo thiết kế\n\na) Hạng A1 cấp cho người lái xe mô tô hai bánh có dung tích xi-lanh đến 125 cm 3 hoặc có công suất động cơ điện đến 11 kW;\n\nb) Hạng A cấp cho người lái xe mô tô hai bánh có dung tích xi-lanh trên 125 cm 3 hoặc có công suất động cơ điện trên 11 kW và các loại xe quy định cho giấy phép lái xe hạng A1;\n\nc) Hạng B1 cấp cho người lái xe mô tô ba bánh và các loại xe quy định cho giấy phép lái xe hạng A1;\n"
+      ],
+      "ground_truth": "Người đủ 18 tuổi trở lên được cấp giấy phép lái xe hạng A1, A, B1, B, C1.",
+      "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+      "retrieved_sources": [
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.43172659019242293,
+        "context_recall": 1.0,
+        "context_precision": 0.99999999998
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Khi xảy ra tai nạn giao thông đường bộ, người điều khiển phương tiện gây tai nạn có trách nhiệm gì?",
+      "answer": "Khi xảy ra tai nạn giao thông đường bộ, người điều khiển phương tiện gây tai nạn có trách nhiệm như sau:\n\n1. Dừng ngay phương tiện, cảnh báo nguy hiểm, giữ nguyên hiện trường, trợ giúp người bị nạn và báo tin cho cơ quan Công an, cơ sở khám bệnh, chữa bệnh hoặc Ủy ban nhân dân nơi gần nhất.\n2. Ở lại hiện trường vụ tai nạn cho đến khi người của cơ quan Công an đến, trừ trường hợp phải đi cấp cứu hoặc xét thấy bị đe dọa đến tính mạng, sức khỏe nhưng phải đến trình báo ngay cơ quan Công an, Ủy ban nhân dân nơi gần nhất.\n3. Cung cấp thông tin xác định danh tính về bản thân, người liên quan đến vụ tai nạn và thông tin liên quan của vụ tai nạn cho cơ quan có thẩm quyền.\n\nCác quy định này được nêu rõ trong Luật 36/2024/QH15, có hiệu lực từ ngày 01 tháng 01 năm 2025 [Luật 36/2024/QH15].",
+      "contexts": [
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 80. Trách nhiệm của người điều khiển phương tiện tham gia giao thông đường bộ gây ra tai nạn giao thông đường bộ, người liên quan và người có mặt tại hiện trường vụ tai nạn giao thông đường bộ]\n4. Người điều khiển phương tiện tham gia giao thông đường bộ khác khi đi qua nơi xảy ra vụ tai nạn giao thông đường bộ có trách nhiệm chở người bị thương đi cấp cứu. Xe ưu tiên, xe chở người được hưởng quyền ưu đãi, miễn trừ ngoại giao không bắt buộc thực hiện quy định tại khoản này.\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 80. Trách nhiệm của người điều khiển phương tiện tham gia giao thông đường bộ gây ra tai nạn giao thông đường bộ, người liên quan và người có mặt tại hiện trường vụ tai nạn giao thông đường bộ]\n## Điều 80. Trách nhiệm của người điều khiển phương tiện tham gia giao thông đường bộ gây ra tai nạn giao thông đường bộ, người liên quan và người có mặt tại hiện trường vụ tai nạn giao thông đường bộ\n\n1. Người điều khiển phương tiện tham gia giao thông đường bộ gây ra tai nạn giao thông đường bộ, người liên quan đến vụ tai nạn giao thông đường bộ có trách nhiệm sau đây:\n\na) Dừng ngay phương tiện, cảnh báo nguy hiểm, giữ nguyên hiện trường, trợ giúp người bị nạn và báo tin cho cơ quan Công an, cơ sở khám bệnh, chữa bệnh hoặc Ủy ban nhân dân nơi gần nhất;\n",
+        "[Document 1 | Source: thong-tu-72-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 72/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 11. Ghi lời khai của người điều khiển phương tiện tham gia giao thông đường bộ, người bị nạn, người chứng kiến và những người có liên quan khác trong vụ tai nạn giao thông đường bộ]\n2. Ghi lời khai của những người điều khiển phương tiện liên quan đến vụ tai nạn giao thông đường bộ: thông tin về giấy phép lái xe; vị trí của phương tiện giao thông trên mặt đường, hướng chuyển động, tốc độ, các thao tác kỹ thuật; nhận biết của người điều khiển phương tiện giao thông trước khi vụ tai nạn giao thông đường bộ xảy ra và việc xử lý của họ như thế nào trước, trong và sau khi vụ tai nạn giao thông đường bộ xảy ra; những tình tiết có liên quan đến vụ tai nạn giao thông đường bộ; diễn biến, nguyên nhân, hậu quả của vụ tai nạn giao thông đường bộ. Nếu người điều khiển phương tiện có nồng độ cồn, chất ma túy hoặc các chất kích thích khác mà pháp luật cấm sử dụng thì phải hỏi ngay thời điểm sử dụng, trước hay sau khi xảy ra vụ tai nạn giao thông đường bộ.\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 80. Trách nhiệm của người điều khiển phương tiện tham gia giao thông đường bộ gây ra tai nạn giao thông đường bộ, người liên quan và người có mặt tại hiện trường vụ tai nạn giao thông đường bộ]\nb) Ở lại hiện trường vụ tai nạn giao thông đường bộ cho đến khi người của cơ quan Công an đến, trừ trường hợp phải đi cấp cứu, đưa người bị nạn đi cấp cứu hoặc xét thấy bị đe dọa đến tính mạng, sức khỏe nhưng phải đến trình báo ngay cơ quan Công an, Ủy ban nhân dân nơi gần nhất;\n\nc) Cung cấp thông tin xác định danh tính về bản thân, người liên quan đến vụ tai nạn giao thông đường bộ và thông tin liên quan của vụ tai nạn giao thông đường bộ cho cơ quan có thẩm quyền.\n\n2. Người có mặt tại nơi xảy ra vụ tai nạn giao thông đường bộ có trách nhiệm sau đây:\n\na) Giúp đỡ, cứu chữa kịp thời người bị nạn;\n\nb) Báo tin ngay cho cơ quan Công an, cơ sở khám bệnh, chữa bệnh hoặc Ủy ban nhân dân nơi gần nhất;\n\nc) Tham gia bảo vệ hiện trường;\n\nd) Tham gia bảo vệ tài sản của người bị nạn;\n",
+        "[Document 1 | Source: thong-tu-72-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 72/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 11. Ghi lời khai của người điều khiển phương tiện tham gia giao thông đường bộ, người bị nạn, người chứng kiến và những người có liên quan khác trong vụ tai nạn giao thông đường bộ]\na) Nội dung lời khai phải làm rõ những vấn đề sau đây: mối quan hệ của người chứng kiến với các bên liên quan đến vụ tai nạn giao thông đường bộ; vị trí, khoảng cách giữa người chứng kiến với nơi xảy ra vụ tai nạn giao thông đường bộ, thời tiết, ánh sáng khi xảy ra tai nạn, do đâu mà họ biết về vụ tai nạn giao thông đường bộ; hướng chuyển động của các bên liên quan đến vụ tai nạn giao thông đường bộ (người và phương tiện); phần đường và tốc độ, thao tác xử lý của người điều khiển phương tiện, người tham gia giao thông khác trước, trong và sau khi xảy ra tai nạn giao thông đường bộ; vị trí của tang vật, phương tiện, người sau khi xảy ra tai nạn giao thông đường bộ, vị trí đó có bị thay đổi không, nếu có thay đổi, xê dịch do ai làm, vì sao? thay đổi như thế nào; trạng thái tâm lý của người\n"
+      ],
+      "ground_truth": "Dừng ngay phương tiện, cảnh báo nguy hiểm, giữ nguyên hiện trường, trợ giúp người bị nạn và báo tin cho cơ quan Công an, cơ sở khám bệnh, chữa bệnh hoặc Ủy ban nhân dân nơi gần nhất; ở lại hiện trường cho đến khi người của cơ quan Công an đến, trừ trường hợp phải đi cấp cứu hoặc bị đe dọa tính mạng, sức khỏe.",
+      "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+      "retrieved_sources": [
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "thong-tu-72-2024-tt-bca.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "thong-tu-72-2024-tt-bca.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 0.6923076923076923,
+        "answer_relevancy": 0.5184357512170236,
+        "context_recall": 1.0,
+        "context_precision": 0.99999999998
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Người lái xe và người được chở trên xe ô tô có bắt buộc thắt dây đai an toàn không?",
+      "answer": "Có, người lái xe và người được chở trên xe ô tô phải thắt dây đai an toàn tại những chỗ có trang bị dây đai an toàn khi tham gia giao thông đường bộ. Điều này được quy định tại Điều 10 của Luật 36/2024/QH15, có hiệu lực từ ngày 01 tháng 01 năm 2025: \"Người lái xe và người được chở trên xe ô tô phải thắt dây đai an toàn tại những chỗ có trang bị dây đai an toàn khi tham gia giao thông đường bộ\" [Luật 36/2024/QH15].",
+      "contexts": [
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy tắc giao thông đường bộ]\nh) Điều khiển xe ô tô kéo theo xe khác, vật khác (trừ trường hợp kéo theo một rơ moóc, sơ mi rơ moóc hoặc một xe ô tô, xe máy chuyên dùng khác khi xe này không tự chạy được); điều khiển xe ô tô đẩy xe khác, vật khác; điều khiển xe kéo rơ moóc, sơ mi rơ moóc kéo thêm rơ moóc hoặc xe khác, vật khác; không nối chắc chắn, an toàn giữa xe kéo và xe được kéo khi kéo nhau;\n\ni) Chở người trên xe được kéo, trừ người điều khiển;\n\nk ) Không thắt dây đai an toàn khi điều khiển xe chạy trên đường;\n\nl ) Chở người trên xe ô tô không thắt dây đai an toàn (tại vị trí có trang bị dây đai an toàn) khi xe đang chạy;\n",
+        "[Document 1 | Source: luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md | Type: legal | Trích dẫn: Luật 36/2024/QH15 | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 10. Quy tắc chung]\n## Điều 10. Quy tắc chung\n\n1. Người tham gia giao thông đường bộ phải đi bên phải theo chiều đi của mình, đi đúng làn đường, phần đường quy định, chấp hành báo hiệu đường bộ và các quy tắc giao thông đường bộ khác.\n\n2. Người lái xe và người được chở trên xe ô tô phải thắt dây đai an toàn tại những chỗ có trang bị dây đai an toàn khi tham gia giao thông đường bộ.\n\n3. Khi chở trẻ em dưới 10 tuổi và chiều cao dưới 1,35 mét trên xe ô tô không được cho trẻ em ngồi cùng hàng ghế với người lái xe, trừ loại xe ô tô chỉ có một hàng ghế; người lái xe phải sử dụng, hướng dẫn sử dụng thiết bị an toàn phù hợp cho trẻ em.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy tắc giao thông đường bộ]\nl ) Chở người trên xe ô tô không thắt dây đai an toàn (tại vị trí có trang bị dây đai an toàn) khi xe đang chạy;\n\nm ) Chở trẻ em dưới 10 tuổi và chiều cao dưới 1,35 mét trên xe ô tô ngồi cùng hàng ghế với người lái xe (trừ loại xe ô tô chỉ có một hàng ghế) hoặc không sử dụng thiết bị an toàn phù hợp cho trẻ em theo quy định;\n\nn ) Chạy trong hầm đường bộ không sử dụng đèn chiếu sáng gần;\n\no ) Điều khiển xe chạy dưới tốc độ tối thiểu trên đoạn đường bộ có quy định tốc độ tối thiểu cho phép;\n\np ) Điều khiển xe chạy tốc độ thấp hơn các xe khác đi cùng chiều mà không đi về làn đường bên phải chiều đi của mình, trừ trường hợp các xe khác đi cùng chiều chạy quá tốc độ quy định.\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 20. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô chở hành khách, ô tô chở người và các loại xe tương tự xe ô tô chở hành khách vi phạm quy định về bảo đảm trật tự, an toàn giao thông]\n3. Phạt tiền từ 600.000 đồng đến 800.000 đồng đối với một trong các hành vi vi phạm sau đây:\n\na) Không đóng cửa lên xuống khi xe đang chạy;\n\nb) Để người ngồi trên xe khi xe xuống phà, đang trên phà và khi lên bến (trừ người lái xe, trẻ em, phụ nữ mang thai, người già yếu, người bệnh, người khuyết tật);\n\nc) Không chạy đúng tuyến đường, lịch trình, hành trình vận tải được phép hoạt động theo quy định;\n\nd) Để người mắc võng nằm trên xe khi xe đang chạy;\n\nđ) Sắp xếp, chằng buộc hành lý, hàng hóa không bảo đảm an toàn; để rơi hành lý, hàng hóa trên xe xuống đường; để hàng hóa trong khoang chở hành khách;\n\ne) Chở hành lý, hàng hóa vượt quá kích thước bao ngoài của xe;\n\ng) Điều khiển xe vận tải hành khách không có nhân viên phục vụ trên xe đối với những xe quy định phải có nhân viên phục vụ;\n",
+        "[Document 1 | Source: nghi-dinh-168-2024-nd-cp.md | Type: legal | Trích dẫn: Nghị định 168/2024/NĐ-CP | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 6. Xử phạt, trừ điểm giấy phép lái xe của người điều khiển xe ô tô, xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ và các loại xe tương tự xe ô tô vi phạm quy tắc giao thông đường bộ]\nb ) Điều khiển xe chở người bốn bánh có gắn động cơ, xe chở hàng bốn bánh có gắn động cơ đi vào đường cao tốc;\n\nc ) Dừng xe, đỗ xe trên đường cao tốc không đúng nơi quy định; không có báo hiệu bằng đèn khẩn cấp khi gặp sự cố kỹ thuật hoặc bất khả kháng khác buộc phải dừng xe, đỗ xe ở làn dừng xe khẩn cấp trên đường cao tốc; không có báo hiệu bằng đèn khẩn cấp, không đặt biển cảnh báo \"Chú ý xe đỗ\" (hoặc đèn cảnh báo) về phía sau xe khoảng cách tối thiểu 150 mét khi dừng xe, đỗ xe trong trường hợp gặp sự cố kỹ thuật hoặc bất khả kháng khác buộc phải dừng xe, đỗ xe trên một phần làn đường xe chạy trên đường cao tốc .\n"
+      ],
+      "ground_truth": "Có. Người lái xe và người được chở trên xe ô tô phải thắt dây đai an toàn tại những chỗ có trang bị dây đai an toàn khi tham gia giao thông đường bộ.",
+      "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+      "retrieved_sources": [
+        "nghi-dinh-168-2024-nd-cp.md",
+        "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md",
+        "nghi-dinh-168-2024-nd-cp.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.2659485521119403,
+        "context_recall": 1.0,
+        "context_precision": 0.99999999998
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Cán bộ Cảnh sát giao thông làm nhiệm vụ điều tra, xác minh, giải quyết tai nạn giao thông đường bộ phải đạt tiêu chuẩn gì?",
+      "answer": "Cán bộ Cảnh sát giao thông làm nhiệm vụ điều tra, xác minh, giải quyết tai nạn giao thông đường bộ phải đạt các tiêu chuẩn sau:\n\n1. Có trình độ đại học An ninh, đại học Cảnh sát hoặc cử nhân luật trở lên. Trường hợp tốt nghiệp đại học các trường ngoài ngành Công an, phải được đào tạo, bồi dưỡng nghiệp vụ An ninh, Cảnh sát theo quy định.\n2. Có thời gian công tác trong lực lượng Cảnh sát giao thông từ 06 tháng trở lên.\n3. Đã được công nhận hoàn thành tập huấn, bồi dưỡng nghiệp vụ điều tra, giải quyết tai nạn giao thông đường bộ [Thông tư 72/2024/TT-BCA]. \n\nThông tư này có hiệu lực từ ngày 01 tháng 01 năm 2025.",
+      "contexts": [
+        "[Document 1 | Source: thong-tu-72-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 72/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 3. Tiêu chuẩn của cán bộ Cảnh sát giao thông làm nhiệm vụ điều tra, xác minh, giải quyết tai nạn giao thông đường bộ và phân công cán bộ điều tra, xác minh, giải quyết vụ tai nạn giao thông đường bộ]\nc) Đã được công nhận hoàn thành tập huấn, bồi dưỡng nghiệp vụ điều tra, giải quyết tai nạn giao thông đường bộ;\n\nd) Cán bộ Cảnh sát giao thông đáp ứng tiêu chuẩn quy định tại các điểm a, b và c Khoản này là cán bộ thụ lý chính;\n\nđ) Cán bộ Cảnh sát giao thông chưa đáp ứng tiêu chuẩn quy định tại điểm a Khoản này nhưng đáp ứng tiêu chuẩn quy định tại các điểm b, c Khoản này là cán bộ hỗ trợ.\n\n2. Phân công cán bộ điều tra, xác minh, giải quyết vụ tai nạn giao thông đường bộ\n\na) Khi phân công cán bộ thụ lý điều tra, xác minh, giải quyết vụ tai nạn giao thông đường bộ phải có ít nhất 01 cán bộ thụ lý chính. Cán bộ thụ lý chính chịu trách nhiệm chung, cán bộ hỗ trợ (nếu có) chịu trách nhiệm đối với các nhiệm vụ được phân công;\n",
+        "[Document 1 | Source: thong-tu-72-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 72/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 3. Tiêu chuẩn của cán bộ Cảnh sát giao thông làm nhiệm vụ điều tra, xác minh, giải quyết tai nạn giao thông đường bộ và phân công cán bộ điều tra, xác minh, giải quyết vụ tai nạn giao thông đường bộ]\nb) Cán bộ được phân công thụ lý điều tra, xác minh, giải quyết vụ tai nạn giao thông đường bộ thực hiện theo quy định tại Điều 83 Luật Trật tự an toàn giao thông đường bộ năm 2024, Thông tư này và các quy định của pháp luật khác có liên quan đến hoạt động điều tra, xác minh, giải quyết tai nạn giao thông đường bộ.\n",
+        "[Document 1 | Source: giai-quyet-tai-nan-giao-thong-thu-tuc-hanh-chinh.md | Type: news | Trích dẫn: Giải quyết vụ tai nạn giao thông đường bộ theo thủ tục hành chính — xaydungchinhsach.chinhphu.vn | Điều/Mục: Giải quyết vụ tai nạn giao thông đường bộ theo thủ tục hành chính]\nh) Trong quá trình điều tra, xác minh có thể đề xuất trưng cầu giám định, yêu cầu định giá tài sản.\n\n2. Cán bộ Cảnh sát giao thông được phân công đến hiện trường tiến hành các biện pháp điều tra, xác minh, giải quyết vụ tai nạn giao thông đường bộ phải lập Biên bản vụ việc theo Mẫu số 02/TNĐB ban hành kèm theo Thông tư này. Trong thời hạn 24 giờ, kể từ khi lập biên bản vụ việc, cán bộ Cảnh sát giao thông lập biên bản phải báo cáo lãnh đạo có thẩm quyền để ra Quyết định phân công cán bộ điều tra, xác minh, giải quyết vụ tai nạn giao thông đường bộ theo Mẫu số 04/TNĐB ban hành kèm theo Thông tư này và lập Kế hoạch điều tra, xác minh, giải quyết vụ tai nạn giao thông đường bộ theo Mẫu số 05/TNĐB ban hành kèm theo Thông tư này được lãnh đạo có thẩm quyền phê duyệt.\n",
+        "[Document 1 | Source: thong-tu-72-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 72/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 3. Tiêu chuẩn của cán bộ Cảnh sát giao thông làm nhiệm vụ điều tra, xác minh, giải quyết tai nạn giao thông đường bộ và phân công cán bộ điều tra, xác minh, giải quyết vụ tai nạn giao thông đường bộ]\n### Điều 3. Tiêu chuẩn của cán bộ Cảnh sát giao thông làm nhiệm vụ điều tra, xác minh, giải quyết tai nạn giao thông đường bộ và phân công cán bộ điều tra, xác minh, giải quyết vụ tai nạn giao thông đường bộ\n\n1. Tiêu chuẩn của cán bộ Cảnh sát giao thông làm nhiệm vụ điều tra, xác minh, giải quyết tai nạn giao thông đường bộ\n\na) Có trình độ đại học An ninh, đại học Cảnh sát hoặc cử nhân luật trở lên. Trường hợp tốt nghiệp đại học các trường ngoài ngành Công an đã được đào tạo, bồi dưỡng nghiệp vụ An ninh, Cảnh sát theo quy định;\n\nb) Có thời gian công tác trong lực lượng Cảnh sát giao thông từ 06 tháng trở lên;\n\nc) Đã được công nhận hoàn thành tập huấn, bồi dưỡng nghiệp vụ điều tra, giải quyết tai nạn giao thông đường bộ;\n",
+        "[Document 1 | Source: thong-tu-72-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 72/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 6. Giải quyết ban đầu khi cán bộ Cảnh sát giao thông làm nhiệm vụ tuần tra, kiểm soát phát hiện vụ tai nạn giao thông đường bộ hoặc được phân công đến hiện trường vụ tai nạn giao thông đường bộ]\n### Điều 6. Giải quyết ban đầu khi cán bộ Cảnh sát giao thông làm nhiệm vụ tuần tra, kiểm soát phát hiện vụ tai nạn giao thông đường bộ hoặc được phân công đến hiện trường vụ tai nạn giao thông đường bộ\n\nCán bộ Cảnh sát giao thông làm nhiệm vụ tuần tra, kiểm soát phát hiện vụ tai nạn giao thông đường bộ hoặc được lãnh đạo có thẩm quyền phân công đến hiện trường phải thực hiện những nhiệm vụ sau:\n\n1. Tổ chức cứu nạn, cứu hộ\n"
+      ],
+      "ground_truth": "Có trình độ đại học An ninh, đại học Cảnh sát hoặc cử nhân luật trở lên; có thời gian công tác trong lực lượng Cảnh sát giao thông từ 06 tháng trở lên.",
+      "expected_source": "thong-tu-72-2024-tt-bca.md",
+      "retrieved_sources": [
+        "thong-tu-72-2024-tt-bca.md",
+        "thong-tu-72-2024-tt-bca.md",
+        "giai-quyet-tai-nan-giao-thong-thu-tuc-hanh-chinh.md",
+        "thong-tu-72-2024-tt-bca.md",
+        "thong-tu-72-2024-tt-bca.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.5619272065106727,
+        "context_recall": 1.0,
+        "context_precision": 0.99999999998
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Hồ sơ cấp mới chứng nhận đăng ký xe, biển số xe gồm những giấy tờ gì?",
+      "answer": "Hồ sơ cấp mới chứng nhận đăng ký xe, biển số xe (đăng ký xe lần đầu) gồm các giấy tờ sau:\n\n1. Giấy khai đăng ký xe.\n2. Giấy tờ của chủ xe.\n3. Chứng nhận nguồn gốc xe.\n4. Chứng nhận quyền sở hữu hợp pháp.\n5. Chứng từ hoàn thành nghĩa vụ tài chính.\n\nThông tin này được quy định tại Điều 8 của Thông tư 79/2024/TT-BCA, có hiệu lực từ ngày 01 tháng 01 năm 2025 [Thông tư 79/2024/TT-BCA].",
+      "contexts": [
+        "[Document 1 | Source: thong-tu-79-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 79/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 8. Hồ sơ cấp mới chứng nhận đăng ký xe, biển số xe]\n### Điều 8. Hồ sơ cấp mới chứng nhận đăng ký xe, biển số xe\n\nCấp mới chứng nhận đăng ký xe, biển số xe (sau đây gọi chung là đăng ký xe lần đầu) gồm các giấy tờ sau:\n\n1. Giấy khai đăng ký xe.\n\n2. Giấy tờ của chủ xe.\n\n3. Chứng nhận nguồn gốc xe.\n\n4. Chứng nhận quyền sở hữu hợp pháp.\n\n5. Chứng từ hoàn thành nghĩa vụ tài chính.\n",
+        "[Document 1 | Source: thong-tu-79-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 79/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 16. Hồ sơ đăng ký sang tên xe]\n2. Hồ sơ đăng ký\n\na) Giấy khai đăng ký xe;\n\nb) Giấy tờ của chủ xe quy định;\n\nc) Chứng từ chuyển quyền sở hữu xe theo quy định;\n\nd) Chứng từ lệ phí trước bạ xe theo quy định;\n\nđ) Chứng nhận thu hồi chứng nhận đăng ký xe, biển số xe.\n",
+        "[Document 1 | Source: thong-tu-79-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 79/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 33. Giải quyết một số trường hợp khi đăng ký, cấp biển số xe]\nTrường hợp xe chưa đăng ký thì bổ sung hồ sơ đăng ký theo quy định tại Điều 8 Thông tư này.\n\nTrường hợp xe đã đăng ký thì người mua xe thực hiện thu hồi chứng nhận đăng ký xe, biển số xe theo quy định tại Điều 16 Thông tư này (nếu không còn chứng nhận đăng ký xe thì phải có văn bản xác nhận của tổ chức tín dụng) và nộp bổ sung hồ sơ đăng ký xe gồm: Giấy khai đăng ký xe, giấy tờ của chủ xe theo quy định tại Điều 10 Thông tư này, chứng từ nộp lệ phí trước bạ xe theo quy định, chứng nhận thu hồi chứng nhận đăng ký xe, biển số xe;\n",
+        "[Document 1 | Source: thong-tu-79-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 79/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 20. Thủ tục đổi chứng nhận đăng ký xe, biển số xe]\na) Chủ xe nộp chứng nhận đăng ký xe và đơn đề nghị xác nhận hồ sơ xe (theo mẫu ĐKX13 ban hành kèm theo Thông tư này) cho cơ quan đăng ký xe quản lý hồ sơ xe đó để được cấp giấy xác nhận hồ sơ xe;\n\nb) Chủ xe kê khai giấy khai đăng ký xe và nộp giấy xác nhận hồ sơ xe cho cơ quan đăng ký xe tại địa chỉ mới theo quy định tại Điều 4 Thông tư này để đổi chứng nhận đăng ký xe.\n",
+        "[Document 1 | Source: thong-tu-79-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 79/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 19. Hồ sơ đổi chứng nhận đăng ký xe, biển số xe]\n### Điều 19. Hồ sơ đổi chứng nhận đăng ký xe, biển số xe\n\n1. Giấy khai đăng ký xe.\n\n2. Giấy tờ của chủ xe theo quy định tại Điều 10 Thông tư này.\n\n3. Chứng nhận đăng ký xe (trường hợp đổi chứng nhận đăng ký xe) hoặc biển số xe (trường hợp đổi biển số xe).\n\n4. Một số giấy tờ khác:\n\na) Xe cải tạo thay đổi tổng thành máy, tổng thành khung thì phải có thêm chứng nhận nguồn gốc, chứng từ nộp lệ phí trước bạ, chứng từ chuyển quyền sở hữu của tổng thành máy hoặc tổng thành khung đó theo quy định. Trường hợp tổng thành máy, tổng thành khung không cùng kiểu loại thì phải có thêm giấy chứng nhận an toàn kỹ thuật và bảo vệ môi trường xe cơ giới, xe máy chuyên dùng cải tạo theo quy định;\n"
+      ],
+      "ground_truth": "Giấy khai đăng ký xe; giấy tờ của chủ xe; chứng nhận nguồn gốc xe; chứng nhận quyền sở hữu hợp pháp; chứng từ hoàn thành nghĩa vụ tài chính.",
+      "expected_source": "thong-tu-79-2024-tt-bca.md",
+      "retrieved_sources": [
+        "thong-tu-79-2024-tt-bca.md",
+        "thong-tu-79-2024-tt-bca.md",
+        "thong-tu-79-2024-tt-bca.md",
+        "thong-tu-79-2024-tt-bca.md",
+        "thong-tu-79-2024-tt-bca.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.5345107232762931,
+        "context_recall": 1.0,
+        "context_precision": 0.99999999998
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Thời hạn cấp mới chứng nhận đăng ký xe là bao lâu?",
+      "answer": "Thời hạn cấp mới chứng nhận đăng ký xe là không quá 02 ngày làm việc, kể từ ngày nhận đủ hồ sơ hợp lệ. Trích dẫn: [Thông tư 79/2024/TT-BCA]. Hiệu lực từ: 2025-01-01.",
+      "contexts": [
+        "[Document 1 | Source: thong-tu-79-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 79/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 7. Thời hạn giải quyết đăng ký xe]\n### Điều 7. Thời hạn giải quyết đăng ký xe\n\n1. Cấp chứng nhận đăng ký xe\n\na) Cấp mới chứng nhận đăng ký xe, cấp chứng nhận đăng ký xe trong trường hợp thay đổi chủ xe, đổi chứng nhận đăng ký xe: Không quá 02 ngày làm việc, kể từ ngày nhận đủ hồ sơ hợp lệ;\n\nb) Cấp lại chứng nhận đăng ký xe: Phải tiến hành xác minh trong thời hạn 30 ngày, kể từ ngày nhận đủ hồ sơ hợp lệ; sau khi xác minh, nếu đủ điều kiện thì cấp lại trong thời hạn 02 ngày làm việc.\n\n2. Cấp biển số xe\n\na) Cấp mới biển số xe: Cấp ngay sau khi nhận đủ hồ sơ hợp lệ;\n\nb) Cấp mới biển số xe trúng đấu giá, đổi biển số xe, cấp biển số xe định danh: Không quá 07 ngày làm việc, kể từ ngày nhận đủ hồ sơ hợp lệ;\n",
+        "[Document 1 | Source: thong-tu-79-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 79/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 35. Thời hạn sử dụng chứng nhận đăng ký xe]\n### Điều 35. Thời hạn sử dụng chứng nhận đăng ký xe\n\n1. Chứng nhận đăng ký xe ô tô tải, ô tô khách, xe cải tạo được ghi theo niên hạn sử dụng theo quy định của pháp luật.\n\n2. Chứng nhận đăng ký xe ô tô, mô tô của người nước ngoài là thành viên của cơ quan đại diện ngoại giao, cơ quan lãnh sự, cơ quan đại diện của tổ chức quốc tế ghi theo thời hạn trên chứng minh thư ngoại giao, chứng minh thư công vụ, chứng minh thư lãnh sự, chứng minh thư lãnh sự danh dự, chứng minh thư (phổ thông) tương ứng; xe của người nước ngoài sinh sống và làm việc tại Việt Nam ghi theo thời hạn trên thẻ thường trú, thẻ tạm trú.\n\n3. Chứng nhận đăng ký xe ô tô, mô tô của cơ quan đại diện ngoại giao, cơ quan lãnh sự, cơ quan đại diện của tổ chức ghi thời hạn lần đầu là 05 năm và được gia hạn 03 năm/lần.\n",
+        "[Document 1 | Source: thong-tu-79-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 79/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 24. Thời hạn có giá trị của chứng nhận đăng ký xe tạm thời]\n4. Khi thực hiện gia hạn, chủ xe kê khai giấy khai đăng ký xe tạm thời trên cổng dịch vụ công hoặc trực tiếp tại cơ quan đăng ký xe.\n\n5. Xe đăng ký tạm thời được phép tham gia giao thông theo thời hạn, tuyến đường và phạm vi hoạt động ghi trong chứng nhận đăng ký xe tạm thời.\n",
+        "[Document 1 | Source: thong-tu-79-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 79/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 24. Thời hạn có giá trị của chứng nhận đăng ký xe tạm thời]\n2. Trường hợp xe phục vụ các sự kiện do Đảng, Nhà nước tổ chức; xe đăng ký ở nước ngoài được cơ quan thẩm quyền cho phép bao gồm cả xe có tay lái bên phải (tay lái nghịch) vào Việt Nam quá cảnh, tạm nhập, tái xuất có thời hạn để tham dự hội nghị, hội chợ, triển lãm, thể dục, thể thao, du lịch: Chứng nhận đăng ký xe tạm thời được ghi theo thời hạn mà cơ quan thẩm quyền cho phép để phục vụ các hoạt động đó.\n\n3. Trường hợp xe chạy thử nghiệm thuộc đối tượng nghiên cứu phát triển có nhu cầu tham gia giao thông đường bộ: Chứng nhận đăng ký xe tạm thời được ghi theo thời hạn đề nghị của cơ quan, tổ chức có xe chạy thử nghiệm, nhưng không quá 6 tháng, trường hợp cần thiết được gia hạn mỗi lần không quá 6 tháng.\n",
+        "[Document 1 | Source: thong-tu-79-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 79/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 24. Thời hạn có giá trị của chứng nhận đăng ký xe tạm thời]\n### Điều 24. Thời hạn có giá trị của chứng nhận đăng ký xe tạm thời\n\n1. Trường hợp xe làm thủ tục thu hồi để tái xuất hoặc chuyển quyền sở hữu và xe đã có chứng nhận chất lượng an toàn kỹ thuật và bảo vệ môi trường, phiếu kiểm tra chất lượng xuất xưởng xe cơ giới, xe máy chuyên dùng để di chuyển từ nhà máy đến kho, cảng hoặc từ kho, cảng, nhà máy, đại lý bán xe đến nơi đăng ký xe hoặc về các đại lý, kho lưu trữ khác: Chứng nhận đăng ký xe tạm thời có giá trị sử dụng 15 ngày; được gia hạn một lần tối đa không quá 15 ngày.\n"
+      ],
+      "ground_truth": "Không quá 02 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ.",
+      "expected_source": "thong-tu-79-2024-tt-bca.md",
+      "retrieved_sources": [
+        "thong-tu-79-2024-tt-bca.md",
+        "thong-tu-79-2024-tt-bca.md",
+        "thong-tu-79-2024-tt-bca.md",
+        "thong-tu-79-2024-tt-bca.md",
+        "thong-tu-79-2024-tt-bca.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 1.0,
+        "answer_relevancy": 0.4720162763488475,
+        "context_recall": 1.0,
+        "context_precision": 0.99999999998
+      },
+      "source_hit": true
+    },
+    {
+      "question": "Cơ quan nào có thẩm quyền đăng ký xe của các đơn vị thuộc cơ quan Bộ Công an?",
+      "answer": "Cơ quan có thẩm quyền đăng ký xe của các đơn vị thuộc cơ quan Bộ Công an là Cục Cảnh sát giao thông. Cụ thể, Cục này sẽ đăng ký xe ô tô, xe máy chuyên dùng của các cơ quan, tổ chức quy định tại Phụ lục số 01 ban hành kèm theo Thông tư này; xe ô tô của cơ quan đại diện ngoại giao, cơ quan đại diện của tổ chức quốc tế có trụ sở tại thành phố Hà Nội và xe ô tô của người nước ngoài làm việc trong cơ quan đó [Thông tư 79/2024/TT-BCA]. Hiệu lực của Thông tư này bắt đầu từ ngày 01 tháng 01 năm 2025.",
+      "contexts": [
+        "[Document 1 | Source: thong-tu-79-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 79/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 4. Cơ quan đăng ký xe]\n### Điều 4. Cơ quan đăng ký xe\n\n1. Cục Cảnh sát giao thông đăng ký xe của các đơn vị thuộc cơ quan Bộ Công an; xe ô tô, xe máy chuyên dùng của các cơ quan, tổ chức quy định tại Phụ lục số 01 ban hành kèm theo Thông tư này; xe ô tô của cơ quan đại diện ngoại giao, cơ quan đại diện của tổ chức quốc tế có trụ sở tại thành phố Hà Nội và xe ô tô của người nước ngoài làm việc trong cơ quan đó.\n\n2. Phòng Cảnh sát giao thông đăng ký các loại xe sau đây (trừ các loại xe quy định tại khoản 1 Điều này):\n",
+        "[Document 1 | Source: thong-tu-79-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 79/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 27. Trách nhiệm của Công an các đơn vị, địa phương trong việc thu hồi chứng nhận đăng ký xe, biển số xe]\nd) Xe đã đăng ký, cấp biển số xe không đúng quy định của pháp luật; xe đã đăng ký nhưng phát hiện hồ sơ xe bị làm giả hoặc có kết luận của cơ quan có thẩm quyền về việc thay đổi trái phép số khung, số máy thì cơ quan đăng ký xe thông báo cho chủ xe biết và tiến hành ra quyết định thu hồi chứng nhận đăng ký xe, biển số xe. Đối với hồ sơ xe có kết luận của cơ quan có thẩm quyền là hồ sơ giả hoặc số máy hoặc số khung bị cắt, hàn, tẩy xóa, đục sửa, đóng lại trái phép thì chuyển cơ quan điều tra làm rõ và xử lý theo quy định của pháp luật.\n\n2. Trách nhiệm của Công an các đơn vị, địa phương và lực lượng chức năng làm nhiệm vụ bảo đảm trật tự, an toàn giao thông\n",
+        "[Document 1 | Source: thong-tu-79-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 79/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 12. Chứng nhận quyền sở hữu hợp pháp]\n3. Đối với xe của cơ quan Công an thanh lý: Quyết định thanh lý xe của cấp có thẩm quyền và hóa đơn theo quy định.\n\n4. Đối với xe của cơ quan Quân đội thanh lý: Văn bản xác nhận xe đã được loại khỏi trang bị quân sự của Cục Xe - Máy, Bộ Quốc phòng và hóa đơn theo quy định.\n",
+        "[Document 1 | Source: thong-tu-79-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 79/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 27. Trách nhiệm của Công an các đơn vị, địa phương trong việc thu hồi chứng nhận đăng ký xe, biển số xe]\n### Điều 27. Trách nhiệm của Công an các đơn vị, địa phương trong việc thu hồi chứng nhận đăng ký xe, biển số xe\n\n1. Trách nhiệm của cơ quan đăng ký xe\n\na) Căn cứ danh sách xe ô tô hết niên hạn sử dụng, xe thải bỏ, xe không được phép lưu hành theo quy định của pháp luật do cơ quan đăng kiểm hoặc cơ quan nhà nước có thẩm quyền cung cấp, cơ quan đăng ký xe phải rà soát, thông báo cho tổ chức, cá nhân có xe để làm thủ tục thu hồi. Trong thời hạn 30 ngày, kể từ ngày thông báo, nếu chủ xe không làm thủ tục thu hồi thì người có thẩm quyền thực hiện thủ tục xử phạt vi phạm hành chính theo quy định;\n",
+        "[Document 1 | Source: thong-tu-79-2024-tt-bca.md | Type: legal | Trích dẫn: Thông tư 79/2024/TT-BCA | Hiệu lực từ: 2025-01-01 | Điều/Mục: Điều 4. Cơ quan đăng ký xe]\na) Công an cấp xã của các huyện, thị xã thuộc thành phố trực thuộc Trung ương đăng ký xe mô tô của tổ chức, cá nhân trong nước có trụ sở, cư trú tại địa phương;\n\nb) Công an cấp xã của các huyện, thị xã, thành phố thuộc tỉnh (trừ Công an cấp xã nơi Phòng Cảnh sát giao thông, Công an huyện, thị xã, thành phố đặt trụ sở) có số lượng đăng ký mới từ 150 xe/năm trở lên (trung bình trong 03 năm gần nhất) thực hiện đăng ký xe mô tô của tổ chức, cá nhân trong nước có trụ sở, cư trú tại địa phương.\n\n5. Đối với cấp xã có địa bàn đặc thù, căn cứ tình hình thực tế số lượng xe đăng ký, tính chất địa bàn, khoảng cách địa lý, Giám đốc Công an tỉnh, thành phố trực thuộc Trung ương (sau đây viết gọn là Công an cấp tỉnh) thống nhất với Cục Cảnh sát giao thông quyết định tổ chức đăng ký xe như sau:\n"
+      ],
+      "ground_truth": "Cục Cảnh sát giao thông.",
+      "expected_source": "thong-tu-79-2024-tt-bca.md",
+      "retrieved_sources": [
+        "thong-tu-79-2024-tt-bca.md",
+        "thong-tu-79-2024-tt-bca.md",
+        "thong-tu-79-2024-tt-bca.md",
+        "thong-tu-79-2024-tt-bca.md",
+        "thong-tu-79-2024-tt-bca.md"
+      ],
+      "retrieval_source": "hybrid",
+      "scores": {
+        "faithfulness": 0.8571428571428571,
+        "answer_relevancy": 0.4826777517268496,
+        "context_recall": 1.0,
+        "context_precision": 0.99999999998
+      },
+      "source_hit": true
+    }
+  ]
+}

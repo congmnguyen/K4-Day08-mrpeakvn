@@ -1,0 +1,9 @@
+# Dependencies CHỈ dùng cho group_project/evaluation/eval_pipeline.py.
+# Tách khỏi requirements.txt để Hugging Face Space không phải build ragas +
+# datasets + langchain (rất nặng và không cần khi chỉ chạy chatbot).
+#
+#   pip install -r requirements.txt -r requirements-eval.txt
+
+ragas==0.1.21
+datasets>=2.14.0
+langchain-openai>=0.1.0

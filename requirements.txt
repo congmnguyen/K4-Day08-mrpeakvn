@@ -1,41 +1,38 @@
+# Dependencies để CHẠY app + test + pipeline Task 1-10.
+# Hugging Face Spaces cài đúng file này, nên chỉ giữ những gì thật sự được import.
+# Dependencies chỉ dùng cho evaluation nằm ở requirements-eval.txt.
+
 # Core
 python-dotenv>=1.0.0
 requests>=2.31.0
+certifi>=2024.2.2
 numpy>=1.24.0
 beautifulsoup4>=4.12.0
-certifi>=2024.2.2
 
 # Task 2 - Crawling
-crawl4ai>=0.3.0
+# Không dùng crawl4ai: nó kéo theo playwright + bộ browser rất nặng, trong khi
+# src/task2_crawl_news.py chỉ cần requests + BeautifulSoup.
 
 # Task 3 - Document conversion
 markitdown[pdf]>=0.1.0
 fpdf2>=2.7.0
+# Task 3 còn cần LibreOffice (`soffice`) ở tầng hệ điều hành để đọc .doc Công báo.
 
 # Task 4 - Chunking & Indexing
 langchain-text-splitters>=0.2.0
 chromadb>=0.5.0
 
-# Task 4/5 - Embedding provider (mac dinh: OpenAI, can OPENAI_API_KEY)
-# openai da co san o muc Task 10 ben duoi, khong can them dependency khac
-
-# Task 6 - BM25 + TF-IDF
-rank-bm25>=0.2.2
-scikit-learn>=1.3.0
-
-# Task 8 - PageIndex
-pageindex>=0.1.0
-
-# Task 10 - Generation
+# Task 4/5/10 - Embedding + Generation (OpenAI)
 openai>=1.30.0
+
+# Task 6 - BM25
+rank-bm25>=0.2.2
+
+# Task 8 - PageIndex (nhánh cloud, tùy chọn)
+pageindex>=0.1.0
 
 # Group project - UI
 streamlit>=1.35.0
 
-# Group project - Evaluation
-ragas==0.1.21
-datasets>=2.14.0
-langchain-openai>=0.1.0
-
-# Testing (dung de cham diem bai ca nhan)
+# Testing (dung de cham diem Task 1-10)
 pytest>=7.0.0

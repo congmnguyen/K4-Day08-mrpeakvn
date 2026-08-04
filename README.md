@@ -63,6 +63,21 @@ Bốn PDF tải từ `datafiles.chinhphu.vn` đều là **bản scan** — MarkI
 - **Conversation memory (multi-turn)**: câu hỏi tiếp nối kiểu *"còn ô tô thì sao?"* không có từ khoá nào để dense/BM25 bám vào, nên `condense_query()` viết lại thành câu độc lập **trước khi** retrieve; lịch sử (6 message gần nhất) vẫn được đưa vào messages để câu trả lời mạch lạc. UI có toggle bật/tắt và nút xóa hội thoại, và hiển thị câu đã condense khi nó khác câu gốc.
 - **Task 8**: không có `PAGEINDEX_API_KEY` nên chạy backend `local_structure` — dựng cây heading từ markdown và trả nguyên một Điều luật. Nhánh PageIndex cloud viết theo signature thật của SDK đã cài nhưng **chưa chạy live**.
 
+### Kết quả Evaluation (RAGAS 0.1.21, 18 câu golden dataset)
+
+| Metric | Hybrid + LLM rerank | Hybrid + RRF thuần | Δ |
+|---|---|---|---|
+| Faithfulness | **0.978** | 0.841 | +0.137 |
+| Answer Relevance | 0.429 | 0.411 | +0.018 |
+| Context Recall | 0.889 | **0.917** | −0.028 |
+| Context Precision | **0.969** | 0.898 | +0.072 |
+| **Average** | **0.816** | 0.766 | +0.050 |
+| Source hit rate | 100% | 100% | — |
+
+Kết luận A/B: bước **LLM rerank đáng chi phí** — `Faithfulness` +0.137 là chênh lệch lớn nhất. Cả hai config đều chạm đúng *tài liệu* ở 18/18 câu; khác biệt nằm ở việc chọn đúng *khoản* nào trong tài liệu, và chọn nhầm khoản của loại phương tiện khác chính là nguồn gốc câu trả lời sai mức phạt.
+
+Lưu ý đọc số: `Answer Relevance` ~0.4 ở cả hai config là **trần của metric này trên tiếng Việt**, không phải chất lượng thật — RAGAS sinh câu hỏi ngược từ câu trả lời rồi so cosine, và bộ phân loại "noncommittal" đôi khi bắn nhầm thành đúng 0.0. Chi tiết + worst performers: `group_project/evaluation/results.md`.
+
 ### Về 4 test bị skip
 
 `pytest tests/test_individual.py -q` → **31 passed, 4 skipped**. Bốn skip còn lại đều do câu hỏi mẫu trong test suite là tiếng Anh chủ đề e-commerce (`"payment methods"`, `"seller listing regulations"`, `"ecommerce return policy"`) trong khi corpus là tiếng Việt về giao thông:
@@ -139,6 +154,8 @@ Tìm và tải về **tối thiểu 3 văn bản pháp luật** dạng PDF/DOCX 
 Crawl **tối thiểu 5 bài viết chính thức** giải thích quy tắc, mức phạt và thủ tục giao thông.
 
 **Thư viện khuyến nghị:** [Crawl4AI](https://github.com/unclecode/crawl4ai)
+
+> **Nhóm này không dùng Crawl4AI.** Các trang nguồn (`chinhphu.vn`, `xaydungchinhsach.chinhphu.vn`) đều trả HTML tĩnh, không cần render JavaScript, nên `src/task2_crawl_news.py` chỉ dùng `requests` + `BeautifulSoup`. Nhờ vậy tránh được playwright + bộ browser (~500MB) và lỗi `BrowserType.launch: Executable doesn't exist` mà LAB_GUIDE cảnh báo. `crawl4ai` đã được gỡ khỏi `requirements.txt` và `pyproject.toml`.
 
 **Yêu cầu:**
 - Lưu output vào `data/landing/news/`
@@ -659,6 +676,30 @@ uv run python -m src.task4_chunking_indexing    # build chroma_db/
 ```
 
 Nếu bỏ qua bước 4, `get_collection()` sẽ tự build index lần đầu khi có query (miễn là `data/standardized/` đã có sẵn) — tiện cho deploy nhưng query đầu tiên sẽ chậm.
+
+### Chạy Evaluation (RAGAS)
+
+```bash
+uv sync                                   # pyproject đã gồm ragas
+# hoặc với pip:
+pip install -r requirements.txt -r requirements-eval.txt
+
+uv run python group_project/evaluation/eval_pipeline.py
+```
+
+Sinh ra `group_project/evaluation/results.md` (báo cáo) và `raw_runs.json` (dữ liệu thô từng câu, để kiểm chứng lại số đo mà không phải chạy lại pipeline).
+
+⚠️ Chi phí: 18 câu × 2 config × 4 metric, mỗi metric gọi LLM nhiều lần → vài trăm request tới `gpt-4o-mini`. Chạy mất khoảng 10–15 phút.
+
+### Deploy lên Hugging Face Spaces
+
+README này đã có sẵn frontmatter Space (`sdk: streamlit`, `app_file: app.py`).
+
+1. Tạo Space mới, chọn SDK **Streamlit**, rồi push repo này lên remote của Space.
+2. Vào **Settings → Variables and secrets**, thêm secret `OPENAI_API_KEY`. Có thể thêm `OPENAI_CHAT_MODEL` / `OPENAI_EMBEDDING_MODEL` nếu muốn đổi model.
+3. Space build bằng `requirements.txt` — file này đã được thu gọn còn đúng phần runtime (`crawl4ai` bị loại vì kéo theo playwright + browser mà code không hề dùng; `ragas`/`datasets` tách sang `requirements-eval.txt`).
+4. `chroma_db/` không nằm trong git, nên **query đầu tiên sau mỗi lần Space khởi động lại sẽ mất 1–2 phút** để build index từ `data/standardized/` (1475 chunks). Các query sau dùng lại handle đã cache trong process.
+5. Không cần LibreOffice trên Space — `soffice` chỉ dùng khi chạy lại Task 3.
 
 ---
 

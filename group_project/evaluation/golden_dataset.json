@@ -12,10 +12,82 @@
     "expected_source": "nghi-dinh-168-2024-nd-cp.md"
   },
   {
+    "question": "Người điều khiển xe đạp, xe đạp máy không chấp hành hiệu lệnh của đèn tín hiệu giao thông bị phạt bao nhiêu?",
+    "expected_answer": "Phạt tiền từ 150.000 đồng đến 250.000 đồng.",
+    "expected_context": "Nghị định 168/2024/NĐ-CP, Điều 9 khoản 2",
+    "expected_source": "nghi-dinh-168-2024-nd-cp.md"
+  },
+  {
+    "question": "Người điều khiển xe mô tô, xe gắn máy không đội mũ bảo hiểm bị phạt bao nhiêu tiền?",
+    "expected_answer": "Phạt tiền từ 400.000 đồng đến 600.000 đồng, áp dụng cả với hành vi đội mũ bảo hiểm nhưng không cài quai đúng quy cách.",
+    "expected_context": "Nghị định 168/2024/NĐ-CP, Điều 7 khoản 2",
+    "expected_source": "nghi-dinh-168-2024-nd-cp.md"
+  },
+  {
+    "question": "Người điều khiển xe ô tô có nồng độ cồn chưa vượt quá 50 miligam/100 mililít máu bị phạt bao nhiêu?",
+    "expected_answer": "Phạt tiền từ 6.000.000 đồng đến 8.000.000 đồng.",
+    "expected_context": "Nghị định 168/2024/NĐ-CP, Điều 6",
+    "expected_source": "nghi-dinh-168-2024-nd-cp.md"
+  },
+  {
+    "question": "Người điều khiển xe mô tô có nồng độ cồn chưa vượt quá 50 miligam/100 mililít máu bị phạt bao nhiêu?",
+    "expected_answer": "Phạt tiền từ 2.000.000 đồng đến 3.000.000 đồng.",
+    "expected_context": "Nghị định 168/2024/NĐ-CP, Điều 7",
+    "expected_source": "nghi-dinh-168-2024-nd-cp.md"
+  },
+  {
+    "question": "Người được chở trên xe ô tô không thắt dây đai an toàn bị phạt bao nhiêu tiền?",
+    "expected_answer": "Phạt tiền từ 350.000 đồng đến 400.000 đồng.",
+    "expected_context": "Nghị định 168/2024/NĐ-CP, Điều 12 khoản 4",
+    "expected_source": "nghi-dinh-168-2024-nd-cp.md"
+  },
+  {
     "question": "Giấy phép lái xe có bao nhiêu điểm?",
     "expected_answer": "Giấy phép lái xe có 12 điểm; số điểm bị trừ mỗi lần vi phạm tùy tính chất, mức độ của hành vi vi phạm.",
     "expected_context": "Luật Trật tự, an toàn giao thông đường bộ 36/2024/QH15, Điều 58 khoản 1",
     "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
+  },
+  {
+    "question": "Khi nào điểm giấy phép lái xe được phục hồi?",
+    "expected_answer": "Giấy phép lái xe chưa bị trừ hết điểm và không bị trừ điểm trong thời hạn 12 tháng kể từ ngày bị trừ điểm gần nhất thì được phục hồi đủ 12 điểm.",
+    "expected_context": "Luật Trật tự, an toàn giao thông đường bộ 36/2024/QH15, Điều 58 khoản 2",
+    "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
+  },
+  {
+    "question": "Giấy phép lái xe bị trừ hết điểm thì người lái xe có được tiếp tục điều khiển phương tiện không?",
+    "expected_answer": "Không. Trường hợp giấy phép lái xe bị trừ hết điểm thì người có giấy phép lái xe không được điều khiển phương tiện tham gia giao thông đường bộ theo giấy phép lái xe đó.",
+    "expected_context": "Luật Trật tự, an toàn giao thông đường bộ 36/2024/QH15, Điều 58 khoản 3",
+    "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
+  },
+  {
+    "question": "Bao nhiêu tuổi thì được điều khiển xe gắn máy?",
+    "expected_answer": "Người đủ 16 tuổi trở lên được điều khiển xe gắn máy.",
+    "expected_context": "Luật Trật tự, an toàn giao thông đường bộ 36/2024/QH15, Điều 59 khoản 1 điểm a",
+    "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
+  },
+  {
+    "question": "Bao nhiêu tuổi thì được cấp giấy phép lái xe hạng A1, A, B1, B, C1?",
+    "expected_answer": "Người đủ 18 tuổi trở lên được cấp giấy phép lái xe hạng A1, A, B1, B, C1.",
+    "expected_context": "Luật Trật tự, an toàn giao thông đường bộ 36/2024/QH15, Điều 59 khoản 1 điểm b",
+    "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
+  },
+  {
+    "question": "Khi xảy ra tai nạn giao thông đường bộ, người điều khiển phương tiện gây tai nạn có trách nhiệm gì?",
+    "expected_answer": "Dừng ngay phương tiện, cảnh báo nguy hiểm, giữ nguyên hiện trường, trợ giúp người bị nạn và báo tin cho cơ quan Công an, cơ sở khám bệnh, chữa bệnh hoặc Ủy ban nhân dân nơi gần nhất; ở lại hiện trường cho đến khi người của cơ quan Công an đến, trừ trường hợp phải đi cấp cứu hoặc bị đe dọa tính mạng, sức khỏe.",
+    "expected_context": "Luật Trật tự, an toàn giao thông đường bộ 36/2024/QH15, Điều 80 khoản 1",
+    "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
+  },
+  {
+    "question": "Người lái xe và người được chở trên xe ô tô có bắt buộc thắt dây đai an toàn không?",
+    "expected_answer": "Có. Người lái xe và người được chở trên xe ô tô phải thắt dây đai an toàn tại những chỗ có trang bị dây đai an toàn khi tham gia giao thông đường bộ.",
+    "expected_context": "Luật Trật tự, an toàn giao thông đường bộ 36/2024/QH15, Điều 10 khoản 2",
+    "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
+  },
+  {
+    "question": "Cán bộ Cảnh sát giao thông làm nhiệm vụ điều tra, xác minh, giải quyết tai nạn giao thông đường bộ phải đạt tiêu chuẩn gì?",
+    "expected_answer": "Có trình độ đại học An ninh, đại học Cảnh sát hoặc cử nhân luật trở lên; có thời gian công tác trong lực lượng Cảnh sát giao thông từ 06 tháng trở lên.",
+    "expected_context": "Thông tư 72/2024/TT-BCA, Điều 3 khoản 1",
+    "expected_source": "thong-tu-72-2024-tt-bca.md"
   },
   {
     "question": "Hồ sơ cấp mới chứng nhận đăng ký xe, biển số xe gồm những giấy tờ gì?",
@@ -24,15 +96,15 @@
     "expected_source": "thong-tu-79-2024-tt-bca.md"
   },
   {
-    "question": "Người điều khiển xe đạp, xe đạp máy không chấp hành hiệu lệnh của đèn tín hiệu giao thông bị phạt bao nhiêu?",
-    "expected_answer": "Phạt tiền từ 150.000 đồng đến 250.000 đồng.",
-    "expected_context": "Nghị định 168/2024/NĐ-CP, Điều 9 khoản 2",
-    "expected_source": "nghi-dinh-168-2024-nd-cp.md"
+    "question": "Thời hạn cấp mới chứng nhận đăng ký xe là bao lâu?",
+    "expected_answer": "Không quá 02 ngày làm việc kể từ ngày nhận đủ hồ sơ hợp lệ.",
+    "expected_context": "Thông tư 79/2024/TT-BCA, Điều 7 khoản 1 điểm a",
+    "expected_source": "thong-tu-79-2024-tt-bca.md"
   },
   {
-    "question": "Khi xảy ra tai nạn giao thông đường bộ, người điều khiển phương tiện gây tai nạn có trách nhiệm gì?",
-    "expected_answer": "Dừng ngay phương tiện, cảnh báo nguy hiểm, giữ nguyên hiện trường, trợ giúp người bị nạn và báo cho cơ quan Công an, cơ sở khám bệnh, chữa bệnh hoặc Ủy ban nhân dân nơi gần nhất.",
-    "expected_context": "Luật Trật tự, an toàn giao thông đường bộ 36/2024/QH15, Điều 80",
-    "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
+    "question": "Cơ quan nào có thẩm quyền đăng ký xe của các đơn vị thuộc cơ quan Bộ Công an?",
+    "expected_answer": "Cục Cảnh sát giao thông.",
+    "expected_context": "Thông tư 79/2024/TT-BCA, Điều 4 khoản 1",
+    "expected_source": "thong-tu-79-2024-tt-bca.md"
   }
 ]

@@ -50,10 +50,15 @@ Xem code mẫu (DeepEval/RAGAS/TruLens) chi tiết trong `README.md` gốc mục
 
 ### Deliverable Evaluation
 
-- [ ] File `group_project/evaluation/golden_dataset.json` — 15+ cặp Q&A
-- [ ] File `group_project/evaluation/eval_pipeline.py` — script chạy evaluation
-- [ ] File `group_project/evaluation/results.md` — bảng điểm + phân tích
-- [ ] So sánh A/B ít nhất 2 configs
+- [x] File `group_project/evaluation/golden_dataset.json` — **18 cặp Q&A**, mỗi câu đối chiếu trực tiếp với văn bản trong corpus (ghi rõ Điều/khoản ở `expected_context`)
+- [x] File `group_project/evaluation/eval_pipeline.py` — chạy được bằng **RAGAS 0.1.21**
+- [x] File `group_project/evaluation/results.md` — sinh tự động từ số đo thật
+- [x] So sánh A/B: **Hybrid + LLM rerank** vs **Hybrid + RRF thuần**
+- [x] `raw_runs.json` — dữ liệu thô từng câu để kiểm chứng lại mà không phải chạy lại pipeline
+
+```bash
+uv run python group_project/evaluation/eval_pipeline.py
+```
 
 ---
 
@@ -70,8 +75,52 @@ Xem code mẫu (DeepEval/RAGAS/TruLens) chi tiết trong `README.md` gốc mục
 ## Kiến Trúc Hệ Thống
 
 ```
-[Vẽ diagram kiến trúc ở đây]
+                  ┌──────────────────────────────────────────────┐
+   Câu hỏi ──────▶│ condense_query()  (chỉ khi có lịch sử chat)   │
+                  │   "còn ô tô thì sao?" → câu hỏi độc lập       │
+                  └───────────────────┬──────────────────────────┘
+                                      ▼
+                  ┌──────────────────────────────────────────────┐
+                  │ expand_query()  glossary đời thường → pháp lý │
+                  └───────────────────┬──────────────────────────┘
+                          ┌───────────┴───────────┐   (song song)
+                          ▼                       ▼
+              ┌───────────────────┐   ┌───────────────────────┐
+              │ semantic_search   │   │ lexical_search        │
+              │ OpenAI embedding  │   │ BM25 trên cùng chunk  │
+              │ Chroma cosine     │   │ rank_bm25             │
+              └─────────┬─────────┘   └───────────┬───────────┘
+                        │  cosine gốc             │
+                        ▼                         │
+          ┌──────────────────────────┐            │
+          │ best cosine < 0.40 ?     │──── có ───▶│  pageindex_search()
+          │ (ngưỡng đã calibrate)    │            │  vectorless, cây Điều
+          └────────────┬─────────────┘            │  → source="pageindex"
+                    không                          │
+                        ▼                          │
+              ┌───────────────────────────────────┴──┐
+              │ rerank_rrf()  fuse 2 ranked list      │
+              └────────────────┬─────────────────────┘
+                               ▼
+              ┌──────────────────────────────────────┐
+              │ rerank(method="llm")  LLM cross-enc.  │
+              └────────────────┬─────────────────────┘
+                               ▼
+              ┌──────────────────────────────────────┐
+              │ reorder_for_llm()  [1,2,3,4,5]→       │
+              │                    [1,3,5,4,2]        │
+              │ format_context()  nhãn trích dẫn +    │
+              │                   mốc hiệu lực + Điều │
+              └────────────────┬─────────────────────┘
+                               ▼
+                     Generation (gpt-4o-mini)
+                     → answer + sources + retrieval_source
+
+   Retrieval rỗng → trả "không thể xác minh", KHÔNG gọi model.
 ```
+
+Chi tiết corpus, số liệu calibrate ngưỡng và các quyết định kỹ thuật: xem mục
+**"Ghi Chú Triển Khai"** trong `README.md` ở thư mục gốc.
 
 ---
 
@@ -91,11 +140,18 @@ Xem code mẫu (DeepEval/RAGAS/TruLens) chi tiết trong `README.md` gốc mục
 ```bash
 # Cài đặt dependencies
 uv sync
+cp .env.example .env    # điền OPENAI_API_KEY
+
+# Build index (bỏ qua cũng được — query đầu tiên sẽ tự build, nhưng chậm)
+uv run python -m src.task4_chunking_indexing
 
 # Chạy app
 uv run streamlit run app.py
-# hoặc
-uv run chainlit run app.py
+```
+
+Chạy evaluation:
+```bash
+uv run python group_project/evaluation/eval_pipeline.py
 ```
 
 ---
