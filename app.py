@@ -1,5 +1,5 @@
 """
-RAG Chatbot — E-commerce Support (Starter Template)
+RAG Chatbot — Tra cứu pháp luật giao thông đường bộ Việt Nam
 Streamlit app kết nối RAG Retrieval (Task 9) và Generation (Task 10).
 
 Chạy:
@@ -24,8 +24,8 @@ sys.path.insert(0, str(PROJECT_ROOT))
 # =============================================================================
 
 st.set_page_config(
-    page_title="E-commerce Support RAG Chatbot",
-    page_icon="🛒",
+    page_title="RAG Pháp luật Giao thông Việt Nam",
+    page_icon="🚦",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -35,18 +35,18 @@ st.set_page_config(
 # =============================================================================
 
 with st.sidebar:
-    st.title("🛒 E-commerce Support RAG")
-    st.caption("Trợ lý hỏi đáp về chính sách thương mại điện tử và hỗ trợ khách hàng (đổi trả, thanh toán, bảo mật, người bán)")
+    st.title("🚦 RAG Pháp luật Giao thông")
+    st.caption("Trợ lý tra cứu Luật Trật tự, an toàn giao thông đường bộ 36/2024/QH15, Nghị định 168/2024/NĐ-CP và Thông tư 72, 73, 79/2024/TT-BCA")
 
     st.divider()
 
     st.subheader("💡 Câu hỏi gợi ý")
     suggestions = [
-        "Thời hạn yêu cầu trả hàng/hoàn tiền là bao lâu?",
-        "Shopee hỗ trợ những phương thức thanh toán nào?",
-        "Làm sao để đổi phương thức thanh toán đơn hàng?",
-        "Quy định về đăng bán sản phẩm cho người bán?",
-        "Cách mua hàng trên Shopee của quốc gia khác?",
+        "Xe máy vượt đèn đỏ bị phạt bao nhiêu tiền?",
+        "Người lái xe có bao nhiêu điểm giấy phép lái xe?",
+        "Khi xảy ra tai nạn giao thông cần làm gì?",
+        "Hồ sơ cấp mới chứng nhận đăng ký xe gồm những gì?",
+        "Tốc độ tối đa trong khu đông dân cư là bao nhiêu?",
     ]
     for s in suggestions:
         if st.button(s, use_container_width=True, key=f"sug_{s[:20]}"):
@@ -73,8 +73,8 @@ if "pending_query" not in st.session_state:
 # MAIN CHAT AREA
 # =============================================================================
 
-st.title("🛒 E-commerce Support RAG Chatbot")
-st.caption("Hệ thống hỏi đáp chính sách e-commerce và trợ giúp khách hàng")
+st.title("🚦 RAG Chatbot Pháp luật Giao thông Đường bộ")
+st.caption("Hỏi đáp có trích dẫn trên corpus văn bản pháp luật giao thông đường bộ hiệu lực từ 01/01/2025")
 
 # Hiển thị lịch sử chat
 for msg in st.session_state.messages:
@@ -95,7 +95,7 @@ for msg in st.session_state.messages:
 # QUERY HANDLING
 # =============================================================================
 
-user_input = st.chat_input("Nhập câu hỏi của bạn về chính sách/hỗ trợ e-commerce...")
+user_input = st.chat_input("Nhập câu hỏi về luật giao thông đường bộ...")
 query = user_input or st.session_state.pending_query
 
 if query:
@@ -110,13 +110,6 @@ if query:
     with st.chat_message("assistant"):
         with st.spinner("Đang tìm kiếm tài liệu và tổng hợp câu trả lời..."):
             try:
-                # TODO (Học viên): Tích hợp hàm sinh câu trả lời từ Task 10
-                # Ví dụ:
-                # from src.task10_generation import generate_with_citation
-                # response = generate_with_citation(query, top_k=top_k)
-                # answer = response["answer"]
-                # sources = response.get("sources", [])
-
                 from src.task10_generation import generate_with_citation
                 response = generate_with_citation(query, top_k=top_k)
                 answer = response.get("answer", "Chưa thể trả lời.")

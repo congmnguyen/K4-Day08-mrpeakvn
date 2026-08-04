@@ -12,11 +12,18 @@ venv/
 # Temp PDF conversion cache
 data/_tmp_pdf/
 
+# PDF gốc từ datafiles.chinhphu.vn (~70MB) đều là bản SCAN — MarkItDown trả 0 ký
+# tự nên không nằm trong corpus index. Nguồn text thật là các file .doc Công báo
+# (được commit). Chạy `python -m src.task1_collect_legal_docs` để tải lại PDF;
+# URL và provenance nằm trong data/landing/legal/sources.json.
+data/landing/legal/*.pdf
+
 # Temp / cache
 .pytest_cache/
 *.tmp
 pageindex_doc_ids.json
 pageindex_pdfs/
+chroma_db/
 
 # IDE
 .vscode/

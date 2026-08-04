@@ -2,6 +2,8 @@
 python-dotenv>=1.0.0
 requests>=2.31.0
 numpy>=1.24.0
+beautifulsoup4>=4.12.0
+certifi>=2024.2.2
 
 # Task 2 - Crawling
 crawl4ai>=0.3.0
@@ -14,11 +16,8 @@ fpdf2>=2.7.0
 langchain-text-splitters>=0.2.0
 chromadb>=0.5.0
 
-# Task 4/5 - Embedding provider (mac dinh: sentence_transformers, local, khong can API key)
-# Doi provider qua bien EMBEDDING_PROVIDER trong .env: sentence_transformers | google | openai
-sentence-transformers>=2.2.0
-# google-generativeai>=0.5.0  # Chi can neu EMBEDDING_PROVIDER=google (khong can neu dung mac dinh)
-# openai (provider "openai") da co san o muc Task 10 ben duoi, khong can cai them
+# Task 4/5 - Embedding provider (mac dinh: OpenAI, can OPENAI_API_KEY)
+# openai da co san o muc Task 10 ben duoi, khong can them dependency khac
 
 # Task 6 - BM25 + TF-IDF
 rank-bm25>=0.2.2

@@ -62,8 +62,8 @@ Chia nhỏ các công đoạn dữ liệu và kiểm thử chuyên sâu:
 
 ### 🔹 Checkpoint 0: Setup Môi Trường & Khởi Tạo Project (0:00 – 0:10 | 10 phút)
 * 👑 **Role 1 (Team Leader & RAG Architect)**: Kiểm tra cả nhóm clone thành công repo Starter, khởi tạo repository chung cho nhóm và chia sẻ file `.env` với các API keys cần thiết (`OPENROUTER_API_KEY`).
-* ⚙️ **Role 2 (Data & Pipeline Specialist / Data Dev)**: Tạo môi trường ảo (`python -m venv .venv`), cài đặt gói phụ thuộc từ `requirements.txt`, kiểm tra import `chromadb` và `sentence_transformers`.
-* 🎨 **Role 3 (Frontend & Chatbot Dev)**: Kiểm tra cài đặt Streamlit bằng lệnh `streamlit run app.py`.
+* ⚙️ **Role 2 (Data & Pipeline Specialist / Data Dev)**: Chạy `uv sync` để tạo `.venv` và cài dependency từ `uv.lock`, sau đó kiểm tra import `chromadb` và `openai`.
+* 🎨 **Role 3 (Frontend & Chatbot Dev)**: Kiểm tra cài đặt Streamlit bằng lệnh `uv run streamlit run app.py`.
 * 📊 **Role 4 / Role 5 / Role 6 (Evaluation & QA Engineer)**: Kiểm tra sự tồn tại và cài đặt của thư viện đánh giá `ragas` và `datasets`.
 * ✅ **Tiêu chí hoàn thành (Pass Criteria)**: Tất cả các thành viên khởi tạo xong môi trường làm việc không có lỗi import. Coach gọi ngẫu nhiên 1-2 đại diện nhóm demo setup venv & kiểm tra kết nối API Key trong vài phút cuối (`CP0 Passed`).
 

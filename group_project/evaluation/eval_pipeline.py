@@ -139,7 +139,7 @@ def evaluate_with_trulens(rag_pipeline, golden_dataset: list[dict]) -> dict:
     #
     # tru_rag = TruCustomApp(
     #     rag_pipeline,
-    #     app_name="EcommerceSupport_RAG",
+    #     app_name="TrafficLawVN_RAG",
     #     feedbacks=[f_faithfulness, f_relevance, f_context_relevance],
     # )
     #

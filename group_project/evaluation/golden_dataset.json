@@ -1,17 +1,38 @@
 [
   {
-    "question": "Người mua có thể yêu cầu trả hàng/hoàn tiền trong thời hạn bao lâu sau khi nhận hàng?",
-    "expected_answer": "Trong vòng 15 ngày kể từ khi giao hàng thành công (24 giờ đối với thực phẩm tươi sống/đông lạnh).",
-    "expected_context": "Trang Returns and Refunds Policy, mục Return/Refund Eligibility"
+    "question": "Người điều khiển xe mô tô, xe gắn máy không chấp hành hiệu lệnh của đèn tín hiệu giao thông (vượt đèn đỏ) bị phạt bao nhiêu tiền?",
+    "expected_answer": "Phạt tiền từ 4.000.000 đồng đến 6.000.000 đồng.",
+    "expected_context": "Nghị định 168/2024/NĐ-CP, Điều 7 khoản 7",
+    "expected_source": "nghi-dinh-168-2024-nd-cp.md"
   },
   {
-    "question": "Shopee hỗ trợ những phương thức thanh toán nào?",
-    "expected_answer": "ShopeePay Wallet, thẻ tín dụng/ghi nợ, trả góp qua thẻ, QR Code, chuyển khoản qua app ngân hàng, thẻ NAPAS, Apple Pay, Google Pay, và COD.",
-    "expected_context": "Trang Payment Methods Overview"
+    "question": "Người điều khiển xe ô tô vượt đèn đỏ bị phạt bao nhiêu tiền?",
+    "expected_answer": "Phạt tiền từ 18.000.000 đồng đến 20.000.000 đồng.",
+    "expected_context": "Nghị định 168/2024/NĐ-CP, Điều 6 khoản 9",
+    "expected_source": "nghi-dinh-168-2024-nd-cp.md"
   },
   {
-    "question": "Người bán không được đăng bán những sản phẩm nào?",
-    "expected_answer": "Hàng giả/nhái, sản phẩm bất hợp pháp, vi phạm sở hữu trí tuệ, và các mặt hàng nằm trong danh sách cấm của sàn.",
-    "expected_context": "Trang Product Listing Regulations, mục Prohibited Content"
+    "question": "Giấy phép lái xe có bao nhiêu điểm?",
+    "expected_answer": "Giấy phép lái xe có 12 điểm; số điểm bị trừ mỗi lần vi phạm tùy tính chất, mức độ của hành vi vi phạm.",
+    "expected_context": "Luật Trật tự, an toàn giao thông đường bộ 36/2024/QH15, Điều 58 khoản 1",
+    "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
+  },
+  {
+    "question": "Hồ sơ cấp mới chứng nhận đăng ký xe, biển số xe gồm những giấy tờ gì?",
+    "expected_answer": "Giấy khai đăng ký xe; giấy tờ của chủ xe; chứng nhận nguồn gốc xe; chứng nhận quyền sở hữu hợp pháp; chứng từ hoàn thành nghĩa vụ tài chính.",
+    "expected_context": "Thông tư 79/2024/TT-BCA, Điều 8",
+    "expected_source": "thong-tu-79-2024-tt-bca.md"
+  },
+  {
+    "question": "Người điều khiển xe đạp, xe đạp máy không chấp hành hiệu lệnh của đèn tín hiệu giao thông bị phạt bao nhiêu?",
+    "expected_answer": "Phạt tiền từ 150.000 đồng đến 250.000 đồng.",
+    "expected_context": "Nghị định 168/2024/NĐ-CP, Điều 9 khoản 2",
+    "expected_source": "nghi-dinh-168-2024-nd-cp.md"
+  },
+  {
+    "question": "Khi xảy ra tai nạn giao thông đường bộ, người điều khiển phương tiện gây tai nạn có trách nhiệm gì?",
+    "expected_answer": "Dừng ngay phương tiện, cảnh báo nguy hiểm, giữ nguyên hiện trường, trợ giúp người bị nạn và báo cho cơ quan Công an, cơ sở khám bệnh, chữa bệnh hoặc Ủy ban nhân dân nơi gần nhất.",
+    "expected_context": "Luật Trật tự, an toàn giao thông đường bộ 36/2024/QH15, Điều 80",
+    "expected_source": "luat-trat-tu-an-toan-giao-thong-duong-bo-36-2024-qh15.md"
   }
 ]

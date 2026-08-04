@@ -1,6 +1,6 @@
 ---
-title: E-commerce Support RAG Chatbot
-emoji: 🛒
+title: Vietnamese Traffic Law RAG Chatbot
+emoji: 🚦
 colorFrom: blue
 colorTo: indigo
 sdk: streamlit
@@ -13,21 +13,65 @@ pinned: false
 
 **Chương 2 | Ngày 8 trong 15**
 
-> Dùng chung chủ đề "E-commerce Policy / Customer Support" với biến thể K4 của Ngày 7 (`K4_VARIANT.md`), để pipeline Ngày 7 → Ngày 8 nhất quán.
+> Chủ đề của repo này là pháp luật và hướng dẫn giao thông đường bộ Việt Nam.
 
 ---
 
 ## Mục Tiêu
 
-Xây dựng một RAG pipeline thực tế, end-to-end, từ thu thập dữ liệu chính sách thương mại điện tử và hỗ trợ khách hàng → xử lý → indexing → retrieval (hybrid + vectorless fallback) → generation có citation.
+Xây dựng một RAG pipeline thực tế, end-to-end, từ thu thập văn bản và hướng dẫn giao thông đường bộ Việt Nam → xử lý → indexing → retrieval (hybrid + vectorless fallback) → generation có citation.
 
 ---
 
 ## Chủ Đề Dữ Liệu
 
-**Chính sách thương mại điện tử** (thanh toán, đổi trả/hoàn tiền, quy định người bán, quyền riêng tư) + **Hướng dẫn hỗ trợ khách hàng** (theo dõi đơn hàng, bằng chứng hoàn tiền, thay đổi phương thức thanh toán)
+**Văn bản pháp luật giao thông đường bộ** (quy tắc, xử phạt, đăng ký xe, giải quyết tai nạn) + **bài hướng dẫn chính thức** cho người tham gia giao thông.
 
-Dữ liệu mẫu trong repo được crawl thật từ trang trung tâm trợ giúp công khai của **Shopee Vietnam** (help.shopee.vn) — xem chi tiết URL nguồn trong `src/task1_collect_legal_docs.py` và `src/task2_crawl_news.py`.
+Dữ liệu mẫu được lấy từ các cổng thông tin chính thức của Chính phủ và Bộ Công an; xem URL và metadata truy vết trong `src/task1_collect_legal_docs.py`, `src/task2_crawl_news.py` và `data/landing/legal/sources.json`.
+
+---
+
+## Ghi Chú Triển Khai (bài nộp của nhóm)
+
+### Corpus thực tế đang index
+
+| Văn bản | Nguồn text sạch | Trạng thái |
+|---|---|---|
+| Luật Trật tự, ATGT đường bộ 36/2024/QH15 | Toàn văn HTML — `xaydungchinhsach.chinhphu.vn` | Hiệu lực 01/01/2025 |
+| Nghị định 168/2024/NĐ-CP | Toàn văn HTML — `xaydungchinhsach.chinhphu.vn` | Hiệu lực 01/01/2025 |
+| Thông tư 72/2024/TT-BCA | Bản `.doc` Công báo — `congbao.chinhphu.vn` | Hiệu lực 01/01/2025 |
+| Thông tư 73/2024/TT-BCA | Bản `.doc` Công báo — `congbao.chinhphu.vn` | Hiệu lực 01/01/2025 |
+| Thông tư 79/2024/TT-BCA | Bản `.doc` Công báo — `congbao.chinhphu.vn` | **Đã bị sửa đổi** bởi TT 13/2025 và TT 51/2025; bản index là văn bản gốc, chưa hợp nhất |
+| 5 bài hướng dẫn/tin chính thức | Task 2 crawl | — |
+
+Tổng: **10 documents / 1475 chunks**.
+
+Bốn PDF tải từ `datafiles.chinhphu.vn` đều là **bản scan** — MarkItDown trả 0 ký tự. Không dùng OCR chất lượng thấp để index; thay vào đó Task 1 tải bản `.doc` chính thức từ Công báo điện tử và Task 3 convert bằng LibreOffice headless (`soffice`). Bốn PDF (~70MB) bị gitignore vì không đóng góp ký tự nào vào corpus và luôn tải lại được bằng Task 1; các file `.doc` Công báo mới là nguồn text được commit. Kho ZIP legacy (`Thongtu.zip`, `DuongBo.zip`) đã kiểm tra và **không** chứa ba thông tư 2024 này — các file tên giống là `73/2015/TT-BGTVT` và `79/2015/TT-BGTVT`, văn bản hoàn toàn khác.
+
+> Yêu cầu hệ thống thêm: `libreoffice-writer` (cho `soffice`) nếu chạy lại Task 3.
+> CDN `g7.cdnchinhphu.vn` chỉ gửi leaf certificate nên repo vendor sẵn intermediate
+> GlobalSign tại `certs/` và ghép với `certifi` — TLS verification vẫn bật đầy đủ.
+
+### Quyết định kỹ thuật
+
+- **Embedding**: OpenAI `text-embedding-3-small` (1536 dim). Không dùng SentenceTransformers/Torch.
+- **Vector store**: ChromaDB `PersistentClient`, collection `traffic_law_vn_docs`, `hnsw:space=cosine`.
+- **Chunking**: `RecursiveCharacterTextSplitter` 800/120 với regex separator ưu tiên cắt ở `Điều` rồi ở đầu mỗi khoản `N. Phạt tiền` — nhờ vậy chunk liệt kê hành vi vi phạm luôn mang theo mức tiền phạt của khoản đó. Heading `Điều` gần nhất được gắn vào metadata và đưa vào text embedding/BM25 (contextual chunking).
+- **Hybrid**: dense + BM25 chạy song song → fuse RRF → rerank bằng LLM (đóng vai cross-encoder trên pool 20 candidate).
+- **Query glossary**: map từ đời thường sang thuật ngữ pháp lý ("vượt đèn đỏ" → "không chấp hành hiệu lệnh của đèn tín hiệu giao thông"). Tất định, không tốn API call.
+- **Fallback threshold** `SCORE_THRESHOLD = 0.40`: calibrate bằng cosine gốc của `semantic_search` (KHÔNG dùng điểm RRF). Số liệu đo thật nằm trong docstring `src/task9_retrieval_pipeline.py`.
+- **Task 8**: không có `PAGEINDEX_API_KEY` nên chạy backend `local_structure` — dựng cây heading từ markdown và trả nguyên một Điều luật. Nhánh PageIndex cloud viết theo signature thật của SDK đã cài nhưng **chưa chạy live**.
+
+### Về 4 test bị skip
+
+`pytest tests/test_individual.py -q` → **31 passed, 4 skipped**. Bốn skip còn lại đều do câu hỏi mẫu trong test suite là tiếng Anh chủ đề e-commerce (`"payment methods"`, `"seller listing regulations"`, `"ecommerce return policy"`) trong khi corpus là tiếng Việt về giao thông:
+
+- 3 skip ở `TestTask6` — BM25 không có token nào trùng nên trả list rỗng (đúng hành vi).
+- 1 skip ở `TestTask9` — điểm cosine dưới ngưỡng nên pipeline từ chối trả kết quả thay vì trả một điều luật ngẫu nhiên.
+
+Không có skip nào vì code chưa implement.
+
+> Test suite cần `OPENAI_API_KEY` hợp lệ trong `.env`: Task 5/9/10 embed query bằng OpenAI nên môi trường không có key/quota sẽ FAIL (có thông báo lỗi rõ ràng) chứ không skip. Đây là hệ quả của quyết định chốt embedding OpenAI thay vì model local.
 
 ---
 
@@ -39,8 +83,13 @@ K4-Day08-RAG-Pipeline-Starter/
 ├── LAB_GUIDE.md           ← Hướng dẫn chi tiết & Codelab
 ├── checkpoint_timer.html  ← Dashboard đếm ngược Checkpoint & Phân vai
 ├── app.py                 ← Streamlit chatbot (bài nhóm)
+├── certs/                 ← Intermediate CA cho CDN Công báo (TLS chain thiếu)
 ├── data/
-│   ├── landing/           ← Task 1 & 2: raw files (PDF, JSON)
+│   ├── landing/           ← Task 1 & 2: raw files (DOC, PDF, JSON)
+│   │   ├── legal/         ← .doc Công báo (text sạch, có trong git) +
+│   │   │                     PDF scan (gitignore, ~70MB) + 2 manifest
+│   │   ├── legal_text/    ← Toàn văn HTML đã crawl (JSON)
+│   │   └── news/          ← Task 2
 │   └── standardized/      ← Task 3: converted markdown files
 ├── src/
 │   ├── __init__.py
@@ -69,25 +118,24 @@ K4-Day08-RAG-Pipeline-Starter/
 
 ## Nhiệm Vụ Chi Tiết
 
-### Task 1 — Thu Thập Văn Bản Chính Sách Thương Mại Điện Tử
+### Task 1 — Thu Thập Văn Bản Pháp Luật Giao Thông
 
-Tìm và tải về **tối thiểu 3 văn bản chính sách/quy định** dạng PDF/DOCX về chính sách thương mại điện tử. Lưu vào `data/landing/`.
+Tìm và tải về **tối thiểu 3 văn bản pháp luật** dạng PDF/DOCX về giao thông đường bộ. Lưu vào `data/landing/`.
 
-**Gợi ý nguồn** (ví dụ trang công khai Shopee Vietnam — help.shopee.vn):
-- Chính sách trả hàng và hoàn tiền (Returns & Refund Policy)
-- Phương thức thanh toán (Payment Methods)
-- Chính sách bảo mật (Privacy Policy)
-- Quy định đăng bán sản phẩm cho người bán (Product Listing Regulations)
+**Nguồn sử dụng**: Cổng Văn bản Chính phủ, Báo Điện tử Chính phủ và Cục Cảnh sát giao thông.
+- Luật Trật tự, an toàn giao thông đường bộ
+- Nghị định xử phạt vi phạm hành chính
+- Thông tư về tuần tra, đăng ký xe và giải quyết tai nạn
 
 **Yêu cầu:**
 - Lưu file gốc (PDF/DOCX) vào `data/landing/legal/`
-- Đặt tên file rõ ràng: `returns-refund-policy-shopee.pdf`, `payment-methods-shopee.pdf`, ...
+- Đặt tên file rõ ràng: `nghi-dinh-168-2024-nd-cp.pdf`, `thong-tu-73-2024-tt-bca.pdf`, ...
 
 ---
 
 ### Task 2 — Crawl Bài Viết/Thông Báo
 
-Crawl **tối thiểu 5 bài viết** hướng dẫn hỗ trợ khách hàng (theo dõi đơn hàng, đổi phương thức thanh toán, bằng chứng hoàn tiền, mua hàng xuyên biên giới).
+Crawl **tối thiểu 5 bài viết chính thức** giải thích quy tắc, mức phạt và thủ tục giao thông.
 
 **Thư viện khuyến nghị:** [Crawl4AI](https://github.com/unclecode/crawl4ai)
 
@@ -125,11 +173,11 @@ from markitdown import MarkItDown
 md = MarkItDown()
 
 # Convert PDF
-result = md.convert("data/landing/legal/returns-refund-policy-shopee.pdf")
+result = md.convert("data/landing/legal/nghi-dinh-168-2024-nd-cp.pdf")
 print(result.text_content)
 
 # Convert DOCX
-result = md.convert("data/landing/legal/product-listing-regulations-shopee.docx")
+result = md.convert("data/landing/legal/thong-tu-73-2024-tt-bca.docx")
 ```
 
 **Lưu ý:** MarkItDown cần cài thêm extra `pip install "markitdown[pdf]"` để convert được file
@@ -138,7 +186,7 @@ PDF — nếu chỉ `pip install markitdown` sẽ báo lỗi `MissingDependencyE
 **Yêu cầu:**
 - Output lưu vào `data/standardized/`
 - Giữ nguyên cấu trúc thư mục con (`legal/`, `news/`)
-- Mỗi file output có tên tương ứng: `returns-refund-policy-shopee.md`
+- Mỗi file output có tên tương ứng: `nghi-dinh-168-2024-nd-cp.md`
 
 ---
 
@@ -387,7 +435,7 @@ def generate_with_citation(query: str, context_chunks: list[dict]) -> str:
 
 ### Yêu cầu 1: Sản phẩm nhóm RAG Chatbot
 
-Xây dựng chatbot trả lời câu hỏi về chính sách thương mại điện tử và hỗ trợ khách hàng liên quan.
+Xây dựng chatbot trả lời câu hỏi về pháp luật giao thông đường bộ Việt Nam.
 
 **Yêu cầu:**
 - Giao diện chat (Streamlit / Gradio / Chainlit)
@@ -514,7 +562,7 @@ f_context_relevance = Feedback(provider.context_relevance).on_input()
 # Wrap RAG pipeline
 tru_rag = TruCustomApp(
     rag_pipeline,
-    app_name="EcommerceSupport_RAG",
+    app_name="VietnamTrafficLaw_RAG",
     feedbacks=[f_faithfulness, f_relevance, f_context_relevance],
 )
 
@@ -570,12 +618,12 @@ run_dashboard()
 
 ```bash
 # Cài đặt dependencies
-pip install -r requirements.txt
+uv sync
 
 # Chạy app
-streamlit run app.py
+uv run streamlit run app.py
 # hoặc
-chainlit run app.py
+uv run chainlit run app.py
 ```
 
 ---
@@ -589,14 +637,27 @@ Hãy giữ lại repo này nếu như bạn học track 3 giai đoạn 2, chúng
 ## Cài Đặt Môi Trường
 
 ```bash
-pip install -r requirements.txt
+uv sync
 ```
 
 Tạo file `.env` từ `.env.example`:
 ```bash
 cp .env.example .env
-# Điền API keys vào .env
+# Điền OPENAI_API_KEY vào .env
 ```
+
+### Chuẩn bị dữ liệu và index
+
+`chroma_db/` nằm trong `.gitignore` nên clone mới / deploy sẽ chưa có index. Chạy lại toàn bộ chuỗi:
+
+```bash
+uv run python -m src.task1_collect_legal_docs   # cần mạng; cần soffice cho bước sau
+uv run python -m src.task2_crawl_news
+uv run python -m src.task3_convert_markdown     # cần libreoffice-writer
+uv run python -m src.task4_chunking_indexing    # build chroma_db/
+```
+
+Nếu bỏ qua bước 4, `get_collection()` sẽ tự build index lần đầu khi có query (miễn là `data/standardized/` đã có sẵn) — tiện cho deploy nhưng query đầu tiên sẽ chậm.
 
 ---
 
@@ -618,7 +679,7 @@ Chấm bằng automated test suite (`pytest tests/ -v`). Mỗi task có test ri�
 
 | Task | Nội dung | Điểm | Test |
 |------|----------|------|------|
-| 1 | Thu thập văn bản chính sách thương mại điện tử (≥3 files tồn tại trong `data/landing/legal/`) | 3 | `test_task1_*` |
+| 1 | Thu thập văn bản pháp luật giao thông (≥3 files tồn tại trong `data/landing/legal/`) | 3 | `test_task1_*` |
 | 2 | Crawl bài viết/thông báo (≥5 files tồn tại trong `data/landing/news/`) | 3 | `test_task2_*` |
 | 3 | Convert markdown (files tồn tại trong `data/standardized/`) | 4 | `test_task3_*` |
 | 4 | Chunking + Indexing (vector store có data) | 7 | `test_task4_*` |

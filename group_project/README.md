@@ -1,4 +1,4 @@
-# Bài Tập Nhóm — E-commerce Support RAG Chatbot
+# Bài Tập Nhóm — Vietnamese Traffic Law RAG Chatbot
 
 ## Mục Tiêu
 
@@ -8,7 +8,7 @@ Sau khi hoàn thành bài cá nhân, nhóm ngồi lại để xây dựng **1 tr
 
 ## Yêu cầu 1: Sản phẩm nhóm RAG Chatbot
 
-Xây dựng chatbot trả lời câu hỏi về chính sách thương mại điện tử và hỗ trợ khách hàng liên quan.
+Xây dựng chatbot trả lời câu hỏi về pháp luật giao thông đường bộ Việt Nam.
 
 **Yêu cầu:**
 - Giao diện chat (Streamlit / Gradio / Chainlit)
@@ -90,12 +90,12 @@ Xem code mẫu (DeepEval/RAGAS/TruLens) chi tiết trong `README.md` gốc mục
 
 ```bash
 # Cài đặt dependencies
-pip install -r requirements.txt
+uv sync
 
 # Chạy app
-streamlit run app.py
+uv run streamlit run app.py
 # hoặc
-chainlit run app.py
+uv run chainlit run app.py
 ```
 
 ---

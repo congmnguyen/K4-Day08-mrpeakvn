@@ -1,13 +1,31 @@
 """
 Task 5 — Semantic Search Module.
 
-Viết module tìm kiếm ngữ nghĩa (dense retrieval) trên vector store.
+Dense retrieval trên ChromaDB đã index ở Task 4.
 
-Yêu cầu:
-    - Input: query string + top_k
-    - Output: danh sách chunks có score, sorted descending
-    - Phải tương thích với embedding model và vector store ở Task 4
+Thiết kế:
+    - Query được embed bằng ĐÚNG model/dimension của Task 4 (``embed_texts``),
+      nếu không vector query nằm khác không gian và điểm số vô nghĩa.
+    - Collection tạo với ``hnsw:space=cosine`` nên Chroma trả cosine DISTANCE
+      trong ``[0, 2]``; similarity = ``1 - distance``.
+    - Cache embedding của query trong process: test và pipeline hybrid gọi lại
+      cùng câu hỏi nhiều lần, cache cắt được số lần gọi API.
 """
+
+from __future__ import annotations
+
+from .task4_chunking_indexing import embed_texts, get_collection
+
+_QUERY_EMBEDDING_CACHE: dict[str, list[float]] = {}
+
+
+def embed_query(query: str) -> list[float]:
+    """Embed query, cache theo text để tránh gọi API trùng lặp trong 1 process."""
+    cached = _QUERY_EMBEDDING_CACHE.get(query)
+    if cached is None:
+        cached = embed_texts([query])[0]
+        _QUERY_EMBEDDING_CACHE[query] = cached
+    return cached
 
 
 def semantic_search(query: str, top_k: int = 10) -> list[dict]:
@@ -26,42 +44,39 @@ def semantic_search(query: str, top_k: int = 10) -> list[dict]:
         }
         Sorted by score descending.
     """
-    # TODO: Implement semantic search
-    #
-    # Bước 1: Embed query bằng cùng model ở Task 4
-    # Bước 2: Query vector store (cosine similarity)
-    # Bước 3: Return top_k results
-    #
-    # Ví dụ với ChromaDB:
-    # from .task4_chunking_indexing import get_collection, get_embedding_model
-    #
-    # model = get_embedding_model()
-    # query_vector = model.encode(query).tolist()
-    # (Nếu Task 4 dùng embed_texts() dispatch theo EMBEDDING_PROVIDER thì gọi
-    #  embed_texts([query])[0] ở đây thay vì get_embedding_model().encode() —
-    #  để Task 5 tự động dùng đúng provider mà không cần sửa lại.)
-    #
-    # collection = get_collection()
-    # results = collection.query(
-    #     query_embeddings=[query_vector],
-    #     n_results=top_k,
-    #     include=["documents", "metadatas", "distances"],
-    # )
-    #
-    # output = []
-    # for doc, meta, dist in zip(
-    #     results["documents"][0], results["metadatas"][0], results["distances"][0]
-    # ):
-    #     score = max(0.0, 1.0 - dist)  # cosine distance → similarity
-    #     output.append({"content": doc, "score": round(score, 4), "metadata": meta})
-    #
-    # output.sort(key=lambda x: x["score"], reverse=True)
-    # return output[:top_k]
-    raise NotImplementedError("Implement semantic_search")
+    if not isinstance(query, str) or not query.strip():
+        raise ValueError("query must be a non-empty string")
+    if top_k <= 0:
+        raise ValueError("top_k must be > 0")
+
+    collection = get_collection()
+    response = collection.query(
+        query_embeddings=[embed_query(query)],
+        n_results=top_k,
+        include=["documents", "metadatas", "distances"],
+    )
+    documents = response.get("documents") or [[]]
+    metadatas = response.get("metadatas") or [[]]
+    distances = response.get("distances") or [[]]
+
+    results: list[dict] = []
+    for content, metadata, distance in zip(
+        documents[0], metadatas[0], distances[0], strict=True
+    ):
+        results.append(
+            {
+                "content": content,
+                # Chroma cosine distance = 1 - cosine_similarity; clamp về [0, 1]
+                # để điểm số dùng được trực tiếp làm ngưỡng fallback ở Task 9.
+                "score": round(max(0.0, 1.0 - float(distance)), 4),
+                "metadata": dict(metadata or {}),
+            }
+        )
+    results.sort(key=lambda item: item["score"], reverse=True)
+    return results[:top_k]
 
 
 if __name__ == "__main__":
-    # Test
-    results = semantic_search("quy định trả hàng hoàn tiền shopee", top_k=5)
-    for r in results:
-        print(f"[{r['score']:.3f}] {r['content'][:100]}...")
+    for result in semantic_search("mức phạt xe máy vượt đèn đỏ", top_k=5):
+        source = result["metadata"].get("source", "?")
+        print(f"[{result['score']:.3f}] {source} :: {result['content'][:100]}...")

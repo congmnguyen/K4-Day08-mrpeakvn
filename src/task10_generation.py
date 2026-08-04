@@ -1,19 +1,15 @@
 """
 Task 10 — Generation Có Citation.
 
-Hướng dẫn:
-    1. Chọn top_k, top_p phù hợp (giải thích lý do)
-    2. Sắp xếp lại chunks sau reranking để tránh "lost in the middle"
-    3. Inject context vào prompt
-    4. Yêu cầu LLM trả lời có citation
-    5. Nếu không đủ evidence → "I cannot verify this information"
+Pipeline: retrieve (Task 9) → reorder chống "lost in the middle" → format context
+có nhãn nguồn → gọi LLM → trả answer + sources.
 
-Gợi ý LLM: OpenRouter có nhiều model gắn hậu tố ":free" không tính phí — xem
-https://openrouter.ai/models?max_price=0 — phù hợp nếu chưa có credit trả phí.
-Base URL: "https://openrouter.ai/api/v1", dùng chung interface với OpenAI SDK.
+LLM: gọi thẳng OpenAI (cùng provider với embedding ở Task 4/5, một API key duy
+nhất cho cả repo). Model cấu hình qua ``OPENAI_CHAT_MODEL``.
 """
 
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -34,26 +30,35 @@ TOP_K = 5
 TOP_P = 0.9
 
 # temperature: Độ ngẫu nhiên của output
-# Chọn 0.3 vì: RAG cần factual, ít sáng tạo
-TEMPERATURE = 0.3
+# Chọn 0.2 vì: tra cứu pháp luật cần bám sát văn bản, gần như không sáng tạo
+TEMPERATURE = 0.2
 
-# TODO: Chọn LLM model (OpenRouter model ID)
-LLM_MODEL = "openai/gpt-4o-mini"  # hoặc model ":free" nếu chưa có credit
+# Model generation — đọc từ env để đổi được mà không sửa code.
+LLM_MODEL = os.getenv("OPENAI_CHAT_MODEL", "gpt-4o-mini")
+
+NO_EVIDENCE_ANSWER = (
+    "Tôi không thể xác minh thông tin này từ nguồn hiện có. "
+    "Corpus của hệ thống chỉ gồm Luật Trật tự, an toàn giao thông đường bộ "
+    "36/2024/QH15, Nghị định 168/2024/NĐ-CP và các Thông tư 72, 73, 79/2024/TT-BCA."
+)
 
 
 # =============================================================================
 # SYSTEM PROMPT
 # =============================================================================
 
-SYSTEM_PROMPT = """Bạn là trợ lý trả lời câu hỏi về chính sách thương mại điện tử và hỗ trợ
-khách hàng (thanh toán, đổi trả, giao hàng, quyền riêng tư, quy định người bán).
+SYSTEM_PROMPT = """Bạn là trợ lý tra cứu pháp luật giao thông đường bộ Việt Nam. Hãy trả lời
+dựa trên context được cung cấp và nêu rõ mốc hiệu lực của nguồn khi có.
 
 Quy tắc bắt buộc:
 1. Chỉ sử dụng thông tin từ context được cung cấp — KHÔNG bịa đặt
-2. Mỗi khẳng định phải có trích dẫn ngay sau, ví dụ: [Returns Policy, 2026]
-3. Nếu context không đủ thông tin → trả lời: "Tôi không thể xác minh thông tin này từ nguồn hiện có"
-4. Trả lời bằng tiếng Việt, có cấu trúc rõ ràng theo đoạn văn
-5. Không suy luận hay mở rộng ngoài những gì được nêu trong context"""
+2. Mỗi khẳng định phải có trích dẫn ngay sau, COPY NGUYÊN VĂN chuỗi ở trường
+   "Trích dẫn" của Document tương ứng, ví dụ: [Nghị định 168/2024/NĐ-CP].
+   Không tự đổi loại văn bản (Thông tư ≠ Nghị định ≠ Luật).
+3. Chỉ nêu mốc hiệu lực đúng như trường "Hiệu lực từ"; không suy đoán từ năm ban hành
+4. Nếu context không đủ thông tin → trả lời: "Tôi không thể xác minh thông tin này từ nguồn hiện có"
+5. Trả lời bằng tiếng Việt, có cấu trúc rõ ràng theo đoạn văn
+6. Không suy luận hay mở rộng ngoài những gì được nêu trong context"""
 
 
 # =============================================================================
@@ -70,51 +75,69 @@ def reorder_for_llm(chunks: list[dict]) -> list[dict]:
     Input order (by score):  [1, 2, 3, 4, 5]
     Output order:            [1, 3, 5, 4, 2]
     (best first, worst in middle, second-best last)
-
-    Args:
-        chunks: List sorted by score descending (from retrieval)
-
-    Returns:
-        List reordered để maximize LLM attention.
     """
-    # TODO: Implement reordering
-    #
-    # if len(chunks) <= 2:
-    #     return chunks
-    #
-    # front = chunks[::2]   # index 0, 2, 4 -> đặt ở đầu
-    # back = chunks[1::2]   # index 1, 3    -> đặt ở cuối (reversed)
-    # return front + back[::-1]
-    raise NotImplementedError("Implement reorder_for_llm")
+    if len(chunks) <= 2:
+        return list(chunks)
+    front = chunks[::2]   # hạng 1, 3, 5 → đầu prompt
+    back = chunks[1::2]   # hạng 2, 4    → cuối prompt, đảo ngược
+    return front + back[::-1]
 
 
 # =============================================================================
 # CONTEXT FORMATTING
 # =============================================================================
 
+# Tên loại văn bản tiếng Việt — thiếu map này LLM hay cite sai tiền tố
+# ("Nghị định 72/2024/TT-BCA" thay vì "Thông tư 72/2024/TT-BCA").
+DOCUMENT_TYPE_LABELS = {
+    "law": "Luật",
+    "decree": "Nghị định",
+    "circular": "Thông tư",
+    "resolution": "Nghị quyết",
+}
+
+
+def citation_label(metadata: dict) -> str:
+    """Chuỗi citation chuẩn để LLM copy nguyên văn.
+
+    Văn bản pháp luật → "Thông tư 72/2024/TT-BCA". Bài viết/tin (không có số
+    hiệu) → tiêu đề + nguồn xuất bản. Luôn trả về một nhãn dùng được: nếu để
+    trống, prompt bắt buộc trích dẫn sẽ không thể thoả mãn và LLM dễ tự bịa nhãn.
+    """
+    document_number = metadata.get("document_number")
+    if document_number:
+        prefix = DOCUMENT_TYPE_LABELS.get(metadata.get("document_type") or "")
+        return f"{prefix} {document_number}" if prefix else str(document_number)
+
+    title = metadata.get("title")
+    publisher = metadata.get("publisher")
+    if title:
+        return f"{title} — {publisher}" if publisher else str(title)
+    return str(metadata.get("source", "nguồn không xác định"))
+
+
 def format_context(chunks: list[dict]) -> str:
     """
     Format chunks thành context string cho prompt.
-    Mỗi chunk có label source để LLM có thể cite.
-
-    Args:
-        chunks: List of {'content': str, 'metadata': dict, 'score': float}
-
-    Returns:
-        Formatted context string.
+    Mỗi chunk có nhãn source + citation + mốc hiệu lực để LLM cite chính xác.
     """
-    # TODO: Implement context formatting
-    #
-    # context_parts = []
-    # for i, chunk in enumerate(chunks, 1):
-    #     source = chunk.get("metadata", {}).get("source", f"Source {i}")
-    #     doc_type = chunk.get("metadata", {}).get("type", "unknown")
-    #     context_parts.append(
-    #         f"[Document {i} | Source: {source} | Type: {doc_type}]\n"
-    #         f"{chunk['content']}\n"
-    #     )
-    # return "\n---\n".join(context_parts)
-    raise NotImplementedError("Implement format_context")
+    context_parts = []
+    for index, chunk in enumerate(chunks, 1):
+        metadata = chunk.get("metadata") or {}
+        source = metadata.get("source", f"Source {index}")
+        doc_type = metadata.get("type", "unknown")
+
+        label = (
+            f"[Document {index} | Source: {source} | Type: {doc_type}"
+            f" | Trích dẫn: {citation_label(metadata)}"
+        )
+        if metadata.get("effective_date"):
+            label += f" | Hiệu lực từ: {metadata['effective_date']}"
+        if metadata.get("section"):
+            label += f" | Mục: {metadata['section']}"
+        label += "]"
+        context_parts.append(f"{label}\n{chunk['content']}\n")
+    return "\n---\n".join(context_parts)
 
 
 # =============================================================================
@@ -125,75 +148,60 @@ def generate_with_citation(query: str, top_k: int = TOP_K) -> dict:
     """
     End-to-end RAG generation có citation.
 
-    Pipeline:
-        1. Retrieve relevant chunks
-        2. Reorder để tránh lost in the middle
-        3. Format context với source labels
-        4. Build prompt (system + context + query)
-        5. Call LLM
-        6. Return answer + sources
-
-    Args:
-        query: Câu hỏi của user
-
     Returns:
         {
             'answer': str,           # Câu trả lời có citation
             'sources': list[dict],   # Các chunks đã dùng
-            'retrieval_source': str  # 'hybrid' hoặc 'pageindex'
+            'retrieval_source': str  # 'hybrid' | 'pageindex' | 'none'
         }
     """
-    # TODO: Implement generation pipeline
-    #
-    # # Step 1: Retrieve
-    # chunks = retrieve(query, top_k=top_k)
-    #
-    # # Step 2: Reorder
-    # reordered = reorder_for_llm(chunks)
-    #
-    # # Step 3: Format context
-    # context = format_context(reordered)
-    #
-    # # Step 4: Build prompt
-    # user_message = f"""Context:\n{context}\n\n---\n\nQuestion: {query}"""
-    #
-    # # Step 5: Call LLM (OpenRouter — OpenAI-compatible API)
-    # from openai import OpenAI
-    # api_key = os.getenv("OPENROUTER_API_KEY") or os.getenv("OPENAI_API_KEY")
-    # client = OpenAI(api_key=api_key, base_url="https://openrouter.ai/api/v1")
-    #
-    # response = client.chat.completions.create(
-    #     model=LLM_MODEL,
-    #     messages=[
-    #         {"role": "system", "content": SYSTEM_PROMPT},
-    #         {"role": "user", "content": user_message}
-    #     ],
-    #     temperature=TEMPERATURE,
-    #     top_p=TOP_P,
-    # )
-    #
-    # answer = response.choices[0].message.content
-    #
-    # # Step 6: Return
-    # return {
-    #     "answer": answer,
-    #     "sources": chunks,
-    #     "retrieval_source": chunks[0].get("source", "hybrid") if chunks else "none"
-    # }
-    raise NotImplementedError("Implement generate_with_citation")
+    if not isinstance(query, str) or not query.strip():
+        raise ValueError("query must be a non-empty string")
+
+    chunks = retrieve(query, top_k=top_k)
+    if not chunks:
+        # Không có evidence → KHÔNG gọi model, tránh việc LLM tự bịa từ tri thức nền.
+        return {"answer": NO_EVIDENCE_ANSWER, "sources": [], "retrieval_source": "none"}
+
+    context = format_context(reorder_for_llm(chunks))
+    user_message = f"Context:\n{context}\n\n---\n\nQuestion: {query}"
+
+    from openai import OpenAI
+
+    client = OpenAI()
+    response = client.chat.completions.create(
+        model=LLM_MODEL,
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": user_message},
+        ],
+        temperature=TEMPERATURE,
+        top_p=TOP_P,
+    )
+    answer = (response.choices[0].message.content or "").strip() or NO_EVIDENCE_ANSWER
+
+    return {
+        "answer": answer,
+        "sources": chunks,
+        "retrieval_source": chunks[0].get("source", "hybrid"),
+    }
 
 
 if __name__ == "__main__":
     test_queries = [
-        "Shopee hỗ trợ những phương thức thanh toán nào?",
-        "Làm sao để yêu cầu đổi trả hay hoàn tiền?",
-        "Cần chuẩn bị bằng chứng gì khi yêu cầu hoàn tiền?",
+        "Xe máy vượt đèn đỏ bị phạt bao nhiêu?",
+        "Khi xảy ra tai nạn giao thông cần làm gì?",
+        "Hồ sơ cấp mới chứng nhận đăng ký xe gồm những gì?",
+        "xyzabc123nonsense",
     ]
 
-    for q in test_queries:
+    for question in test_queries:
         print(f"\n{'='*70}")
-        print(f"Q: {q}")
+        print(f"Q: {question}")
         print("=" * 70)
-        result = generate_with_citation(q)
+        result = generate_with_citation(question)
         print(f"\nA: {result['answer']}")
-        print(f"\n[Sources: {len(result['sources'])} chunks | via {result['retrieval_source']}]")
+        print(
+            f"\n[Sources: {len(result['sources'])} chunks | "
+            f"via {result['retrieval_source']}]"
+        )
