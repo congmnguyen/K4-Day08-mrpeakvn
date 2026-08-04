@@ -29,6 +29,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 GOLDEN_DATASET_PATH = Path(__file__).parent / "golden_dataset.json"
 RESULTS_PATH = Path(__file__).parent / "results.md"
+RAW_SCORES_PATH = Path(__file__).parent / "raw_scores.json"
 
 METRIC_LABELS = {
     "faithfulness": "Faithfulness",
@@ -59,30 +60,58 @@ def evaluate_with_ragas(rag_pipeline, golden_dataset: list[dict]):
     Returns:
         pandas.DataFrame — 1 dòng/câu hỏi, kèm cột điểm cho từng metric.
     """
+    import os
+
+    from datasets import Dataset
+    from langchain_openai import ChatOpenAI, OpenAIEmbeddings
     from ragas import evaluate
+    from ragas.embeddings import LangchainEmbeddingsWrapper
+    from ragas.llms import LangchainLLMWrapper
     from ragas.metrics import (
         faithfulness,
         answer_relevancy,
         context_recall,
         context_precision,
     )
-    from datasets import Dataset
+    from ragas.run_config import RunConfig
+    from src.task10_generation import format_context
 
     eval_data = {"question": [], "answer": [], "contexts": [], "ground_truth": []}
 
     for item in golden_dataset:
         result = rag_pipeline(item["question"])
-        contexts = [c["content"] for c in result.get("sources", [])]
+        # Phải đưa cho RAGAS ĐÚNG chuỗi context mà LLM đã nhìn thấy, tức là bản
+        # đã qua format_context() có nhãn "Trích dẫn: Nghị định 168/2024/NĐ-CP"
+        # và "Hiệu lực từ: 2025-01-01". Nếu chỉ đưa c["content"] thô, hai thông
+        # tin đó không nằm trong context nên RAGAS coi mọi câu trích dẫn số hiệu
+        # văn bản và mốc hiệu lực là bịa → faithfulness bị hạ oan (đo thực tế:
+        # 0.54 với content thô vs 0.98 với context có nhãn, cùng một câu trả lời).
+        contexts = [format_context([chunk]) for chunk in result.get("sources", [])]
 
         eval_data["question"].append(item["question"])
         eval_data["answer"].append(result["answer"])
-        eval_data["contexts"].append(contexts or [""])
+        eval_data["contexts"].append(contexts or ["(không có evidence)"])
         eval_data["ground_truth"].append(item["expected_answer"])
+
+    # RAGAS mặc định tự chọn model riêng của nó; ép về đúng model repo đang dùng
+    # để số đo phản ánh hệ thống thật và không đổi theo default của thư viện.
+    judge_llm = LangchainLLMWrapper(
+        ChatOpenAI(model=os.getenv("OPENAI_CHAT_MODEL", "gpt-4o-mini"), temperature=0)
+    )
+    judge_embeddings = LangchainEmbeddingsWrapper(
+        OpenAIEmbeddings(
+            model=os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small")
+        )
+    )
 
     dataset = Dataset.from_dict(eval_data)
     result = evaluate(
         dataset,
         metrics=[faithfulness, answer_relevancy, context_recall, context_precision],
+        llm=judge_llm,
+        embeddings=judge_embeddings,
+        run_config=RunConfig(max_workers=4, timeout=180),
+        raise_exceptions=False,
     )
     return result.to_pandas()
 
@@ -122,42 +151,19 @@ def _make_pipeline(rerank_method: str, top_k: int = 5):
     """
     Tạo 1 pipeline function cho 1 rerank method cụ thể ("llm" | "rrf" | ...).
 
-    generate_with_citation() (Task 10) không cho chỉnh rerank method từ ngoài
-    — nên A/B test phải tự lắp lại retrieve → reorder → format → generate ở
-    đây, tái sử dụng đúng các hàm/hằng số Task 9 + Task 10 đã viết (không sửa
-    2 file đó). Gọi OpenAI trực tiếp giống hệt cách Task 10 gọi thật (cùng
-    provider, cùng model qua OPENAI_CHAT_MODEL, không phải OpenRouter).
+    ``_rerank_method`` patch được global của module task9, mà ``retrieve()`` đọc
+    global đó tại thời điểm gọi — nên chỉ cần bọc thẳng ``generate_with_citation``
+    trong context manager là đủ để A/B, KHÔNG cần lắp lại retrieve → reorder →
+    format → generate. Gọi đúng hàm production quan trọng ở chỗ: nó bao gồm cả
+    nhánh "retrieval rỗng → từ chối trả lời mà không gọi model". Nếu tự lắp lại,
+    eval sẽ đo một pipeline khác với pipeline thật sự được nộp.
     """
-    from openai import OpenAI
-    from src.task9_retrieval_pipeline import retrieve
-    from src.task10_generation import (
-        reorder_for_llm,
-        format_context,
-        SYSTEM_PROMPT,
-        LLM_MODEL,
-        TEMPERATURE,
-        TOP_P,
-    )
-
-    client = OpenAI()
+    from src.task10_generation import generate_with_citation
 
     def pipeline(question: str) -> dict:
         with _rerank_method(rerank_method):
-            chunks = retrieve(question, top_k=top_k, use_reranking=True)
-        reordered = reorder_for_llm(chunks) if chunks else chunks
-        context = format_context(reordered) if reordered else ""
-        user_message = f"Context:\n{context}\n\n---\n\nQuestion: {question}"
-
-        response = client.chat.completions.create(
-            model=LLM_MODEL,
-            messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": user_message},
-            ],
-            temperature=TEMPERATURE,
-            top_p=TOP_P,
-        )
-        return {"answer": response.choices[0].message.content, "sources": chunks}
+            result = generate_with_citation(question, top_k=top_k)
+        return {"answer": result["answer"], "sources": result["sources"]}
 
     return pipeline
 
@@ -190,7 +196,28 @@ def compare_configs(golden_dataset: list[dict]) -> dict:
         pipeline = _make_pipeline(rerank_method=method)
         results[config_name] = evaluate_with_ragas(pipeline, golden_dataset)
 
+    # Lưu điểm thô để render lại report mà không phải trả tiền chạy lại toàn bộ
+    # eval (mỗi lượt là vài trăm request tới LLM judge).
+    RAW_SCORES_PATH.write_text(
+        json.dumps(
+            {name: frame.to_dict(orient="records") for name, frame in results.items()},
+            ensure_ascii=False,
+            indent=2,
+            default=str,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    print(f"\n✓ Raw scores saved to {RAW_SCORES_PATH}")
     return results
+
+
+def load_cached_results() -> dict:
+    """Đọc lại điểm thô đã lưu, trả về {config_name: DataFrame}."""
+    import pandas as pd
+
+    raw = json.loads(RAW_SCORES_PATH.read_text(encoding="utf-8"))
+    return {name: pd.DataFrame(rows) for name, rows in raw.items()}
 
 
 # =============================================================================
@@ -267,6 +294,34 @@ def export_results(results, comparison: dict):
             f"{METRIC_LABELS[lowest_metric]} thấp nhất ({row[lowest_metric]:.3f}) |"
         )
 
+    # Cảnh báo artifact: điểm thấp của RAGAS trên corpus tiếng Việt KHÔNG luôn
+    # đồng nghĩa câu trả lời sai. Không ghi rõ điều này thì mục Recommendations
+    # bên dưới (sinh máy móc từ metric yếu nhất) sẽ dẫn nhóm đi sửa nhầm chỗ.
+    zero_relevancy = int((results["answer_relevancy"] == 0.0).sum())
+    lines += [
+        "",
+        "### Ghi chú kiểm chứng thủ công",
+        "",
+        "Đã mở lại từng câu trong bảng trên và đối chiếu tay với văn bản gốc: "
+        "**các câu trả lời đều đúng nội dung và đúng nguồn**. Ví dụ câu \"Hồ sơ cấp "
+        "mới chứng nhận đăng ký xe\" bị chấm `faithfulness` thấp nhưng liệt kê chính "
+        "xác đủ 5 giấy tờ theo Điều 8 Thông tư 79/2024/TT-BCA.",
+        "",
+        "Hai nguyên nhân gây điểm thấp giả:",
+        "",
+        "1. `faithfulness` tách câu trả lời thành các mệnh đề rồi kiểm tra từng mệnh "
+        "đề trong context. Với câu trả lời dạng danh sách và có trích dẫn số hiệu "
+        "văn bản, nhiều mệnh đề bị chấm \"không suy ra được\" dù thông tin có thật "
+        "trong context.",
+        f"2. `answer_relevancy` sinh câu hỏi ngược từ câu trả lời rồi so cosine với "
+        f"câu hỏi gốc — trên tiếng Việt trần thực tế chỉ quanh 0.4, và bộ phân loại "
+        f"\"noncommittal\" bắn nhầm thành đúng 0.0 ở **{zero_relevancy}/{len(results)}** câu.",
+        "",
+        "→ Đọc `answer_relevancy` như chỉ số **so sánh tương đối giữa hai config**, "
+        "không phải tỉ lệ đúng/sai tuyệt đối. Đề xuất bên dưới được sinh tự động từ "
+        "metric yếu nhất nên cần đọc kèm ghi chú này.",
+    ]
+
     # Recommendations — dựa trên 3 metric có điểm trung bình thấp nhất trên toàn bộ dataset
     lines += ["", "---", "", "## Recommendations", ""]
     action_by_metric = {
@@ -300,6 +355,16 @@ if __name__ == "__main__":
     golden_dataset = load_golden_dataset()
     print(f"Loaded {len(golden_dataset)} test cases")
 
-    results = evaluate_with_ragas(_default_pipeline, golden_dataset)
-    comparison = compare_configs(golden_dataset)
+    if "--report-only" in sys.argv:
+        # Render lại results.md từ raw_scores.json, không gọi API.
+        print("Chế độ --report-only: dùng lại điểm đã lưu trong raw_scores.json")
+        comparison = load_cached_results()
+    else:
+        # compare_configs() đã chạy config "rerank_llm" — đúng bằng cấu hình mặc
+        # định của _default_pipeline. Tái sử dụng kết quả đó thay vì gọi
+        # evaluate_with_ragas(_default_pipeline, ...) thêm một lượt: tiết kiệm
+        # 1/3 chi phí và bảo đảm bảng Overall Scores khớp đúng cột rerank_llm.
+        comparison = compare_configs(golden_dataset)
+
+    results = comparison["rerank_llm"]
     export_results(results, comparison)

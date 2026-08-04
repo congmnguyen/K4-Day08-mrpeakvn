@@ -1,5 +1,14 @@
 # Bài Tập Nhóm — Vietnamese Traffic Law RAG Chatbot
 
+**Nhóm thực hiện cả 2 sản phẩm:** RAG Chatbot (Streamlit) và Evaluation Pipeline (RAGAS).
+
+| Sản phẩm | Vị trí | Chạy thử |
+|---|---|---|
+| RAG Chatbot | `app.py` + `ui/` | `uv run streamlit run app.py` |
+| Evaluation Pipeline | `group_project/evaluation/` | `uv run python group_project/evaluation/eval_pipeline.py` |
+
+---
+
 ## Mục Tiêu
 
 Sau khi hoàn thành bài cá nhân, nhóm ngồi lại để xây dựng **1 trong 2 sản phẩm**:
@@ -50,11 +59,10 @@ Xem code mẫu (DeepEval/RAGAS/TruLens) chi tiết trong `README.md` gốc mục
 
 ### Deliverable Evaluation
 
-- [x] File `group_project/evaluation/golden_dataset.json` — **18 cặp Q&A**, mỗi câu đối chiếu trực tiếp với văn bản trong corpus (ghi rõ Điều/khoản ở `expected_context`)
-- [x] File `group_project/evaluation/eval_pipeline.py` — chạy được bằng **RAGAS 0.1.21**
+- [x] File `group_project/evaluation/golden_dataset.json` — **19 cặp Q&A** (yêu cầu ≥15), mỗi câu đối chiếu trực tiếp với văn bản trong corpus (ghi rõ Điều/khoản ở `expected_context`), phủ cả 5 văn bản pháp luật lẫn bài viết
+- [x] File `group_project/evaluation/eval_pipeline.py` — **RAGAS 0.1.21**, 4 metric, ép dùng đúng `gpt-4o-mini` + `text-embedding-3-small` của repo
 - [x] File `group_project/evaluation/results.md` — sinh tự động từ số đo thật
-- [x] So sánh A/B: **Hybrid + LLM rerank** vs **Hybrid + RRF thuần**
-- [x] `raw_runs.json` — dữ liệu thô từng câu để kiểm chứng lại mà không phải chạy lại pipeline
+- [x] So sánh A/B: **`rerank_llm`** vs **`rerank_rrf`**, patch `RERANK_METHOD` bằng context manager nên không phải sửa Task 9
 
 ```bash
 uv run python group_project/evaluation/eval_pipeline.py
@@ -126,12 +134,27 @@ Chi tiết corpus, số liệu calibrate ngưỡng và các quyết định kỹ
 
 ## Phân Công Công Việc
 
-| Thành viên | MSSV | Nhiệm vụ | Trạng thái |
-|-----------|------|----------|------------|
-| | | | |
-| | | | |
-| | | | |
-| | | | |
+| Thành viên | MSSV | Vai trò | Nhiệm vụ | Trạng thái |
+|---|---|---|---|---|
+| Nguyễn Minh Công | 2A202601945 | **Role 1** — Team Leader & RAG Architect | Điều phối tiến độ, ghép code tổng hợp, Task 9 (retrieval pipeline) | ✅ Hoàn thành |
+| Diệp Đức Lai | 2A202601784 | **Role 3** — Frontend & Chatbot Developer | Giao diện Streamlit `app.py` + package `ui/`, nối Task 10 | ✅ Hoàn thành |
+| Nguyễn Văn Sáng | 2A202601252 | **Role 4** — Evaluation & QA Engineer | `golden_dataset.json`, `eval_pipeline.py` (RAGAS), `results.md` | ✅ Hoàn thành |
+
+### Chi tiết đóng góp
+
+**Role 1 — Nguyễn Minh Công**
+- Task 9: hybrid retrieval (dense + BM25 chạy song song) → RRF fusion → LLM rerank, fallback PageIndex quyết định bằng cosine gốc với `SCORE_THRESHOLD = 0.40` đã calibrate bằng số đo thật.
+- Ghép code: merge nhánh Role 3 (PR #1) và Role 4 (`feature/role4-evaluation`) vào `main`.
+- Corpus: tìm nguồn text sạch chính thức cho 3 thông tư bản scan (bản `.doc` Công báo), contextual chunking, query glossary.
+
+**Role 3 — Diệp Đức Lai**
+- `app.py` + package `ui/` (`styles.py`, `components.py`, `pdf_export.py`): giao diện chat, hiển thị nguồn tham khảo kèm mức độ liên quan, xuất bản ghi hội thoại ra PDF.
+- Nối `generate_with_citation` của Task 10, truyền `top_k` và lịch sử hội thoại (multi-turn).
+
+**Role 4 — Nguyễn Văn Sáng**
+- `golden_dataset.json`: 19 cặp Q&A, mỗi câu đối chiếu trực tiếp với văn bản trong corpus (ghi rõ Điều/khoản ở `expected_context`).
+- `eval_pipeline.py`: RAGAS 0.1.21 với 4 metric, A/B `rerank_llm` vs `rerank_rrf` bằng context manager patch `RERANK_METHOD`.
+- `results.md`: bảng điểm, phân tích A/B, worst performers kèm cột Failure Stage / Root Cause, và đề xuất cải tiến xếp theo metric yếu nhất.
 
 ---
 
